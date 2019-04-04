@@ -1,0 +1,7 @@
+# Do not track the following
+
+#folder
+elevator/source/.vscode/
+
+#file types
+*.exe
