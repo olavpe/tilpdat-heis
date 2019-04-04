@@ -2,6 +2,7 @@
 
 #folder
 elevator/source/.vscode/
+elevator/build/
 
 #file types
 *.exe
