@@ -5,7 +5,8 @@
 
 
 #include "channels.h"
-#include "elev.h"
+//#include "elev.h"
+#include "elevator_hardware"
 #include "io.h"
 
 #include <assert.h>
