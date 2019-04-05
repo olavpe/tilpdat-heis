@@ -26,3 +26,24 @@ void queue_delete_order(int current_position){
     queue_array[button][current_position] == 0;
     }
 }
+
+//if the expressions evaluates to false the assert() will display an error message
+//det er ikkje mogeleg å køyre nedover frå første etg, samt oppover frå fjerde etg
+void queue_assert(){
+    int8_t button_up = 0, button_down = 1;
+    //floor_3 and floor_0 from enum at fsm
+    assert(queue_array[button_up][FLOOR_3] == 0);
+    assert(queue_array[button_down][FLOOR_0] == 0);
+}
+
+int queue_find_closest_order(int current_position, int last_direction){
+    queue_assert();
+//først finn bestilling i samme etasje, så etasjane i same retning¨
+//så finn bestillingar i motsett retning
+
+
+    
+    return ...;//etasje
+}
+
+int queue_get_order(){}
