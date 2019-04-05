@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <stdint.h>
+
 #include "queue.h"
 #include "elev.h"
 
@@ -17,10 +20,9 @@ void queue_delete_queue(){
 }
 
 //deletes an order - used when an order is fullfilled
-void queue_delete_order(int current_position){
-    //skal bruke posisjonen til heisen når den stoppar og opnar døra
-    //då skal alle knappar i denne etasjen nullstillast sidan det då reknast
-    //som at alle bestillingar er utført
-    
-
+void queue_delete_order(int current_position){ 
+    int8_t button;
+    for(button = 0; button < N_BUTTONS; button++){
+    queue_array[button][current_position] == 0;
+    }
 }
