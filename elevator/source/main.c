@@ -5,17 +5,21 @@
 
 int main() {
     // Initialize hardware
-    if (!elev_init()) {
-        printf("Unable to initialize elevator hardware!\n");
-        return 1;
-    }
+    elev_init();
+//    if (!elev_init()) {
+//        printf("Unable to initialize elevator hardware!\n");
+//        return 1;
+//    }
 
 //    elev_set_motor_direction(DIRN_UP);
 
     while (1) {
-        elev_set_floor_indicator(elev_get_floor_sensor_signal());
+        char floor_signal = elev_get_floor_sensor_signal();
+        printf("floor_signal: %d\n", (char)floor_signal);
+        
+        elev_set_floor_indicator(floor_signal);
         elev_button_type_t buttons = elev_get_button_signal(DIRN_DOWN, 3);
-        printf(buttons);
+        printf("buttonTest: %d\n", (int)buttons);
         // Change direction when we reach top/bottom floor
 //        if (elev_get_floor_sensor_signal() == N_FLOORS - 1) {
 //            elev_set_motor_direction(DIRN_DOWN);
