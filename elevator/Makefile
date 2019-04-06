@@ -1,5 +1,5 @@
-SOURCES := main.c elevator_hardware.c 
-#SOURCES := main.c elev.c io.c elevator_hardware.c 
+SOURCES := main.c elevator_hardware.c fsm.c
+#SOURCES := main.c elev.c io.c elevator_hardware.c  fsm.c
 
 BUILD_DIR := build
 OBJ := $(SOURCES:%.c=$(BUILD_DIR)/%.o)
