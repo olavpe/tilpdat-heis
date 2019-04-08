@@ -49,6 +49,8 @@ void queue_set_order(elev_button_type_t button, position_t floor){
     }
     return n_orders;
 }
+queue_is_queue_empty
+//summere alle element i queue_array og sjekke om 0 eller ikkje
 
 
 elev_motor_direction_t queue_get_next_direction(position_t current_position, elev_motor_direction_t last_direction){
@@ -60,15 +62,16 @@ elev_motor_direction_t queue_get_next_direction(position_t current_position, ele
     int8_t orders_below = 0;
     int8_t order_same_floor = 0;
     
-    int8_t upper_limit = 7;
-    int8_t lower_limit = 0;
-    for(current_position; current_position < upper_limit; current_position++){
-
+    for(current_position; current_position < FLOOR_3; current_position++){
+        orders_above += *(n_orders + current_position);
     }
-    for(current_position; current_position > lower_limit; current_position--){
-
+    for(current_position; current_position > FLOOR_0; current_position--){
+        orders_below += *(n_orders + current_position);
     }
+    order_same_floor = *(n_orders + current_position);
 
+
+//-----------------------------------------------
     switch(current_position){
         case FLOOR_0:
             orders_above = num_orders_array[FLOOR_1] + num_orders_array[FLOOR_2] + num_orders_array[FLOOR_3];
@@ -143,14 +146,14 @@ void assert_buttons(){
     assert(queue_array[no_button_down][FLOOR_0] == 0);
 }
 
-elev_motor_direction_t choose_direction_based_on_priority(elev_motor_direction_t last_direction, int8_t orders_above, int8_t orders_below){
+elev_motor_direction_t choose_direction_based_on_priority(elev_motor_direction_t last_direction, int8_t orders_above, int8_t orders_below, int8_t order_same_floor){
     switch(last_direction){
         case DIRN_UP:
             if (orders_above > 0){
                 return DIRN_UP;
             } else if (orders_below > 0){
                 return DIRN_DOWN;
-            } else {
+            } else if (order_same_floor > 0){
                 return DIRN_STOP;
             }
             break;
@@ -159,20 +162,12 @@ elev_motor_direction_t choose_direction_based_on_priority(elev_motor_direction_t
                 return DIRN_DOWN;
             } else if (orders_above > 0){
                 return DIRN_UP;
-            } else {
+            } else if (order_same_floor > 0) {
                 return DIRN_STOP;
             }
             break;
-        case DIRN_STOP:  //er vi einige om at default retning er opp eller ned i forhold til dirn_stop??
-        //eller er det slik at vi treng å lagre last_last_direction også for å finne kva retning som skal brukast etter dirn_stop
-        //om dette er den retninga den har i idle når heisen stopppar og tek på folk?? i det tilfellet vert dette meir komplisert
-            if (orders_above > 0){
-                return DIRN_UP;
-            } else if (orders_below > 0){
-                return DIRN_DOWN;
-            } else {
-                return DIRN_STOP;
-            }
+        case DIRN_STOP:
+            //does nothing
             break;
     }
 }
