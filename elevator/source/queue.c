@@ -6,10 +6,10 @@
 
 
 //making a 2D array of orders with dimension 3(row)x4(col) 
-static int queue_array[N_BUTTONS][N_FLOORS]; //static?
+static int queue_array[N_BUTTONS][N_FLOORS]; //static? bør eg sette alle verdiar til 0?
 
 //deletes all orders in queue_array, and setting all orders to the initial value 0
-void queue_delete_queue(){
+void queue_reset_queue(){
     //setting default values in 2D array
     int8_t button, floor;
     for(button = 0; button < N_BUTTONS ; button++){
@@ -27,12 +27,12 @@ void queue_delete_order(position_t current_position){
     }
 }
 
-int queue_get_order(.... button,position_t floor){//finst det ein enum med knappar?
+int queue_get_order(elev_button_type_t button, position_t floor){//finst det ein enum med knappar?
     return queue_array[button][floor];
     //er det problemastisk at enum position_t også inneheld mellometasjane?
 }
 
-void queue_set_order(.... button, position_t floor){
+void queue_set_order(elev_button_type_t button, position_t floor){
     assert_buttons();
     queue_array[button][floor] = 1;
 }
