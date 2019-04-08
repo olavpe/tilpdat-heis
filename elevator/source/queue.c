@@ -37,24 +37,37 @@ void queue_set_order(elev_button_type_t button, position_t floor){
     queue_array[button][floor] = 1;
 }
 
-
-elev_motor_direction_t queue_get_next_direction(position_t current_position, elev_motor_direction_t last_direction){
-    queue_assert();
-
+ int * calculate_n_orders(){
     int8_t fsm_position;
     int8_t button;
     //lagar ny array som skal innhalde summen av kolonnene i queue_array - altså om det er bestillingar i ein etasje, samt at between floors alltid er 0
-    static int num_orders[N_POSITIONS] = {0, 0, 0, 0, 0, 0, 0};
+    static int n_orders[N_POSITIONS] = {0, 0, 0, 0, 0, 0, 0};
     for (fsm_position = 0; fsm_position < N_POSITIONS; fsm_position = fsm_position+2){
         for (button = 0; button < N_BUTTONS; button++){
-            num_orders[fsm_position] += queue_array[button][fsm_position];
+            n_orders[fsm_position] += queue_array[button][fsm_position];
         }
     }
-    //berre interessert i om order_array inneheld 0 eller < 0.
-    //
+    return n_orders;
+}
+
+
+elev_motor_direction_t queue_get_next_direction(position_t current_position, elev_motor_direction_t last_direction){
+    queue_assert();
+    int * n_orders;
+    n_orders = calculate_n_orders();
+
     int8_t orders_above = 0;
     int8_t orders_below = 0;
     int8_t order_same_floor = 0;
+    
+    int8_t upper_limit = 7;
+    int8_t lower_limit = 0;
+    for(current_position; current_position < upper_limit; current_position++){
+
+    }
+    for(current_position; current_position > lower_limit; current_position--){
+
+    }
 
     switch(current_position){
         case FLOOR_0:
