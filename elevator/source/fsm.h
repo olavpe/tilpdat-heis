@@ -1,23 +1,26 @@
 #pragma once
 
-typedef enum position_t {
+#define N_POSITIONS 7
+
+typedef enum {
     FLOOR_0,
-    FLOOR_1,
-    FLOOR_2,
-    FLOOR_3,
     BETWEEN_0_AND_1,    
+    FLOOR_1,
     BETWEEN_1_AND_2,
+    FLOOR_2,
     BETWEEN_2_AND_3,
+    FLOOR_3,
     UNKNOWN
 } position_t;
 
-typedef enum state_t {
+typedef enum {
     INIT,
     IDLE,
     MOVING, 
     OPEN_DOOR,
-    EMERGENGY_STOP 
+    EMERGENCY_STOP 
 } state_t; 
+
 
 // functions
 void fsm();
