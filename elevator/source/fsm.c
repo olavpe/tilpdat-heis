@@ -85,14 +85,27 @@ static void m_update_position() {
 }
         
 void fsm(){
-    //polling the order buttons
-    m_register_order_press();
-    m_update_position();
 
+    //Checking if the STOP button has been pressed if not in INIT state.
+    if (fsm_state != INIT){
+        if (elev_get_stop_signal()){
+            fsm_state = EMERGENCY_STOP;
+        }
+    }
+
+    //polling the order buttons and floor sensor when not or init
+    if ( fsm_state != INIT) {
+        m_register_order_press();
+    }
+
+    // Updating floor sensor data
+    m_update_position();
+    
     switch (fsm_state) {
 
         case INIT:
             // setting the motor direction upwards and keeping in state until hit floor.
+            //queue_reset_queue()
             if (fsm_position != UNKNOWN) {
                 fsm_state = IDLE;
                 break;
@@ -102,6 +115,27 @@ void fsm(){
             
         case IDLE:
             elev_set_motor_direction(DIRN_STOP);
+            //queue_find_closest_order();
+            break;
+        
+        case EMERGENCY_STOP:
+            //queue_reset_queue();
+            //reset lights function!!!
+            elev_set_motor_direction(DIRN_STOP);
+            if (elev_get_floor_sensor_signal() != -1) {
+                elev_set_door_open_lamp(1); 
+            }
+
+            //busy wait until button is released
+            while (elev_get_stop_signal()){}
+            
+            if (elev_get_floor_sensor_signal() == -1) {
+                fsm_position = IDLE;
+            } else {
+                fsm_position = OPEN_DOOR;
+            }
+            
+            elev_set_stop_lamp(0);
             break;
     
         default:
