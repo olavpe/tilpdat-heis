@@ -16,6 +16,7 @@ static state_t fsm_state = INIT;
 static void m_register_order_press();
 static void m_update_position();
 static void m_reset_order_lights();
+static const char* m_print_position(position_t position);
 
 // Functions
         
@@ -128,6 +129,7 @@ static void m_register_order_press(){
 
 static void m_update_position() {
     int8_t floor_sensor = elev_get_floor_sensor_signal();    
+    int8_t position_incrementer = 0;
 
     ///////////////////////// TO BE DELETED
     position_t fsm_previous_position = fsm_position;
@@ -135,37 +137,24 @@ static void m_update_position() {
 
     //Sets the floor position directly if on floor
     if (floor_sensor != -1) {
-        fsm_position = floor_sensor;
+        fsm_position = floor_sensor*2; //multiplied with 2 as enum has between positions
     } else {
+        if (fsm_direction == DIRN_UP){
+            position_incrementer = 1;
+        }else {
+            position_incrementer = -1;
+        }
         switch (fsm_position) {
 
-            case UNKNOWN:
-                //Does nothing
-                break;
-
             case FLOOR_0:
-                fsm_position = BETWEEN_0_AND_1;
-                break;
-
             case FLOOR_1:
-                if (fsm_direction == DIRN_UP) {
-                    fsm_position = BETWEEN_1_AND_2;
-                } else{
-                    fsm_position = BETWEEN_0_AND_1;
-                }
-
             case FLOOR_2:
-                if (fsm_direction == DIRN_UP) {
-                    fsm_position = BETWEEN_2_AND_3;
-                } else{
-                    fsm_position = BETWEEN_1_AND_2;
-                }
-
             case FLOOR_3:
-                fsm_position = BETWEEN_2_AND_3;
+                fsm_position += position_incrementer;
                 break;
             
             //Does nothing if in these states
+            case UNKNOWN:
             case BETWEEN_0_AND_1:
             case BETWEEN_1_AND_2:
             case BETWEEN_2_AND_3:
@@ -177,8 +166,8 @@ static void m_update_position() {
     } 
     ///////////////////TO BE DELETED
     if (fsm_previous_position != fsm_position) {
-        printf("state change from %d", fsm_previous_position);
-        printf("  to state %d", fsm_position);
+        printf("state change from %s", m_print_position(fsm_previous_position));
+        printf("  to state %s", m_print_position(fsm_position));
         printf("\n");
     }
     ///////////////////TO BE DELETED
@@ -191,3 +180,20 @@ static void m_reset_order_lights(){
             }
         }
     }
+
+static const char* m_print_position(position_t position){
+    switch (position) {
+        case FLOOR_0: return "FLOOR_0";
+        case FLOOR_1: return "FLOOR_1";
+        case FLOOR_2: return "FLOOR_2";
+        case FLOOR_3: return "FLOOR_3";
+        case BETWEEN_0_AND_1: return "BETWEEN_0_AND_1";
+        case BETWEEN_1_AND_2: return "BETWEEN_1_AND_2";
+        case BETWEEN_2_AND_3: return "BETWEEN_2_AND_3";
+        case UNKNOWN: return "UNKNOWN";
+    
+        default:
+            return 0;
+            break;
+    }
+}
