@@ -15,6 +15,7 @@ static state_t fsm_state = INIT;
 // Declaring static local functions
 static void m_register_order_press();
 static void m_update_position();
+static void m_reset_order_lights();
 
 // Functions
         
@@ -51,19 +52,19 @@ void fsm(){
         case IDLE:
             elev_set_motor_direction(DIRN_STOP);
             
-            if (queue_is_queue_empty()) {
-                break;
-            }
+            //if (queue_is_queue_empty()) {
+            //    break;
+            //}
 
-            elev_motor_direction_t order_direction = queue_find_next_direction();
-            if (order_direction == DIRN_STOP) {
-                fsm_state = OPEN_DOOR;
-                break;
-            }
-            elev_set_motor_direction(order_direction);
+            //elev_motor_direction_t order_direction = queue_find_next_direction();
+            //if (order_direction == DIRN_STOP) {
+            //    fsm_state = OPEN_DOOR;
+            //    break;
+            //}
+            //elev_set_motor_direction(order_direction);
             fsm_state = MOVING;
             fsm_previous_position = fsm_position;
-            fsm_direction = order_direction;
+            //fsm_direction = order_direction;
             break;
 
         case MOVING:
@@ -71,7 +72,7 @@ void fsm(){
                 break;
             }
             //queue_should_stop();
-            position_t fsm_previous_position = fsm_position;
+            fsm_previous_position = fsm_position;
             break;
         
         case OPEN_DOOR:
@@ -87,7 +88,7 @@ void fsm(){
         
         case EMERGENCY_STOP:
             //queue_reset_queue();
-            //reset lights function!!!
+            m_reset_order_lights();
             elev_set_motor_direction(DIRN_STOP);
             if (elev_get_floor_sensor_signal() != -1) {
                 elev_set_door_open_lamp(1); 
@@ -181,3 +182,11 @@ static void m_update_position() {
     }
     ///////////////////TO BE DELETED
 }
+
+static void m_reset_order_lights(){
+    for (int8_t button = 0; button < N_BUTTONS; button++) {
+        for (int8_t floor = 0; floor < N_FLOORS; floor++) {
+            elev_set_button_lamp(button, floor, 0);
+            }
+        }
+    }
