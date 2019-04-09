@@ -1,7 +1,7 @@
 # Do not track the following
 
 #files 
-elevator/source/heis
+elevator/heis
 
 #folder
 elevator/source/.vscode/
