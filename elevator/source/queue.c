@@ -45,7 +45,7 @@ void queue_set_order(elev_button_type_t button, position_t floor){
     queue_array[button][floor] = 1;
 }
 
-bool queue_queue_is_empty(){
+bool queue_is_queue_empty(){
     int8_t orders = 0;
     int8_t floor, button;
     for (floor = 0; floor < N_FLOORS; floor++){
@@ -62,12 +62,11 @@ bool queue_queue_is_empty(){
 
 elev_motor_direction_t queue_get_next_direction(position_t current_position, elev_motor_direction_t last_direction){
     int * p_num_orders_array;
-    p_num_orders_array = m_calculate_num_orders();
+    p_num_orders_array = m_calculate_orders_per_floor();
 
     int8_t orders_above = 0;
     int8_t orders_below = 0;
     int8_t order_same_floor = 0;
-
     int8_t position;
     
     for(position = current_position; position < FLOOR_3; position++){
@@ -94,7 +93,7 @@ void m_assert_buttons(){
     assert(queue_array[no_button_down][FLOOR_0] == 0);
 }
 
-int * m_calculate_num_orders(){
+int * m_calculate_orders_per_floor(){
     m_assert_buttons();
     int8_t fsm_position;
     int8_t button;
