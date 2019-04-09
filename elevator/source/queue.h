@@ -1,7 +1,9 @@
+#pragma once
 #include <stdio.h>
 #include <stdbool.h>
 
 #include "elevator_hardware.h"
+#include "fsm.h"
 
 void queue_reset_queue();
 void queue_delete_order(position_t current_position);
