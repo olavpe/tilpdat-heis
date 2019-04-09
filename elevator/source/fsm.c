@@ -16,6 +16,7 @@ static state_t fsm_state = INIT;
 static void m_register_order_press();
 static void m_update_position();
 static void m_reset_order_lights();
+static const char* m_print_position(position_t position);
 
 // Functions
         
@@ -165,8 +166,8 @@ static void m_update_position() {
     } 
     ///////////////////TO BE DELETED
     if (fsm_previous_position != fsm_position) {
-        printf("state change from %d", fsm_previous_position);
-        printf("  to state %d", fsm_position);
+        printf("state change from %s", m_print_position(fsm_previous_position));
+        printf("  to state %s", m_print_position(fsm_position));
         printf("\n");
     }
     ///////////////////TO BE DELETED
@@ -179,3 +180,20 @@ static void m_reset_order_lights(){
             }
         }
     }
+
+static const char* m_print_position(position_t position){
+    switch (position) {
+        case FLOOR_0: return "FLOOR_0";
+        case FLOOR_1: return "FLOOR_1";
+        case FLOOR_2: return "FLOOR_2";
+        case FLOOR_3: return "FLOOR_3";
+        case BETWEEN_0_AND_1: return "BETWEEN_0_AND_1";
+        case BETWEEN_1_AND_2: return "BETWEEN_1_AND_2";
+        case BETWEEN_2_AND_3: return "BETWEEN_2_AND_3";
+        case UNKNOWN: return "UNKNOWN";
+    
+        default:
+            return 0;
+            break;
+    }
+}
