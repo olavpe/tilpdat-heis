@@ -41,6 +41,7 @@ void fsm(){
         case INIT:
             // setting the motor direction upwards and keeping in state until hit floor.
             //queue_reset_queue()
+            m_reset_order_lights();
             if (fsm_position != UNKNOWN) {
                 fsm_state = IDLE;
                 fsm_direction = DIRN_STOP;
