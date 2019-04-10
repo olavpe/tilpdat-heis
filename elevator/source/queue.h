@@ -18,7 +18,7 @@
  * @brief Deletes all orders in the queue by setting
  * all the order options to the initial value 0.
  * 
- * @param[out] queue_array Queue tabel
+ * @param[out] queue_array Queue table
  */
 void queue_reset_queue();
 
@@ -26,7 +26,7 @@ void queue_reset_queue();
  * @brief Deletes an order in the queue.
  * 
  * @param[in] current_position Position of the elevator
- * @param[out] queue_array Queue tabel
+ * @param[out] queue_array Queue table
  */
 void queue_delete_order(position_t current_position);
 
@@ -46,6 +46,7 @@ int queue_get_order(elev_button_type_t button, position_t floor);
  * 
  * @param[in] button Hardware buttons
  * @param[in] floor At a floor
+ * @param[out] queue_array Queue table
  */
 void queue_set_order(elev_button_type_t button, position_t floor);
 
@@ -61,7 +62,7 @@ bool queue_is_queue_empty();
  * on the requested priorities.
  * 
  * @param[in] current_position At a floor or between floors
- * @param[in, out] last_direction The last direction of the elevator
+ * @param[in] last_direction The last direction of the elevator
  * 
  * @return next direction of the elevator.
  */
