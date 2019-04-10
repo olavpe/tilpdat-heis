@@ -120,7 +120,7 @@ elev_motor_direction_t m_choose_direction_based_on_priority(elev_motor_direction
                 next_direction = DIRN_UP;
             } else if (orders_below > 0){
                 next_direction = DIRN_DOWN;
-            } else if (order_same_floor > 0){
+            } else if (order_same_floor >= 0){
                 next_direction = DIRN_STOP;
             }
             break;
@@ -131,7 +131,7 @@ elev_motor_direction_t m_choose_direction_based_on_priority(elev_motor_direction
                 next_direction = DIRN_UP;
             } else if (order_same_floor > 0) {
                 next_direction = DIRN_STOP;
-            }
+            } 
             break;
         case DIRN_STOP:
             break;
