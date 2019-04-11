@@ -51,6 +51,14 @@ void fsm(){
             m_reset_order_lights();
             if (fsm_position != UNKNOWN) {
                 //fsm_direction = DIRN_UP;
+                int8_t position, button;
+                for (position = 0; position < N_POSITIONS; position = (position + 2)){
+                    printf("floor %d : ", position);
+                    for (button = 0; button < N_BUTTONS; button++){
+                        printf("%d - ", queue_array[button][position]);
+                    }
+                    printf("\n");
+                }
                 fsm_state = IDLE;
                 break;
             }
@@ -97,7 +105,7 @@ void fsm(){
             elev_set_door_open_lamp(1);
             if (timer_is_timer_expired(fsm_timestamp)){
                 elev_set_door_open_lamp(0);
-                queue_delete_order(fsm_position);
+            //    queue_delete_order(fsm_position);
                 fsm_state = IDLE;
             }
             break;
@@ -130,9 +138,10 @@ void fsm(){
 
 
 static void m_register_order_press(){
-    for (int8_t button = 0; button < N_BUTTONS; button++) {
-        for (int8_t floor = 0; floor < N_FLOORS; floor++) {
-            int8_t button_signal = elev_get_button_signal(button, floor);
+    for (elev_button_type_t button = 0; button < N_BUTTONS; button++) {
+        for (int floor = 0; floor < N_FLOORS; floor++) {
+            elev_button_type_t button_signal = elev_get_button_signal(button, floor);
+//            printf("m_register_order_press: button signal %d\n", button_signal);
             if (button_signal == 1) {
                 printf("add_order called\n");
                 queue_set_order(button, floor);
