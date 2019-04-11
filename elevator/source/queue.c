@@ -9,17 +9,15 @@
 
 //hjelpefunksjonar
 void m_assert_buttons();
-int * m_calculate_num_orders();
+int * m_calculate_orders_per_floor();
 elev_motor_direction_t m_choose_direction_based_on_priority(elev_motor_direction_t last_direction, int8_t orders_above, int8_t orders_below, int8_t order_same_floor);
 elev_button_type_t m_get_button_matching_direction(elev_motor_direction_t fsm_direction);
 
 
-//making a 2D array of orders with dimension 3(row)x4(col) 
-static int queue_array[N_BUTTONS][N_FLOORS]; //static?
+static int queue_array[N_BUTTONS][N_FLOORS];
 
-//deletes all orders in queue_array, and setting all orders to the initial value 0
+
 void queue_reset_queue(){
-    //setting default values in 2D array
     int8_t button, floor;
     for(button = 0; button < N_BUTTONS ; button++){
         for(floor = 0; floor < N_FLOORS; floor++){
@@ -28,7 +26,6 @@ void queue_reset_queue(){
     }
 }
 
-//deletes an order - used when an order is fullfilled, deletes all orders
 void queue_delete_order(position_t current_position){ 
     int8_t button;
     for(button = 0; button < N_BUTTONS; button++){
@@ -39,6 +36,7 @@ void queue_delete_order(position_t current_position){
 int queue_get_order(elev_button_type_t button, position_t floor){
     return queue_array[button][floor];
     //er det problemastisk at enum position_t også inneheld mellometasjane?
+    //fungerer så lenge denne berre vert brukt i heiletasjane!
 }
 
 void queue_set_order(elev_button_type_t button, position_t floor){
@@ -134,7 +132,10 @@ elev_motor_direction_t m_choose_direction_based_on_priority(elev_motor_direction
                 next_direction = DIRN_UP;
             } else if (orders_below > 0){
                 next_direction = DIRN_DOWN;
-            } else if (order_same_floor >= 0){
+            //her vil det vere eit tilfelle når queue er tom at next_dir ikkje har ein gyldig verdi
+            //sjekke på dette? men er DIRN_STOP gitt at ein stoppar OG opnar døra, for i dette tilfellet
+            //vil vi holde døra igjen.
+            } else if (order_same_floor > 0){
                 next_direction = DIRN_STOP;
             }
             break;
