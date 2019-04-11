@@ -29,7 +29,7 @@ void queue_reset_queue();
  * @param[in] current_position Position of the elevator
  * @param[out] queue_array Queue table
  */
-void queue_delete_order(position_t current_position);
+void queue_delete_order(int8_t floor);
 
 /**
  * @brief Gets a spesific order from the queue.
@@ -40,7 +40,7 @@ void queue_delete_order(position_t current_position);
  * @return 1 if there is an order in the specific location which
  * is denoted by the inparameters, 0 if not.
  */
-int queue_get_order(elev_button_type_t button, position_t floor);
+int queue_get_order(elev_button_type_t button, int floor);
 
 /**
  * @brief Sets an order in the queue.

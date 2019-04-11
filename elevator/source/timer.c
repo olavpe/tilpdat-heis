@@ -27,7 +27,7 @@ bool timer_is_timer_expired(time_t start_timestamp){
     //difftime is a time.h function
     double time_difference = difftime(current_timestamp, start_timestamp);
     printf("diff: %f\n", time_difference);;
-    if (time_difference > 3){
+    if (time_difference >= 3){
         return true;
     } else {
         return false;

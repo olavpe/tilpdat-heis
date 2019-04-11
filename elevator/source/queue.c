@@ -19,6 +19,7 @@ elev_button_type_t m_get_button_matching_direction(elev_motor_direction_t fsm_di
 
 void queue_reset_queue(){
     int8_t button, floor;
+    //endre rekkefølge
     for(button = 0; button < N_BUTTONS ; button++){
         for(floor = 0; floor < N_FLOORS; floor++){
             queue_array[button][floor] = 0;
@@ -26,14 +27,15 @@ void queue_reset_queue(){
     }
 }
 
-void queue_delete_order(position_t current_position){ 
+void queue_delete_order(int8_t floor){ 
     int8_t button;
     for(button = 0; button < N_BUTTONS; button++){
-        queue_array[button][current_position] = 0;
+        queue_array[button][floor] = 0;
+        elev_set_button_lamp(button,floor, 0);
     }
 }
 
-int queue_get_order(elev_button_type_t button, position_t floor){
+int queue_get_order(elev_button_type_t button, int floor){
     return queue_array[button][floor];
     //er det problemastisk at enum position_t også inneheld mellometasjane?
     //fungerer så lenge denne berre vert brukt i heiletasjane!
@@ -117,11 +119,11 @@ bool queue_should_stop(position_t fsm_position, elev_motor_direction_t fsm_direc
     if (queue_get_next_direction(fsm_position, fsm_direction) != fsm_direction) {
         return true;
     }
-    if (queue_array[BUTTON_COMMAND][fsm_position] == 1) {
+    if (queue_array[BUTTON_COMMAND][fsm_position/2] == 1) {
         return true;
     }
     elev_button_type_t button_in_direction = m_get_button_matching_direction(fsm_direction);
-    if (queue_array[button_in_direction][fsm_position] == 1) {
+    if (queue_array[button_in_direction][fsm_position/2] == 1) {
         return true;
     }
     return false;
@@ -130,8 +132,9 @@ bool queue_should_stop(position_t fsm_position, elev_motor_direction_t fsm_direc
 
 //if the expressions evaluates to false the assert() will display an error message
 void m_assert_buttons(){
-    assert(queue_array[BUTTON_CALL_UP][FLOOR_3] == 0);
-    assert(queue_array[BUTTON_CALL_DOWN][FLOOR_0] == 0);
+    int8_t floor_0 = 0, floor_3 = 3;
+    assert(queue_array[BUTTON_CALL_UP][floor_3] == 0);
+    assert(queue_array[BUTTON_CALL_DOWN][floor_0] == 0);
 }
 
 int * m_calculate_orders_per_floor(){

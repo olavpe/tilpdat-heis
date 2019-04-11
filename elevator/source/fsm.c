@@ -96,8 +96,22 @@ void fsm(){
             if (fsm_previous_position == fsm_position) {
                 break;
             }
-            //queue_should_stop();
-            fsm_previous_position = fsm_position;
+            switch (fsm_position){
+                case FLOOR_0:
+                case FLOOR_1:
+                case FLOOR_2:
+                case FLOOR_3:
+                    if (queue_should_stop(fsm_position, fsm_direction)) {
+                        elev_set_motor_direction(DIRN_STOP);
+                        fsm_timestamp = timer_start_timer();
+                        fsm_state = OPEN_DOOR;
+                    }
+                    fsm_previous_position = fsm_position;
+                    break;
+
+                default:
+                    break;
+            }
             break;
         
         case OPEN_DOOR:
@@ -105,7 +119,8 @@ void fsm(){
             elev_set_door_open_lamp(1);
             if (timer_is_timer_expired(fsm_timestamp)){
                 elev_set_door_open_lamp(0);
-            //    queue_delete_order(fsm_position);
+                int8_t floor = fsm_position/2;
+                queue_delete_order(floor);
                 fsm_state = IDLE;
             }
             break;
