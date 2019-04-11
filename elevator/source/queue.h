@@ -13,6 +13,8 @@
 #include "elevator_hardware.h"
 #include "fsm.h"
 
+
+int queue_array[N_BUTTONS][N_FLOORS];
 /**
  * @brief Deletes all orders in the queue by setting
  * all the order options to the initial value 0.
@@ -47,7 +49,7 @@ int queue_get_order(elev_button_type_t button, position_t floor);
  * @param[in] floor At a floor
  * @param[out] queue_array Queue table
  */
-void queue_set_order(elev_button_type_t button, position_t floor);
+void queue_set_order(elev_button_type_t button, int floor);
 
 /**
  * @brief Checks whether the queue has any orders.

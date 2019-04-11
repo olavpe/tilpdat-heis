@@ -9,12 +9,12 @@
 
 //hjelpefunksjonar
 void m_assert_buttons();
-int * m_calculate_orders_per_floor();
+//int * m_calculate_orders_per_floor();
 elev_motor_direction_t m_choose_direction_based_on_priority(elev_motor_direction_t last_direction, int8_t orders_above, int8_t orders_below, int8_t order_same_floor);
 elev_button_type_t m_get_button_matching_direction(elev_motor_direction_t fsm_direction);
 
 
-static int queue_array[N_BUTTONS][N_FLOORS];
+//static int queue_array[N_BUTTONS][N_FLOORS];
 
 
 void queue_reset_queue(){
@@ -39,9 +39,9 @@ int queue_get_order(elev_button_type_t button, position_t floor){
     //fungerer så lenge denne berre vert brukt i heiletasjane!
 }
 
-void queue_set_order(elev_button_type_t button, position_t floor){
-    m_assert_buttons();
+void queue_set_order(elev_button_type_t button, int floor){
     queue_array[button][floor] = 1;
+    m_assert_buttons();
 }
 
 bool queue_is_queue_empty(){
@@ -60,8 +60,12 @@ bool queue_is_queue_empty(){
 }
 
 elev_motor_direction_t queue_get_next_direction(position_t current_position, elev_motor_direction_t last_direction){
-    int * p_num_orders_array;
-    p_num_orders_array = m_calculate_orders_per_floor();
+    printf("queue_get_next_direction: input position %s", fsm_print_position(current_position));
+    printf("\n");
+    printf("queue_get_next_direction: input direction %s", fsm_print_direction(last_direction));
+    printf("\n");
+    //int * p_num_orders_array;
+    //p_num_orders_array = m_calculate_orders_per_floor();
 
     int8_t orders_above = 0;
     int8_t orders_below = 0;
@@ -76,17 +80,34 @@ elev_motor_direction_t queue_get_next_direction(position_t current_position, ele
     //     //orders_below += *(p_num_orders_array + current_position);
     //     orders_below += p_num_orders_array[position];
     // }
-    for(position = FLOOR_0; position < FLOOR_3; position++){
-        if (position < current_position){
-            orders_below += p_num_orders_array[position];
-        } else if (position > current_position){
-            orders_above += p_num_orders_array[position];
-        } else if (position == current_position){
-            order_same_floor = p_num_orders_array[position];
+    // for(position = FLOOR_0; position < FLOOR_3; position++){
+    //     if (position < current_position){
+    //         orders_below += p_num_orders_array[position];
+    //     } else if (position > current_position){
+    //         orders_above += p_num_orders_array[position];
+    //     } else if (position == current_position){
+    //         order_same_floor = p_num_orders_array[position];
+    //     }
+    // }
+
+    int8_t button;
+    m_assert_buttons();
+    //lagar ny array som skal innhalde summen av kolonnene i queue_array - altså om det er bestillingar i ein etasje, samt at between floors alltid er 0
+    //static int num_orders_array[N_POSITIONS] = {0, 0, 0, 0, 0, 0, 0};
+    for (position = 0; position < N_POSITIONS; position = (position + 2)){
+        printf("floor %d : ", position);
+        for (button = 0; button < N_BUTTONS; button++){
+            printf("%d - ", queue_array[button][position/2]);
+            if (position < current_position){
+                orders_below += queue_array[button][position/2];
+            } else if (position > current_position){
+                orders_above += queue_array[button][position/2];
+            } else if (position == current_position){
+                order_same_floor += queue_array[button][position/2];
+            }
         }
+        printf("\n");
     }
-    //order_same_floor = *(p_num_orders_array + current_position);
-    //order_same_floor = p_num_orders_array[current_position];
 
     elev_motor_direction_t next_direction = m_choose_direction_based_on_priority(last_direction, orders_above, orders_below, order_same_floor);
     return next_direction;
@@ -109,20 +130,19 @@ bool queue_should_stop(position_t fsm_position, elev_motor_direction_t fsm_direc
 
 //if the expressions evaluates to false the assert() will display an error message
 void m_assert_buttons(){
-    int8_t no_button_up = 0, no_button_down = 1;
-    assert(queue_array[no_button_up][FLOOR_3] == 0);
-    assert(queue_array[no_button_down][FLOOR_0] == 0);
+    assert(queue_array[BUTTON_CALL_UP][FLOOR_3] == 0);
+    assert(queue_array[BUTTON_CALL_DOWN][FLOOR_0] == 0);
 }
 
 int * m_calculate_orders_per_floor(){
     m_assert_buttons();
-    int8_t fsm_position;
+    int8_t position;
     int8_t button;
     //lagar ny array som skal innhalde summen av kolonnene i queue_array - altså om det er bestillingar i ein etasje, samt at between floors alltid er 0
     static int num_orders_array[N_POSITIONS] = {0, 0, 0, 0, 0, 0, 0};
-    for (fsm_position = 0; fsm_position < N_POSITIONS; fsm_position = (fsm_position+2)){
+    for (position = 0; position < N_POSITIONS; position = (position + 2)){
         for (button = 0; button < N_BUTTONS; button++){
-            num_orders_array[fsm_position] += queue_array[button][fsm_position];
+            num_orders_array[position] += queue_array[button][position];
         }
     }
 
