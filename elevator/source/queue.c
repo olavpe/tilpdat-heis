@@ -11,6 +11,7 @@
 void m_assert_buttons();
 int * m_calculate_num_orders();
 elev_motor_direction_t m_choose_direction_based_on_priority(elev_motor_direction_t last_direction, int8_t orders_above, int8_t orders_below, int8_t order_same_floor);
+elev_button_type_t m_get_button_matching_direction(elev_motor_direction_t fsm_direction);
 
 
 //making a 2D array of orders with dimension 3(row)x4(col) 
@@ -84,6 +85,19 @@ elev_motor_direction_t queue_get_next_direction(position_t current_position, ele
     return next_direction;
 }
 
+bool queue_should_stop(position_t fsm_position, elev_motor_direction_t fsm_direction){
+    if (queue_get_next_direction(fsm_position, fsm_direction) != fsm_direction) {
+        return true;
+    }
+    if (queue_array[BUTTON_COMMAND][fsm_position] == 1) {
+        return true;
+    }
+    elev_button_type_t button_in_direction = m_get_button_matching_direction(fsm_direction);
+    if (queue_array[button_in_direction][fsm_position] == 1) {
+        return true;
+    }
+    return false;
+}
 
 
 //if the expressions evaluates to false the assert() will display an error message
@@ -137,4 +151,18 @@ elev_motor_direction_t m_choose_direction_based_on_priority(elev_motor_direction
             break;
     }
     return next_direction;
+}
+
+elev_button_type_t m_get_button_matching_direction(elev_motor_direction_t fsm_direction){
+   switch (fsm_direction) {
+       case DIRN_DOWN:
+            return BUTTON_CALL_DOWN;
+   
+       case DIRN_UP:
+            return BUTTON_CALL_UP;
+
+       default:
+            return BUTTON_COMMAND;
+            break;
+   } 
 }

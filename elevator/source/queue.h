@@ -7,7 +7,6 @@
 #ifndef QUEUE_H
 #define QUEUE_H
 
-#pragma once
 #include <stdio.h>
 #include <stdbool.h>
 
@@ -67,5 +66,7 @@ bool queue_is_queue_empty();
  * @return next direction of the elevator.
  */
 elev_motor_direction_t queue_get_next_direction(position_t current_position, elev_motor_direction_t last_direction);
+
+bool queue_should_stop(position_t fsm_position, elev_motor_direction_t fsm_direction);
 
 #endif
