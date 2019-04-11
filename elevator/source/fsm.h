@@ -26,3 +26,5 @@ typedef enum {
 void fsm();
 //static void m_register_order_press();
 //static void m_update_position();
+const char* fsm_print_position(position_t position);
+const char* fsm_print_direction(elev_motor_direction_t direction);

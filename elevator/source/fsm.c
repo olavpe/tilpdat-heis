@@ -23,8 +23,6 @@ static state_t fsm_state = INIT;
 static void m_register_order_press();
 static void m_update_position();
 static void m_reset_order_lights();
-static const char* m_print_position(position_t position);
-static const char* m_print_direction(elev_motor_direction_t direction);
 
 // Functions
         
@@ -79,8 +77,8 @@ void fsm(){
             fsm_state = MOVING;
             //////////////// TO BE DELETED
             if (fsm_last_direction != fsm_direction) {
-                printf("direction change from %s", m_print_direction(fsm_last_direction));
-                printf("  to direction %s", m_print_direction(fsm_direction));
+                printf("direction change from %s", fsm_print_direction(fsm_last_direction));
+                printf("  to direction %s", fsm_print_direction(fsm_direction));
                 printf("\n");
             }
             //////////////// TO BE DELETED
@@ -185,8 +183,8 @@ static void m_update_position() {
     } 
     ///////////////////TO BE DELETED
     if (fsm_previous_position != fsm_position) {
-        printf("state change from %s", m_print_position(fsm_previous_position));
-        printf("  to state %s", m_print_position(fsm_position));
+        printf("state change from %s", fsm_print_position(fsm_previous_position));
+        printf("  to state %s", fsm_print_position(fsm_position));
         printf("\n");
     }
     ///////////////////TO BE DELETED
@@ -200,7 +198,7 @@ static void m_reset_order_lights(){
         }
     }
 
-static const char* m_print_position(position_t position){
+const char* fsm_print_position(position_t position){
     switch (position) {
         case FLOOR_0: return "FLOOR_0";
         case FLOOR_1: return "FLOOR_1";
@@ -217,7 +215,7 @@ static const char* m_print_position(position_t position){
     }
 }
 
-static const char* m_print_direction(elev_motor_direction_t direction){
+const char* fsm_print_direction(elev_motor_direction_t direction){
     switch (direction) {
         case DIRN_DOWN: return "DIRN_DOWN";
         case DIRN_UP: return "DIRN_UP";
