@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdint.h>
+#include <unistd.h>
 #include <time.h>
 #include <assert.h>
 
@@ -28,13 +29,6 @@ static void m_reset_order_lights();
         
 void fsm(){
 
-    //Checking if the STOP button has been pressed if not in INIT state.
-    if (fsm_state != INIT){
-        if (elev_get_stop_signal()){
-            fsm_state = EMERGENCY_STOP;
-        }
-    }
-
     //polling the order buttons and floor sensor when not or init
     if (fsm_state != INIT) {
         m_register_order_press();
@@ -42,6 +36,13 @@ void fsm(){
 
     // Updating floor sensor data
     m_update_position();
+
+    //Checking if the STOP button has been pressed if not in INIT state.
+    if (fsm_state != INIT){
+        if (elev_get_stop_signal()){
+            fsm_state = EMERGENCY_STOP;
+        }
+    }
     
     switch (fsm_state) {
 
@@ -126,15 +127,15 @@ void fsm(){
             break;
         
         case EMERGENCY_STOP:
-            //queue_reset_queue();
-            m_reset_order_lights();
+            queue_reset_queue();
             elev_set_motor_direction(DIRN_STOP);
+            elev_set_stop_lamp(1);
             if (elev_get_floor_sensor_signal() != -1) {
                 elev_set_door_open_lamp(1); 
             }
 
             //busy wait until button is released
-            while (elev_get_stop_signal()){}
+            while (elev_get_stop_signal()){sleep(1);}
             
             if (elev_get_floor_sensor_signal() == -1) {
                 fsm_state = IDLE;
@@ -217,7 +218,6 @@ static void m_update_position() {
 static void m_reset_order_lights(){
     for (int8_t button = 0; button < N_BUTTONS; button++) {
         for (int8_t floor = 0; floor < N_FLOORS; floor++) {
-            elev_set_button_lamp(button, floor, 0);
             }
         }
     }

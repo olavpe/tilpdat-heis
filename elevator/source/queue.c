@@ -4,6 +4,7 @@
 #include <assert.h>
 
 #include "queue.h"
+#include "elevator_hardware.h"
 #include "fsm.h"
 
 
@@ -19,10 +20,10 @@ elev_button_type_t m_get_button_matching_direction(elev_motor_direction_t fsm_di
 
 void queue_reset_queue(){
     int8_t button, floor;
-    //endre rekkefølge
-    for(button = 0; button < N_BUTTONS ; button++){
-        for(floor = 0; floor < N_FLOORS; floor++){
+    for(floor = 0; floor < N_FLOORS ; floor++){
+        for(button = 0; button < N_BUTTONS; button++){
             queue_array[button][floor] = 0;
+            elev_set_button_lamp(button, floor, 0);
         }
     }
 }
