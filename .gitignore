@@ -5,6 +5,7 @@ elevator/heis
 
 #folder
 elevator/source/.vscode/
+.vscode/
 elevator/build/
 
 #file types
