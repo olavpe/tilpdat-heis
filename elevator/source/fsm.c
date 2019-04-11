@@ -135,7 +135,7 @@ void fsm(){
             }
 
             //busy wait until button is released
-            while (elev_get_stop_signal()){sleep(1);}
+            while (elev_get_stop_signal()){}
             
             if (elev_get_floor_sensor_signal() == -1) {
                 fsm_state = IDLE;
