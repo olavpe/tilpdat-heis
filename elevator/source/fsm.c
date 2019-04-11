@@ -1,15 +1,22 @@
-#include "elevator_hardware.h"
-#include "fsm.h"
-//#include "queue.h"
-//#include "timer.h"
-
 #include <stdio.h>
 #include <stdint.h>
+#include <time.h>
+#include <assert.h>
+
+#include "elevator_hardware.h"
+#include "fsm.h"
+#include "queue.h"
+#include "timer.h"
+
 
 // Initializing variables
 static position_t fsm_position = UNKNOWN;
 static position_t fsm_previous_position = UNKNOWN;
-static elev_motor_direction_t fsm_direction = DIRN_STOP;
+static time_t fsm_timestamp = 0;
+static elev_motor_direction_t fsm_direction = DIRN_UP;
+//////////////// TO BE DELETED
+static elev_motor_direction_t fsm_last_direction = DIRN_UP;
+//////////////// TO BE DELETED
 static state_t fsm_state = INIT;    
 
 // Declaring static local functions
@@ -17,6 +24,7 @@ static void m_register_order_press();
 static void m_update_position();
 static void m_reset_order_lights();
 static const char* m_print_position(position_t position);
+static const char* m_print_direction(elev_motor_direction_t direction);
 
 // Functions
         
@@ -41,11 +49,11 @@ void fsm(){
 
         case INIT:
             // setting the motor direction upwards and keeping in state until hit floor.
-            //queue_reset_queue()
+            queue_reset_queue();
             m_reset_order_lights();
             if (fsm_position != UNKNOWN) {
+                //fsm_direction = DIRN_UP;
                 fsm_state = IDLE;
-                fsm_direction = DIRN_STOP;
                 break;
             }
             elev_set_motor_direction(DIRN_UP);
@@ -54,19 +62,28 @@ void fsm(){
         case IDLE:
             elev_set_motor_direction(DIRN_STOP);
             
-            //if (queue_is_queue_empty()) {
-            //    break;
-            //}
+            if (queue_is_queue_empty()) {
+                break;
+            }
 
-            //elev_motor_direction_t order_direction = queue_find_next_direction();
-            //if (order_direction == DIRN_STOP) {
-            //    fsm_state = OPEN_DOOR;
-            //    break;
-            //}
-            //elev_set_motor_direction(order_direction);
-            fsm_state = MOVING;
+            elev_motor_direction_t order_direction = queue_get_next_direction(fsm_position, fsm_direction);
+            if (order_direction == DIRN_STOP) {
+                fsm_timestamp = timer_start_timer();
+                fsm_state = OPEN_DOOR;
+                break;
+            }
+            elev_set_motor_direction(order_direction);
             fsm_previous_position = fsm_position;
-            //fsm_direction = order_direction;
+            fsm_last_direction = fsm_direction;
+            fsm_direction = order_direction;
+            fsm_state = MOVING;
+            //////////////// TO BE DELETED
+            if (fsm_last_direction != fsm_direction) {
+                printf("direction change from %s", m_print_direction(fsm_last_direction));
+                printf("  to direction %s", m_print_direction(fsm_direction));
+                printf("\n");
+            }
+            //////////////// TO BE DELETED
             break;
 
         case MOVING:
@@ -79,13 +96,12 @@ void fsm(){
         
         case OPEN_DOOR:
             elev_set_motor_direction(DIRN_STOP);
-            fsm_direction = DIRN_STOP;
             elev_set_door_open_lamp(1);
-            //timer_start_timer();
-            //if (timer_is_timer_expired()) {
-            //    fsm_state = IDLE;
-            //    elev_set_door_open_lamp(0);
-            //}
+            if (timer_is_timer_expired(fsm_timestamp)){
+                elev_set_door_open_lamp(0);
+                queue_delete_order(fsm_position);
+                fsm_state = IDLE;
+            }
             break;
         
         case EMERGENCY_STOP:
@@ -100,9 +116,10 @@ void fsm(){
             while (elev_get_stop_signal()){}
             
             if (elev_get_floor_sensor_signal() == -1) {
-                fsm_position = IDLE;
+                fsm_state = IDLE;
             } else {
-                fsm_position = OPEN_DOOR;
+                fsm_timestamp = timer_start_timer();
+                fsm_state = OPEN_DOOR;
             }
             
             elev_set_stop_lamp(0);
@@ -120,7 +137,7 @@ static void m_register_order_press(){
             int8_t button_signal = elev_get_button_signal(button, floor);
             if (button_signal == 1) {
                 printf("add_order called\n");
-                //queue_set_order(button, floor);
+                queue_set_order(button, floor);
                 elev_set_button_lamp(button, floor, 1);
             }
         }
@@ -141,8 +158,10 @@ static void m_update_position() {
     } else {
         if (fsm_direction == DIRN_UP){
             position_incrementer = 1;
-        }else {
+        }else if (fsm_direction == DIRN_DOWN) {
             position_incrementer = -1;
+        } else {
+            position_incrementer = 0;
         }
         switch (fsm_position) {
 
@@ -191,6 +210,18 @@ static const char* m_print_position(position_t position){
         case BETWEEN_1_AND_2: return "BETWEEN_1_AND_2";
         case BETWEEN_2_AND_3: return "BETWEEN_2_AND_3";
         case UNKNOWN: return "UNKNOWN";
+    
+        default:
+            return 0;
+            break;
+    }
+}
+
+static const char* m_print_direction(elev_motor_direction_t direction){
+    switch (direction) {
+        case DIRN_DOWN: return "DIRN_DOWN";
+        case DIRN_UP: return "DIRN_UP";
+        case DIRN_STOP: return "DIRN_STOP";
     
         default:
             return 0;
