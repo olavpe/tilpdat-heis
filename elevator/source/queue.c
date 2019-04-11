@@ -68,16 +68,25 @@ elev_motor_direction_t queue_get_next_direction(position_t current_position, ele
     int8_t order_same_floor = 0;
     int8_t position;
     
-    for(position = current_position; position < FLOOR_3; position++){
-        orders_above += p_num_orders_array[current_position];
-        //orders_above += *(p_num_orders_array + current_position);
-    }
-    for(position = current_position; position > FLOOR_0; position--){
-        //orders_below += *(p_num_orders_array + current_position);
-        orders_below += p_num_orders_array[current_position];
+    // for(position = (current_position + 1); position < FLOOR_3; position++){
+    //     orders_above += p_num_orders_array[position];
+    //     //orders_above += *(p_num_orders_array + current_position);
+    // }
+    // for(position = (current_position - 1); position > FLOOR_0; position--){
+    //     //orders_below += *(p_num_orders_array + current_position);
+    //     orders_below += p_num_orders_array[position];
+    // }
+    for(position = FLOOR_0; position < FLOOR_3; position++){
+        if (position < current_position){
+            orders_below += p_num_orders_array[position];
+        } else if (position > current_position){
+            orders_above += p_num_orders_array[position];
+        } else if (position == current_position){
+            order_same_floor = p_num_orders_array[position];
+        }
     }
     //order_same_floor = *(p_num_orders_array + current_position);
-    order_same_floor = p_num_orders_array[current_position];
+    //order_same_floor = p_num_orders_array[current_position];
 
     elev_motor_direction_t next_direction = m_choose_direction_based_on_priority(last_direction, orders_above, orders_below, order_same_floor);
     return next_direction;
@@ -130,25 +139,32 @@ elev_motor_direction_t m_choose_direction_based_on_priority(elev_motor_direction
         case DIRN_UP:
             if (orders_above > 0){
                 next_direction = DIRN_UP;
+                printf("case D_UP: direction is UP\n");
             } else if (orders_below > 0){
                 next_direction = DIRN_DOWN;
+                printf("case D_UP: direction is DOWN\n");
             //her vil det vere eit tilfelle når queue er tom at next_dir ikkje har ein gyldig verdi
             //sjekke på dette? men er DIRN_STOP gitt at ein stoppar OG opnar døra, for i dette tilfellet
             //vil vi holde døra igjen.
             } else if (order_same_floor > 0){
                 next_direction = DIRN_STOP;
+                printf("case D_UP: direction is STOP\n");
             }
             break;
         case DIRN_DOWN:
             if (orders_below > 0){
                 next_direction = DIRN_DOWN;
+                printf("case D_DOWN: direction is DOWN\n");
             } else if (orders_above > 0){
                 next_direction = DIRN_UP;
+                printf("case D_DOWN: direction is UP\n");
             } else if (order_same_floor > 0) {
                 next_direction = DIRN_STOP;
+                printf("case D_DOWN: direction is STOP\n");
             } 
             break;
         case DIRN_STOP:
+            printf("should not occur\n");
             break;
     }
     return next_direction;
