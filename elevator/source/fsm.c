@@ -178,6 +178,7 @@ static void m_update_position() {
     //Sets the floor position directly if on floor
     if (floor_sensor != -1) {
         fsm_position = floor_sensor*2; //multiplied with 2 as enum has between positions
+        elev_set_floor_indicator(floor_sensor);
     } else {
         if (fsm_direction == DIRN_UP){
             position_incrementer = 1;
