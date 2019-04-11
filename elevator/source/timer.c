@@ -4,24 +4,29 @@
 
 #include "timer.h"
 
-time_t timer_set_timestamp(void){
-    time_t current_time = 0;
-    current_time = time(NULL);
-    return current_time;
-}
+//time_t timer_set_timestamp(void){
+//    time_t current_time = 0;
+//    current_time = time(NULL);
+//    return current_time;
+//}
+//
+//time_t timer_start_timer(){
+//    time_t start_time = timer_set_timestamp();
+//    return start_time;
+//}
 
 time_t timer_start_timer(){
-    time_t start_time = timer_set_timestamp();
-    return start_time;
+    time_t start_timestamp = time(NULL);
+    return start_timestamp;
 }
 
-bool timer_is_timer_expired(time_t start_time){
-    time_t new_timestamp = timer_set_timestamp();
-    //printf("end: %ld\n", is_3_sec_elapsed);
-    //time_t time_difference = start_time - is_time_elapsed;
+bool timer_is_timer_expired(time_t start_timestamp){
+    time_t current_timestamp = time(NULL);
+    printf("end: %ld\n", current_timestamp);
+    //time_t time_difference = start_timestamp - current_timestamp;
     //difftime is a time.h function
-    double time_difference = difftime(new_timestamp, start_time);
-    //printf("diff: %f\n", time_difference);;
+    double time_difference = difftime(current_timestamp, start_timestamp);
+    printf("diff: %f\n", time_difference);;
     if (time_difference > 3){
         return true;
     } else {

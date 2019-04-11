@@ -10,13 +10,6 @@
 #include <stdbool.h>
 #include <time.h>
 
-/**
- * @brief Sets a timestamp that is the current time
- * in seconds since 1 Jan 1970.
- * 
- * @return the current time.
- */
-time_t timer_set_timestamp(void);
 
 /**
  * @brief Starts the timer by setting a timestamp.
@@ -33,6 +26,6 @@ time_t timer_start_timer();
  * 
  * @return 1 if the timer is expired, 0 if not.
  */
-bool timer_is_timer_expired(time_t start_time);
+bool timer_is_timer_expired(time_t start_timestamp);
 
 #endif
