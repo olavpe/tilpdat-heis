@@ -51,7 +51,8 @@ void fsm(){
             queue_reset_queue();
             m_reset_order_lights();
             if (fsm_position != UNKNOWN) {
-                int position, button;
+                position_t position;
+                elev_button_type_t button;
                 for (position = 0; position < N_POSITIONS; position = (position + 2)){
                     printf("floor %d : ", position);
                     for (button = 0; button < N_BUTTONS; button++){
@@ -215,7 +216,7 @@ static void m_update_position() {
 }
 
 static void m_reset_order_lights(){
-    for (int button = 0; button < N_BUTTONS; button++) {
+    for (elev_button_type_t button = 0; button < N_BUTTONS; button++) {
         for (int floor = 0; floor < N_FLOORS; floor++) {
             }
         }

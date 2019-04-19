@@ -18,9 +18,10 @@ static elev_button_type_t m_get_button_matching_direction(elev_motor_direction_t
 
 
 void queue_reset_queue(){
-    int button, floor;
-    for(floor = 0; floor < N_FLOORS ; floor++){
-        for(button = 0; button < N_BUTTONS; button++){
+    int floor;
+    elev_button_type_t button;
+    for (floor = 0; floor < N_FLOORS ; floor++){
+        for (button = 0; button < N_BUTTONS; button++){
             queue_array[button][floor] = 0;
             elev_set_button_lamp(button, floor, 0);
         }
@@ -28,8 +29,8 @@ void queue_reset_queue(){
 }
 
 void queue_delete_order(int floor){ 
-    int button;
-    for(button = 0; button < N_BUTTONS; button++){
+    elev_button_type_t button;
+    for (button = 0; button < N_BUTTONS; button++){
         queue_array[button][floor] = 0;
         elev_set_button_lamp(button,floor, 0);
     }
@@ -42,7 +43,8 @@ void queue_set_order(elev_button_type_t button, int floor){
 
 bool queue_is_queue_empty(){
     int orders = 0;
-    int floor, button;
+    int floor;
+    elev_button_type_t button;
     for (floor = 0; floor < N_FLOORS; floor++){
         for (button = 0; button < N_BUTTONS; button++){
             orders += queue_array[button][floor];
@@ -64,8 +66,8 @@ elev_motor_direction_t queue_get_next_direction(position_t current_position, ele
     int orders_above = 0;
     int orders_below = 0;
     int order_same_floor = 0;
-    int position;
-    int button;
+    position_t position;
+    elev_button_type_t button;
 
     m_assert_buttons();
     //lagar ny array som skal innhalde summen av kolonnene i queue_array - altså om det er bestillingar i ein etasje, samt at between floors alltid er 0
