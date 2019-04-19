@@ -51,7 +51,7 @@ void fsm(){
             queue_reset_queue();
             m_reset_order_lights();
             if (fsm_position != UNKNOWN) {
-                int8_t position, button;
+                int position, button;
                 for (position = 0; position < N_POSITIONS; position = (position + 2)){
                     printf("floor %d : ", position);
                     for (button = 0; button < N_BUTTONS; button++){
@@ -119,7 +119,7 @@ void fsm(){
             elev_set_door_open_lamp(1);
             if (timer_is_timer_expired(fsm_timestamp)){
                 elev_set_door_open_lamp(0);
-                int8_t floor = fsm_position/2;
+                int floor = fsm_position/2;
                 queue_delete_order(floor);
                 fsm_state = IDLE;
             }
@@ -166,8 +166,8 @@ static void m_register_order_press(){
 }
 
 static void m_update_position() {
-    int8_t floor_sensor = elev_get_floor_sensor_signal();    
-    int8_t position_incrementer = 0;
+    int floor_sensor = elev_get_floor_sensor_signal();    
+    int position_incrementer = 0;
 
     ///////////////////////// TO BE DELETED
     position_t fsm_previous_position = fsm_position;
@@ -215,8 +215,8 @@ static void m_update_position() {
 }
 
 static void m_reset_order_lights(){
-    for (int8_t button = 0; button < N_BUTTONS; button++) {
-        for (int8_t floor = 0; floor < N_FLOORS; floor++) {
+    for (int button = 0; button < N_BUTTONS; button++) {
+        for (int floor = 0; floor < N_FLOORS; floor++) {
             }
         }
     }

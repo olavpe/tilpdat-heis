@@ -29,7 +29,7 @@ void queue_reset_queue();
  * @param[in] current_position Position of the elevator
  * @param[out] queue_array Queue table
  */
-void queue_delete_order(int8_t floor);
+void queue_delete_order(int floor);
 
 /**
  * @brief Gets a spesific order from the queue.
