@@ -35,12 +35,6 @@ void queue_delete_order(int floor){
     }
 }
 
-int queue_get_order(elev_button_type_t button, int floor){
-    return queue_array[button][floor];
-    //er det problemastisk at enum position_t også inneheld mellometasjane?
-    //fungerer så lenge denne berre vert brukt i heiletasjane!
-}
-
 void queue_set_order(elev_button_type_t button, int floor){
     queue_array[button][floor] = 1;
     m_assert_buttons();
@@ -115,25 +109,6 @@ void m_assert_buttons(){
     int floor_0 = 0, floor_3 = 3;
     assert(queue_array[BUTTON_CALL_UP][floor_3] == 0);
     assert(queue_array[BUTTON_CALL_DOWN][floor_0] == 0);
-}
-
-int * m_calculate_orders_per_floor(){
-    m_assert_buttons();
-    int position;
-    int button;
-    //lagar ny array som skal innhalde summen av kolonnene i queue_array - altså om det er bestillingar i ein etasje, samt at between floors alltid er 0
-    static int num_orders_array[N_POSITIONS] = {0, 0, 0, 0, 0, 0, 0};
-    for (position = 0; position < N_POSITIONS; position = (position + 2)){
-        for (button = 0; button < N_BUTTONS; button++){
-            num_orders_array[position] += queue_array[button][position];
-        }
-    }
-
-    assert(num_orders_array[BETWEEN_0_AND_1] == 0);
-    assert(num_orders_array[BETWEEN_1_AND_2] == 0);
-    assert(num_orders_array[BETWEEN_2_AND_3] == 0);
-
-    return num_orders_array;
 }
 
 elev_motor_direction_t m_choose_direction_based_on_priority(elev_motor_direction_t last_direction, int orders_above, int orders_below, int order_same_floor){

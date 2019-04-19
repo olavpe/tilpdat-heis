@@ -32,17 +32,6 @@ void queue_reset_queue();
 void queue_delete_order(int floor);
 
 /**
- * @brief Gets a spesific order from the queue.
- * 
- * @param[in] button Hardware buttons
- * @param[in] floor At a Floor
- * 
- * @return 1 if there is an order in the specific location which
- * is denoted by the inparameters, 0 if not.
- */
-int queue_get_order(elev_button_type_t button, int floor);
-
-/**
  * @brief Sets an order in the queue.
  * 
  * @param[in] button Hardware buttons
