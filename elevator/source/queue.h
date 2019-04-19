@@ -58,6 +58,6 @@ bool queue_is_queue_empty();
  */
 elev_motor_direction_t queue_get_next_direction(position_t current_position, elev_motor_direction_t last_direction);
 
-bool queue_should_stop(position_t fsm_position, elev_motor_direction_t fsm_direction);
+bool queue_should_stop(position_t position, floor_t fsm_floor, elev_motor_direction_t fsm_direction);
 
 #endif

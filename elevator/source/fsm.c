@@ -105,7 +105,7 @@ void fsm(){
                 case FLOOR_1:
                 case FLOOR_2:
                 case FLOOR_3:
-                    if (queue_should_stop(fsm_position, fsm_direction)) {
+                    if (queue_should_stop(fsm_position, fsm_floor, fsm_direction)) {
                         elev_set_motor_direction(DIRN_STOP);
                         fsm_timestamp = timer_start_timer();
                         fsm_state = OPEN_DOOR;

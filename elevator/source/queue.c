@@ -88,15 +88,15 @@ elev_motor_direction_t queue_get_next_direction(position_t current_position, ele
     return next_direction;
 }
 
-bool queue_should_stop(position_t fsm_position, elev_motor_direction_t fsm_direction){
+bool queue_should_stop(position_t fsm_position, floor_t fsm_floor, elev_motor_direction_t fsm_direction){
     if (queue_get_next_direction(fsm_position, fsm_direction) != fsm_direction) {
         return true;
     }
-    if (queue_array[BUTTON_COMMAND][fsm_position/2] == 1) {
+    if (queue_array[BUTTON_COMMAND][fsm_floor] == 1) {
         return true;
     }
     elev_button_type_t button_in_direction = m_get_button_matching_direction(fsm_direction);
-    if (queue_array[button_in_direction][fsm_position/2] == 1) {
+    if (queue_array[button_in_direction][fsm_floor] == 1) {
         return true;
     }
     return false;
