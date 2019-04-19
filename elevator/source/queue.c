@@ -64,21 +64,21 @@ elev_motor_direction_t queue_get_next_direction(position_t current_position, ele
     printf("\n");
 
     int orders_above = 0, orders_below = 0, order_same_floor = 0;
-    position_t position;
+    floor_t floor;
     elev_button_type_t button;
 
     m_assert_buttons();
     //lagar ny array som skal innhalde summen av kolonnene i queue_array - altså om det er bestillingar i ein etasje, samt at between floors alltid er 0
-    for (position = 0; position < N_POSITIONS; position = (position + 2)){
-        printf("floor %d : ", position);
+    for (floor = 0; floor < N_FLOORS; floor++){
+        printf("floor %d : ", floor);
         for (button = 0; button < N_BUTTONS; button++){
-            printf("%d - ", queue_array[button][position/2]);
-            if (position < current_position){
-                orders_below += queue_array[button][position/2];
-            } else if (position > current_position){
-                orders_above += queue_array[button][position/2];
-            } else if (position == current_position){
-                order_same_floor += queue_array[button][position/2];
+            printf("%d - ", queue_array[button][floor]);
+            if (2*floor < current_position){
+                orders_below += queue_array[button][floor];
+            } else if (2*floor > current_position){
+                orders_above += queue_array[button][floor];
+            } else if (2*floor == current_position){
+                order_same_floor += queue_array[button][floor];
             }
         }
         printf("\n");
