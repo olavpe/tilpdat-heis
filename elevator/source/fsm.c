@@ -13,6 +13,7 @@
 // Initializing variables
 static position_t fsm_position = UNKNOWN;
 static position_t fsm_previous_position = UNKNOWN;
+static floor_t fsm_floor = UNKNOWN;
 static time_t fsm_timestamp = 0;
 static elev_motor_direction_t fsm_direction = DIRN_UP;
 //////////////// TO BE DELETED
@@ -51,6 +52,7 @@ void fsm(){
             queue_reset_queue();
             m_reset_order_lights();
             if (fsm_position != UNKNOWN) {
+                //////////////////// TO BE DELETED
                 position_t position;
                 elev_button_type_t button;
                 for (position = 0; position < N_POSITIONS; position = (position + 2)){
@@ -60,6 +62,7 @@ void fsm(){
                     }
                     printf("\n");
                 }
+                //////////////////// TO BE DELETED
                 fsm_state = IDLE;
                 break;
             }
@@ -120,8 +123,7 @@ void fsm(){
             elev_set_door_open_lamp(1);
             if (timer_is_timer_expired(fsm_timestamp)){
                 elev_set_door_open_lamp(0);
-                int floor = fsm_position/2;
-                queue_delete_order(floor);
+                queue_delete_order(fsm_floor);
                 fsm_state = IDLE;
             }
             break;
@@ -155,7 +157,7 @@ void fsm(){
 
 static void m_register_order_press(){
     for (elev_button_type_t button = 0; button < N_BUTTONS; button++) {
-        for (int floor = 0; floor < N_FLOORS; floor++) {
+        for (floor_t floor = 0; floor < N_FLOORS; floor++) {
             elev_button_type_t button_signal = elev_get_button_signal(button, floor);
             if (button_signal == 1) {
                 printf("add_order called\n");
@@ -167,7 +169,7 @@ static void m_register_order_press(){
 }
 
 static void m_update_position() {
-    int floor_sensor = elev_get_floor_sensor_signal();    
+    floor_t floor_sensor = elev_get_floor_sensor_signal();    
     int position_incrementer = 0;
 
     ///////////////////////// TO BE DELETED
@@ -176,8 +178,9 @@ static void m_update_position() {
 
     //Sets the floor position directly if on floor
     if (floor_sensor != -1) {
-        fsm_position = floor_sensor*2; //multiplied with 2 as enum has between positions
-        elev_set_floor_indicator(floor_sensor);
+        fsm_floor = floor_sensor;
+        fsm_position = fsm_floor*2; //multiplied with 2 as enum has between positions
+        elev_set_floor_indicator(fsm_floor);
     } else {
         if (fsm_direction == DIRN_UP){
             position_incrementer = 1;
@@ -217,11 +220,12 @@ static void m_update_position() {
 
 static void m_reset_order_lights(){
     for (elev_button_type_t button = 0; button < N_BUTTONS; button++) {
-        for (int floor = 0; floor < N_FLOORS; floor++) {
+        for (floor_t floor = 0; floor < N_FLOORS; floor++) {
             }
         }
     }
 
+///////////////////TO BE DELETED
 const char* fsm_print_position(position_t position){
     switch (position) {
         case FLOOR_0: return "FLOOR_0";
@@ -250,3 +254,4 @@ const char* fsm_print_direction(elev_motor_direction_t direction){
             break;
     }
 }
+///////////////////TO BE DELETED

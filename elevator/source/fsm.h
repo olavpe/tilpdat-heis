@@ -11,7 +11,7 @@
 
 
 /**
-  Position types to keep track of the position of the elevator. Used in functions
+  Position type to keep track of the position of the elevator. Used in functions
     - FILL IN FOLLOWING
 */
 typedef enum {
@@ -24,6 +24,18 @@ typedef enum {
     FLOOR_3,
     UNKNOWN
 } position_t;
+
+/**
+  Floor type to dissern the different floors of the elevator. Used in functions
+    - FILL IN FOLLOWING
+*/
+typedef enum {
+    ORDER_FLOOR_0,
+    ORDER_FLOOR_1,
+    ORDER_FLOOR_2,
+    ORDER_FLOOR_3,
+    ORDER_UNKNOWN
+} floor_t;
 
 /**
   State types for function fsm(). 
@@ -61,6 +73,7 @@ typedef enum {
  */
 void fsm();
 
+///////////////////TO BE DELETED
  /**
   * @brief This function matches the number of the elevator position_t
   * enum to the corresponding string in the enum, allowing the string 
@@ -76,3 +89,4 @@ const char* fsm_print_position(position_t position);
   * to be printed rather than the number
  */
 const char* fsm_print_direction(elev_motor_direction_t direction);
+///////////////////TO BE DELETED
