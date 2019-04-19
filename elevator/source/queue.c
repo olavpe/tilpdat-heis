@@ -9,9 +9,9 @@
 
 
 //hjelpefunksjonar
-void m_assert_buttons();
-elev_motor_direction_t m_choose_direction_based_on_priority(elev_motor_direction_t last_direction, int orders_above, int orders_below, int order_same_floor);
-elev_button_type_t m_get_button_matching_direction(elev_motor_direction_t fsm_direction);
+static void m_assert_buttons();
+static elev_motor_direction_t m_choose_direction_based_on_priority(elev_motor_direction_t last_direction, int orders_above, int orders_below, int order_same_floor);
+static elev_button_type_t m_get_button_matching_direction(elev_motor_direction_t fsm_direction);
 
 
 //static int queue_array[N_BUTTONS][N_FLOORS];
@@ -105,13 +105,13 @@ bool queue_should_stop(position_t fsm_position, elev_motor_direction_t fsm_direc
 
 
 //if the expressions evaluates to false the assert() will display an error message
-void m_assert_buttons(){
+static void m_assert_buttons(){
     int floor_0 = 0, floor_3 = 3;
     assert(queue_array[BUTTON_CALL_UP][floor_3] == 0);
     assert(queue_array[BUTTON_CALL_DOWN][floor_0] == 0);
 }
 
-elev_motor_direction_t m_choose_direction_based_on_priority(elev_motor_direction_t last_direction, int orders_above, int orders_below, int order_same_floor){
+static elev_motor_direction_t m_choose_direction_based_on_priority(elev_motor_direction_t last_direction, int orders_above, int orders_below, int order_same_floor){
     elev_motor_direction_t next_direction;
     switch(last_direction){
         case DIRN_UP:
@@ -148,7 +148,7 @@ elev_motor_direction_t m_choose_direction_based_on_priority(elev_motor_direction
     return next_direction;
 }
 
-elev_button_type_t m_get_button_matching_direction(elev_motor_direction_t fsm_direction){
+static elev_button_type_t m_get_button_matching_direction(elev_motor_direction_t fsm_direction){
    switch (fsm_direction) {
        case DIRN_DOWN:
             return BUTTON_CALL_DOWN;
