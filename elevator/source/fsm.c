@@ -30,12 +30,12 @@ static void m_reset_order_lights();
         
 void fsm(){
 
-    //polling the order buttons and floor sensor when not or init
+    //polling the order buttons and floor sensor when not in INIT
     if (fsm_state != INIT) {
         m_register_order_press();
     }
 
-    // Updating floor sensor data
+    // Updating floor and position from sensor data
     m_update_position_and_floor();
 
     //Checking if the STOP button has been pressed if not in INIT state.
@@ -66,7 +66,7 @@ void fsm(){
                 fsm_state = IDLE;
                 break;
             }
-            elev_set_motor_direction(DIRN_UP);
+            elev_set_motor_direction(DIRN_UP); //default direction when initilizting
             break;
             
         case IDLE:
@@ -74,7 +74,7 @@ void fsm(){
             
             if (queue_is_queue_empty()) {
                 break; //does nothing and exits case if the queue is empty
-            }
+            } 
 
             elev_motor_direction_t order_direction = queue_get_next_direction(fsm_position, fsm_direction);
             if (order_direction == DIRN_STOP) {
@@ -139,7 +139,7 @@ void fsm(){
             elev_set_motor_direction(DIRN_STOP);
             elev_set_stop_lamp(1);
             if (elev_get_floor_sensor_signal() != -1) {
-                elev_set_door_open_lamp(1); 
+                elev_set_door_open_lamp(1); //opens door if elevator is at a floor
             }
 
             //busy wait until button is released
@@ -151,7 +151,6 @@ void fsm(){
                 fsm_timestamp = timer_start_timer();
                 fsm_state = OPEN_DOOR;
             }
-            
             elev_set_stop_lamp(0);
             break;
     
@@ -176,12 +175,10 @@ static void m_register_order_press(){
 
 static void m_update_position_and_floor() {
     floor_t floor_sensor = elev_get_floor_sensor_signal();    
-    int position_incrementer = 0;
-
+    int position_incrementer = 0; //used to determine if elevator is going up or down
     ///////////////////////// TO BE DELETED
     position_t fsm_previous_position = fsm_position;
-    ///////////////////////// TO BE DELETED
-
+    ///////////////////////// TO BE DELETED ^^
     //Sets the floor position directly if on floor
     if (floor_sensor != -1) {
         fsm_floor = floor_sensor;
