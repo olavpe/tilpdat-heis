@@ -12,14 +12,14 @@
 
 // Initializing variables
 static position_t fsm_position = UNKNOWN;
-static position_t fsm_previous_position = UNKNOWN;
 static floor_t fsm_floor = UNKNOWN;
 static time_t fsm_timestamp = 0;
 static elev_motor_direction_t fsm_direction = DIRN_UP;
+static state_t fsm_state = INIT;    
 //////////////// TO BE DELETED
+static position_t fsm_previous_position = UNKNOWN;
 static elev_motor_direction_t fsm_last_direction = DIRN_UP;
 //////////////// TO BE DELETED
-static state_t fsm_state = INIT;    
 
 // Declaring static local functions
 static void m_register_order_press();
@@ -73,7 +73,7 @@ void fsm(){
             elev_set_motor_direction(DIRN_STOP);
             
             if (queue_is_queue_empty()) {
-                break;
+                break; //does nothing and exits case if the queue is empty
             }
 
             elev_motor_direction_t order_direction = queue_get_next_direction(fsm_position, fsm_direction);
@@ -83,8 +83,10 @@ void fsm(){
                 break;
             }
             elev_set_motor_direction(order_direction);
+            //////////////// TO BE DELETED
             fsm_previous_position = fsm_position;
             fsm_last_direction = fsm_direction;
+            //////////////// TO BE DELETED ^^
             fsm_direction = order_direction;
             fsm_state = MOVING;
             //////////////// TO BE DELETED
@@ -93,13 +95,15 @@ void fsm(){
                 printf("  to direction %s", fsm_print_direction(fsm_direction));
                 printf("\n");
             }
-            //////////////// TO BE DELETED
+            //////////////// TO BE DELETED ^^
             break;
 
         case MOVING:
-            if (fsm_previous_position == fsm_position) {
-                break;
-            }
+            //////////////// TO BE DELETED
+            //if (fsm_previous_position == fsm_position) {
+            //    break;
+            //}
+            //////////////// TO BE DELETED ^^
             switch (fsm_position){
                 case FLOOR_0:
                 case FLOOR_1:
@@ -110,7 +114,9 @@ void fsm(){
                         fsm_timestamp = timer_start_timer();
                         fsm_state = OPEN_DOOR;
                     }
+                    //////////////// TO BE DELETED
                     fsm_previous_position = fsm_position;
+                    //////////////// TO BE DELETED ^^
                     break;
 
                 default:
