@@ -23,7 +23,7 @@ static elev_motor_direction_t fsm_last_direction = DIRN_UP;
 
 // Declaring static local functions
 static void m_register_order_press();
-static void m_update_position();
+static void m_update_position_and_floor();
 static void m_reset_order_lights();
 
 // Functions
@@ -36,7 +36,7 @@ void fsm(){
     }
 
     // Updating floor sensor data
-    m_update_position();
+    m_update_position_and_floor();
 
     //Checking if the STOP button has been pressed if not in INIT state.
     if (fsm_state != INIT){
@@ -174,7 +174,7 @@ static void m_register_order_press(){
     }
 }
 
-static void m_update_position() {
+static void m_update_position_and_floor() {
     floor_t floor_sensor = elev_get_floor_sensor_signal();    
     int position_incrementer = 0;
 
@@ -202,13 +202,6 @@ static void m_update_position() {
             case FLOOR_2:
             case FLOOR_3:
                 fsm_position += position_incrementer;
-                break;
-            
-            //Does nothing if in these states
-            case UNKNOWN:
-            case BETWEEN_0_AND_1:
-            case BETWEEN_1_AND_2:
-            case BETWEEN_2_AND_3:
                 break;
     
             default:
