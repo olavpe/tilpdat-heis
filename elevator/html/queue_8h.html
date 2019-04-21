@@ -63,8 +63,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">queue.h File Reference</div>  </div>
 </div><!--header-->
@@ -74,19 +73,16 @@ $(function() {
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;stdbool.h&gt;</code><br />
-<code>#include &quot;elevator_hardware.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="elevator__hardware_8h_source.html">elevator_hardware.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="fsm_8h_source.html">fsm.h</a>&quot;</code><br />
-</div><div class="textblock"><div class="dynheader">
-Include dependency graph for queue.h:</div>
-<div class="dyncontent">
-<div class="center"><img src="queue_8h__incl.png" border="0" usemap="#source_2queue_8h" alt=""/></div>
-<!-- MAP 0 -->
-</div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="queue_8h__dep__incl.png" border="0" usemap="#source_2queue_8hdep" alt=""/></div>
-<!-- MAP 1 -->
+<map name="source_2queue_8hdep" id="source_2queue_8hdep">
+<area shape="rect" id="node2" href="fsm_8c_source.html" title="source/fsm.c" alt="" coords="5,80,104,107"/>
+<area shape="rect" id="node3" href="queue_8c_source.html" title="source/queue.c" alt="" coords="129,80,239,107"/>
+</map>
 </div>
 </div>
 <p><a href="queue_8h_source.html">Go to the source code of this file.</a></p>
@@ -99,24 +95,18 @@ Functions</h2></td></tr>
 <tr class="memitem:a6b21f1da6ba83e1ee8ac5a64854415b7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="queue_8h.html#a6b21f1da6ba83e1ee8ac5a64854415b7">queue_delete_order</a> (<a class="el" href="fsm_8h.html#a5b3a976f46b9e6993f1692a09bf2fd60">floor_t</a> floor)</td></tr>
 <tr class="memdesc:a6b21f1da6ba83e1ee8ac5a64854415b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes an order in the queue.  <a href="#a6b21f1da6ba83e1ee8ac5a64854415b7">More...</a><br /></td></tr>
 <tr class="separator:a6b21f1da6ba83e1ee8ac5a64854415b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad9bbc447a9b368307ff0ea803d6c0fe1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="queue_8h.html#ad9bbc447a9b368307ff0ea803d6c0fe1">queue_set_order</a> (elev_button_type_t button, <a class="el" href="fsm_8h.html#a5b3a976f46b9e6993f1692a09bf2fd60">floor_t</a> floor)</td></tr>
+<tr class="memitem:ad9bbc447a9b368307ff0ea803d6c0fe1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="queue_8h.html#ad9bbc447a9b368307ff0ea803d6c0fe1">queue_set_order</a> (<a class="el" href="elevator__hardware_8h.html#a5457414cc26332731098d18c37a46e6c">elev_button_type_t</a> button, <a class="el" href="fsm_8h.html#a5b3a976f46b9e6993f1692a09bf2fd60">floor_t</a> floor)</td></tr>
 <tr class="memdesc:ad9bbc447a9b368307ff0ea803d6c0fe1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets an order in the queue.  <a href="#ad9bbc447a9b368307ff0ea803d6c0fe1">More...</a><br /></td></tr>
 <tr class="separator:ad9bbc447a9b368307ff0ea803d6c0fe1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f1a2d18955993f8c78589a8ce56dae9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="queue_8h.html#a5f1a2d18955993f8c78589a8ce56dae9">queue_is_queue_empty</a> ()</td></tr>
 <tr class="memdesc:a5f1a2d18955993f8c78589a8ce56dae9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether the queue has any orders.  <a href="#a5f1a2d18955993f8c78589a8ce56dae9">More...</a><br /></td></tr>
 <tr class="separator:a5f1a2d18955993f8c78589a8ce56dae9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af2c4aec8d254eec04f73df6b5bba25d4"><td class="memItemLeft" align="right" valign="top">elev_motor_direction_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="queue_8h.html#af2c4aec8d254eec04f73df6b5bba25d4">queue_get_next_direction</a> (<a class="el" href="fsm_8h.html#a31f24aef3ddd32d2e6538ffff4055d37">position_t</a> current_position, elev_motor_direction_t last_direction)</td></tr>
+<tr class="memitem:af2c4aec8d254eec04f73df6b5bba25d4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="elevator__hardware_8h.html#ac873de158b370a210216e4b4c7fb218f">elev_motor_direction_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="queue_8h.html#af2c4aec8d254eec04f73df6b5bba25d4">queue_get_next_direction</a> (<a class="el" href="fsm_8h.html#a31f24aef3ddd32d2e6538ffff4055d37">position_t</a> current_position, <a class="el" href="elevator__hardware_8h.html#ac873de158b370a210216e4b4c7fb218f">elev_motor_direction_t</a> last_direction)</td></tr>
 <tr class="memdesc:af2c4aec8d254eec04f73df6b5bba25d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the next direction of the elevator based on the requested priorities.  <a href="#af2c4aec8d254eec04f73df6b5bba25d4">More...</a><br /></td></tr>
 <tr class="separator:af2c4aec8d254eec04f73df6b5bba25d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2cffec009ecb13a60d421f2a938331c"><td class="memItemLeft" align="right" valign="top"><a id="ae2cffec009ecb13a60d421f2a938331c"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>queue_should_stop</b> (<a class="el" href="fsm_8h.html#a31f24aef3ddd32d2e6538ffff4055d37">position_t</a> position, <a class="el" href="fsm_8h.html#a5b3a976f46b9e6993f1692a09bf2fd60">floor_t</a> fsm_floor, elev_motor_direction_t fsm_direction)</td></tr>
-<tr class="separator:ae2cffec009ecb13a60d421f2a938331c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:a97dcb6f4deeeacf4e099dd437327b9e7"><td class="memItemLeft" align="right" valign="top"><a id="a97dcb6f4deeeacf4e099dd437327b9e7"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>queue_array</b> [N_BUTTONS][N_FLOORS]</td></tr>
-<tr class="separator:a97dcb6f4deeeacf4e099dd437327b9e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83fd2eb719d7deb1b38cbe8e00603eea"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="queue_8h.html#a83fd2eb719d7deb1b38cbe8e00603eea">queue_should_stop</a> (<a class="el" href="fsm_8h.html#a31f24aef3ddd32d2e6538ffff4055d37">position_t</a> fsm_position, <a class="el" href="fsm_8h.html#a5b3a976f46b9e6993f1692a09bf2fd60">floor_t</a> fsm_floor, <a class="el" href="elevator__hardware_8h.html#ac873de158b370a210216e4b4c7fb218f">elev_motor_direction_t</a> fsm_direction)</td></tr>
+<tr class="memdesc:a83fd2eb719d7deb1b38cbe8e00603eea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the elevator should stop when arriving at a floor, based on orders in the queue array. This function will inform the elevator that it should stop if:  <a href="#a83fd2eb719d7deb1b38cbe8e00603eea">More...</a><br /></td></tr>
+<tr class="separator:a83fd2eb719d7deb1b38cbe8e00603eea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A queue system that helps the finite state machine (fsm) to carry out the orders received from the elevator hardware. </p>
@@ -148,7 +138,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>queue_array</b> [N_BUT
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="queue_8c_source.html#l00031">31</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="queue_8c_source.html#l00030">30</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
 
 </div>
 </div>
@@ -159,7 +149,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>queue_array</b> [N_BUT
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">elev_motor_direction_t queue_get_next_direction </td>
+          <td class="memname"><a class="el" href="elevator__hardware_8h.html#ac873de158b370a210216e4b4c7fb218f">elev_motor_direction_t</a> queue_get_next_direction </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="fsm_8h.html#a31f24aef3ddd32d2e6538ffff4055d37">position_t</a>&#160;</td>
           <td class="paramname"><em>current_position</em>, </td>
@@ -167,7 +157,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>queue_array</b> [N_BUT
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">elev_motor_direction_t&#160;</td>
+          <td class="paramtype"><a class="el" href="elevator__hardware_8h.html#ac873de158b370a210216e4b4c7fb218f">elev_motor_direction_t</a>&#160;</td>
           <td class="paramname"><em>last_direction</em>&#160;</td>
         </tr>
         <tr>
@@ -188,7 +178,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>queue_array</b> [N_BUT
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>next direction of the elevator. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="queue_8c_source.html#l00060">60</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="queue_8c_source.html#l00059">59</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
 
 </div>
 </div>
@@ -210,7 +200,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>queue_array</b> [N_BUT
 <p>Checks whether the queue has any orders. </p>
 <dl class="section return"><dt>Returns</dt><dd>1 if the queue is empty, 0 if not. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="queue_8c_source.html#l00044">44</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="queue_8c_source.html#l00043">43</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
 
 </div>
 </div>
@@ -237,7 +227,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>queue_array</b> [N_BUT
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="queue_8c_source.html#l00020">20</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="queue_8c_source.html#l00019">19</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
 
 </div>
 </div>
@@ -250,7 +240,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>queue_array</b> [N_BUT
         <tr>
           <td class="memname">void queue_set_order </td>
           <td>(</td>
-          <td class="paramtype">elev_button_type_t&#160;</td>
+          <td class="paramtype"><a class="el" href="elevator__hardware_8h.html#a5457414cc26332731098d18c37a46e6c">elev_button_type_t</a>&#160;</td>
           <td class="paramname"><em>button</em>, </td>
         </tr>
         <tr>
@@ -277,7 +267,58 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>queue_array</b> [N_BUT
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="queue_8c_source.html#l00039">39</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="queue_8c_source.html#l00038">38</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
+
+</div>
+</div>
+<a id="a83fd2eb719d7deb1b38cbe8e00603eea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83fd2eb719d7deb1b38cbe8e00603eea">&#9670;&nbsp;</a></span>queue_should_stop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool queue_should_stop </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="fsm_8h.html#a31f24aef3ddd32d2e6538ffff4055d37">position_t</a>&#160;</td>
+          <td class="paramname"><em>fsm_position</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="fsm_8h.html#a5b3a976f46b9e6993f1692a09bf2fd60">floor_t</a>&#160;</td>
+          <td class="paramname"><em>fsm_floor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="elevator__hardware_8h.html#ac873de158b370a210216e4b4c7fb218f">elev_motor_direction_t</a>&#160;</td>
+          <td class="paramname"><em>fsm_direction</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if the elevator should stop when arriving at a floor, based on orders in the queue array. This function will inform the elevator that it should stop if: </p>
+<ul>
+<li>There are no further orders in the direction.</li>
+<li>There are cab or hall calls in the direction of travel.</li>
+</ul>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">fsm_position</td><td>The current position of the elevator. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">fsm_floor</td><td>The current floor of the elevator. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">fsm_direction</td><td>The direction of travel the elevator.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 of the elevator should stop, 0 if not. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="queue_8c_source.html#l00083">83</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
 
 </div>
 </div>

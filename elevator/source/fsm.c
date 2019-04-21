@@ -12,7 +12,7 @@
 
 // Initializing variables
 static position_t fsm_position = UNKNOWN;
-static floor_t fsm_floor = UNKNOWN;
+static floor_t fsm_floor = ORDER_UNKNOWN;
 static time_t fsm_timestamp = 0;
 static elev_motor_direction_t fsm_direction = DIRN_UP;
 static state_t fsm_state = INIT;    
@@ -154,6 +154,7 @@ static void m_update_position_and_floor() {
         } else {
             position_incrementer = 0;
         }
+
         switch (fsm_position) {
 
             case FLOOR_0:
@@ -162,7 +163,8 @@ static void m_update_position_and_floor() {
             case FLOOR_3:
                 fsm_position += position_incrementer;
                 break;
-    
+
+            //No changes for any BETWEEN_FLOORS position og UNKNOWN    
             default:
                 break;
         }

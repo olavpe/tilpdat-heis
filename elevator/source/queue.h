@@ -57,6 +57,19 @@ bool queue_is_queue_empty();
  */
 elev_motor_direction_t queue_get_next_direction(position_t current_position, elev_motor_direction_t last_direction);
 
-bool queue_should_stop(position_t position, floor_t fsm_floor, elev_motor_direction_t fsm_direction);
+/**
+ * @brief Checks if the elevator should stop when arriving at a floor,
+ *  based on orders in the queue array.
+ * This function will inform the elevator that it should stop if:
+ *  - There are no further orders in the direction.
+ *  - There are cab or hall calls in the direction of travel.
+ *
+ * @param[in] fsm_position The current position of the elevator. 
+ * @param[in] fsm_floor The current floor of the elevator.
+ * @param[in] fsm_direction The direction of travel the elevator.
+ * 
+ * @return 1 of the elevator should stop, 0 if not.
+ */
+bool queue_should_stop(position_t fsm_position, floor_t fsm_floor, elev_motor_direction_t fsm_direction);
 
 #endif

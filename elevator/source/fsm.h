@@ -11,41 +11,39 @@
 
 
 /**
-  Position type to keep track of the position of the elevator. Used in functions
-    - FILL IN FOLLOWING
+  Position type to keep track of the position of the elevator.
 */
 typedef enum {
-    FLOOR_0,
-    BETWEEN_0_AND_1,    
-    FLOOR_1,
-    BETWEEN_1_AND_2,
-    FLOOR_2,
-    BETWEEN_2_AND_3,
-    FLOOR_3,
-    UNKNOWN
+    FLOOR_0, ///< Elevator at floor 0
+    BETWEEN_0_AND_1, ///< Elevator between floor 0 and floor 1
+    FLOOR_1, ///< Elevator at floor 1
+    BETWEEN_1_AND_2, ///< Elevator between floor 1 and floor 2
+    FLOOR_2, ///< Elevator at floor 2
+    BETWEEN_2_AND_3, ///< Elevator between floor 2 and floor 3
+    FLOOR_3, ///< Elevator at floor 3
+    UNKNOWN ///< Unknown position only during initialization
 } position_t;
 
 /**
-  Floor type to dissern the different floors of the elevator. Used in functions
-    - FILL IN FOLLOWING
+  Floor type to dissern the different floors of the elevator. Mainly used when refering queue_array in queue.h
 */
 typedef enum {
-    ORDER_FLOOR_0,
-    ORDER_FLOOR_1,
-    ORDER_FLOOR_2,
-    ORDER_FLOOR_3,
-    ORDER_UNKNOWN
+    ORDER_FLOOR_0, ///< Floor 0
+    ORDER_FLOOR_1, ///< Floor 1
+    ORDER_FLOOR_2, ///< Floor 2
+    ORDER_FLOOR_3, ///< Floor 3
+    ORDER_UNKNOWN ///< Unknown floor only during initialization
 } floor_t;
 
 /**
   State types for function fsm(). 
 */
 typedef enum {
-    INIT,
-    IDLE,
-    MOVING, 
-    OPEN_DOOR,
-    EMERGENCY_STOP 
+    INIT, ///< Initialization state, only during start up
+    IDLE, ///< Idle state, where the elevator is not moving and checks for new orders.
+    MOVING,  ///< Moving either up or down
+    OPEN_DOOR, ///< Open door state where the elevator is not moving and opens the door.
+    EMERGENCY_STOP  ///< Emergency stop state, regardless of position. 
 } state_t; 
 
 
@@ -58,17 +56,13 @@ typedef enum {
  *   - floor sensors
  *   - stop button
  * 
- * The state machine consists of the following states:
- *   - INIT
- *   - IDLE
- *   - MOVING
- *   - OPEN DOOR
- *   - EMERGENCY STOP
+ * The state machine manages the states in the ::state_t.
+ * The behaviour between the states is described in the state diagram and the sequence diagram.
  * 
  * @param[out] fsm_position Elevator position
- * @param[out] fsm_last_position Elevator position
+ * @param[out] fsm_floor Elevator floor
  * @param[out] fsm_timestamp Timestamp
- * @param[out] fsm_direction Elevator direction of travel
+ * @param[out] fsm_direction Elevator direction of travel. This will only ever by DIRN_UP or DIRN_DOWN of ::elev_motor_direction_t.
  * @param[out] fsm_state Elevator state
  */
 void fsm();

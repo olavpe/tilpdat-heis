@@ -1,3 +1,12 @@
+/**
+ * @file
+ * @brief The driver that communicates with the elevator hardware.
+ * This is done through a server that is set up on a port
+ * on the machine and communicates with the elevator hardware. 
+ * The function interactions are identical to the driver provided
+ * by the lab instructor in the Embedded Systems course.
+ */ 
+
 #pragma once
 
 // Number of floors. Hardware-dependent, do not modify.
@@ -9,7 +18,7 @@
 /**
   Motor direction for function elev_set_motor_direction().
 */
-typedef enum tag_elevator_hardware_motor_direction { 
+typedef enum { 
     DIRN_DOWN = -1,
     DIRN_STOP = 0,
     DIRN_UP = 1
@@ -18,7 +27,7 @@ typedef enum tag_elevator_hardware_motor_direction {
 /**
   Button types for function elev_set_button_lamp() and elev_get_button().
 */
-typedef enum tag_elevator_hardware_lamp_type { 
+typedef enum { 
     BUTTON_CALL_UP = 0,
     BUTTON_CALL_DOWN = 1,
     BUTTON_COMMAND = 2

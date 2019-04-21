@@ -78,6 +78,10 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="fsm_8h__dep__incl.png" border="0" usemap="#source_2fsm_8hdep" alt=""/></div>
 <map name="source_2fsm_8hdep" id="source_2fsm_8hdep">
+<area shape="rect" id="node2" href="fsm_8c_source.html" title="source/fsm.c" alt="" coords="5,155,104,181"/>
+<area shape="rect" id="node3" href="queue_8h.html" title="A queue system that helps the finite state machine (fsm) to carry out the orders received from the el..." alt="" coords="65,80,175,107"/>
+<area shape="rect" id="node4" href="queue_8c_source.html" title="source/queue.c" alt="" coords="143,155,254,181"/>
+<area shape="rect" id="node5" href="main_8c_source.html" title="source/main.c" alt="" coords="251,80,355,107"/>
 </map>
 </div>
 </div>
@@ -92,35 +96,35 @@ Macros</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr class="memitem:a31f24aef3ddd32d2e6538ffff4055d37"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fsm_8h.html#a31f24aef3ddd32d2e6538ffff4055d37">position_t</a> { <br />
-&#160;&#160;<b>FLOOR_0</b>, 
-<b>BETWEEN_0_AND_1</b>, 
-<b>FLOOR_1</b>, 
-<b>BETWEEN_1_AND_2</b>, 
+&#160;&#160;<a class="el" href="fsm_8h.html#a31f24aef3ddd32d2e6538ffff4055d37a41c260e6185ffde5e92e0b0aeef6168e">FLOOR_0</a>, 
+<a class="el" href="fsm_8h.html#a31f24aef3ddd32d2e6538ffff4055d37ae42db7623b9d5bd03eb182b0f642ae4f">BETWEEN_0_AND_1</a>, 
+<a class="el" href="fsm_8h.html#a31f24aef3ddd32d2e6538ffff4055d37a545045ddd4e0e4e18ae6b1b7e4c5f825">FLOOR_1</a>, 
+<a class="el" href="fsm_8h.html#a31f24aef3ddd32d2e6538ffff4055d37ac8953131d568e475dc00ffd7950ebe69">BETWEEN_1_AND_2</a>, 
 <br />
-&#160;&#160;<b>FLOOR_2</b>, 
-<b>BETWEEN_2_AND_3</b>, 
-<b>FLOOR_3</b>, 
-<b>UNKNOWN</b>
+&#160;&#160;<a class="el" href="fsm_8h.html#a31f24aef3ddd32d2e6538ffff4055d37aa1091247dd00a6c252b76abb82995b84">FLOOR_2</a>, 
+<a class="el" href="fsm_8h.html#a31f24aef3ddd32d2e6538ffff4055d37a17c45fc5d4dddf28fdd454d5ccb67121">BETWEEN_2_AND_3</a>, 
+<a class="el" href="fsm_8h.html#a31f24aef3ddd32d2e6538ffff4055d37a7511f408b1d4eff0cd7d404c259e6444">FLOOR_3</a>, 
+<a class="el" href="fsm_8h.html#a31f24aef3ddd32d2e6538ffff4055d37a6ce26a62afab55d7606ad4e92428b30c">UNKNOWN</a>
 <br />
  }</td></tr>
 <tr class="separator:a31f24aef3ddd32d2e6538ffff4055d37"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b3a976f46b9e6993f1692a09bf2fd60"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fsm_8h.html#a5b3a976f46b9e6993f1692a09bf2fd60">floor_t</a> { <br />
-&#160;&#160;<b>ORDER_FLOOR_0</b>, 
-<b>ORDER_FLOOR_1</b>, 
-<b>ORDER_FLOOR_2</b>, 
-<b>ORDER_FLOOR_3</b>, 
+&#160;&#160;<a class="el" href="fsm_8h.html#a5b3a976f46b9e6993f1692a09bf2fd60a5787f0901495747fb4e2af00a9dee3e5">ORDER_FLOOR_0</a>, 
+<a class="el" href="fsm_8h.html#a5b3a976f46b9e6993f1692a09bf2fd60a02cccb1c061435f60bdf841d1d61aed6">ORDER_FLOOR_1</a>, 
+<a class="el" href="fsm_8h.html#a5b3a976f46b9e6993f1692a09bf2fd60a276aebedcca412e8f7804f8b9fb0b68b">ORDER_FLOOR_2</a>, 
+<a class="el" href="fsm_8h.html#a5b3a976f46b9e6993f1692a09bf2fd60a3ccf110169f2cd64bd7bbd8bb0a27d6e">ORDER_FLOOR_3</a>, 
 <br />
-&#160;&#160;<b>ORDER_UNKNOWN</b>
+&#160;&#160;<a class="el" href="fsm_8h.html#a5b3a976f46b9e6993f1692a09bf2fd60a542b3cedb26db402ba89bde1af864ea4">ORDER_UNKNOWN</a>
 <br />
  }</td></tr>
 <tr class="separator:a5b3a976f46b9e6993f1692a09bf2fd60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa0aafed44fec19806d8f9ad834be1248"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fsm_8h.html#aa0aafed44fec19806d8f9ad834be1248">state_t</a> { <br />
-&#160;&#160;<b>INIT</b>, 
-<b>IDLE</b>, 
-<b>MOVING</b>, 
-<b>OPEN_DOOR</b>, 
+&#160;&#160;<a class="el" href="fsm_8h.html#aa0aafed44fec19806d8f9ad834be1248a0cb1b2c6a7db1f1084886c98909a3f36">INIT</a>, 
+<a class="el" href="fsm_8h.html#aa0aafed44fec19806d8f9ad834be1248afd6a0e4343048b10646dd2976cc5ad18">IDLE</a>, 
+<a class="el" href="fsm_8h.html#aa0aafed44fec19806d8f9ad834be1248a16ebdcb23eb5337fd5bc598fa8d6035d">MOVING</a>, 
+<a class="el" href="fsm_8h.html#aa0aafed44fec19806d8f9ad834be1248af079926e3e86ee2c17b3eedbdef15bcd">OPEN_DOOR</a>, 
 <br />
-&#160;&#160;<b>EMERGENCY_STOP</b>
+&#160;&#160;<a class="el" href="fsm_8h.html#aa0aafed44fec19806d8f9ad834be1248a56a92b9980c854fa6e488ffeb6a2844b">EMERGENCY_STOP</a>
 <br />
  }</td></tr>
 <tr class="separator:aa0aafed44fec19806d8f9ad834be1248"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -130,13 +134,6 @@ Functions</h2></td></tr>
 <tr class="memitem:a270932dff1ab343bb350f7c6e02d7a43"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fsm_8h.html#a270932dff1ab343bb350f7c6e02d7a43">fsm</a> ()</td></tr>
 <tr class="memdesc:a270932dff1ab343bb350f7c6e02d7a43"><td class="mdescLeft">&#160;</td><td class="mdescRight">The functions main responsibilites is managing the finite state machine. Before entering a switch that manages the state machine it polls:  <a href="#a270932dff1ab343bb350f7c6e02d7a43">More...</a><br /></td></tr>
 <tr class="separator:a270932dff1ab343bb350f7c6e02d7a43"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e3b86e5046ca615ae4759cec474ca17"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fsm_8h.html#a8e3b86e5046ca615ae4759cec474ca17">fsm_print_position</a> (<a class="el" href="fsm_8h.html#a31f24aef3ddd32d2e6538ffff4055d37">position_t</a> position)</td></tr>
-<tr class="memdesc:a8e3b86e5046ca615ae4759cec474ca17"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function matches the number of the elevator position_t enum to the corresponding string in the enum, allowing the string to be printed rather than the number.  <a href="#a8e3b86e5046ca615ae4759cec474ca17">More...</a><br /></td></tr>
-<tr class="separator:a8e3b86e5046ca615ae4759cec474ca17"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf781af1e993c6d51c4980f2519cf4ee"><td class="memItemLeft" align="right" valign="top"><a id="abf781af1e993c6d51c4980f2519cf4ee"></a>
-const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fsm_8h.html#abf781af1e993c6d51c4980f2519cf4ee">fsm_print_direction</a> (elev_motor_direction_t direction)</td></tr>
-<tr class="memdesc:abf781af1e993c6d51c4980f2519cf4ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function matches the number of the elevator position_t enum to the corresponding string in the enum, allowing the string to be printed rather than the number. <br /></td></tr>
-<tr class="separator:abf781af1e993c6d51c4980f2519cf4ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This class that controls the main functions of the elevator. It is responsible for checking input signals in addtion to managing the state of the elevator. </p>
@@ -154,11 +151,21 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Floor type to dissern the different floors of the elevator. Used in functions</p><ul>
-<li>FILL IN FOLLOWING </li>
-</ul>
+<p>Floor type to dissern the different floors of the elevator. Mainly used when refering queue_array in <a class="el" href="queue_8h.html" title="A queue system that helps the finite state machine (fsm) to carry out the orders received from the el...">queue.h</a> </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a5b3a976f46b9e6993f1692a09bf2fd60a5787f0901495747fb4e2af00a9dee3e5"></a>ORDER_FLOOR_0&#160;</td><td class="fielddoc"><p>Floor 0. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a5b3a976f46b9e6993f1692a09bf2fd60a02cccb1c061435f60bdf841d1d61aed6"></a>ORDER_FLOOR_1&#160;</td><td class="fielddoc"><p>Floor 1. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a5b3a976f46b9e6993f1692a09bf2fd60a276aebedcca412e8f7804f8b9fb0b68b"></a>ORDER_FLOOR_2&#160;</td><td class="fielddoc"><p>Floor 2. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a5b3a976f46b9e6993f1692a09bf2fd60a3ccf110169f2cd64bd7bbd8bb0a27d6e"></a>ORDER_FLOOR_3&#160;</td><td class="fielddoc"><p>Floor 3. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a5b3a976f46b9e6993f1692a09bf2fd60a542b3cedb26db402ba89bde1af864ea4"></a>ORDER_UNKNOWN&#160;</td><td class="fielddoc"><p>Unknown floor only during initialization. </p>
+</td></tr>
+</table>
 
-<p class="definition">Definition at line <a class="el" href="fsm_8h_source.html#l00032">32</a> of file <a class="el" href="fsm_8h_source.html">fsm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="fsm_8h_source.html#l00030">30</a> of file <a class="el" href="fsm_8h_source.html">fsm.h</a>.</p>
 
 </div>
 </div>
@@ -173,11 +180,27 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Position type to keep track of the position of the elevator. Used in functions</p><ul>
-<li>FILL IN FOLLOWING </li>
-</ul>
+<p>Position type to keep track of the position of the elevator. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a31f24aef3ddd32d2e6538ffff4055d37a41c260e6185ffde5e92e0b0aeef6168e"></a>FLOOR_0&#160;</td><td class="fielddoc"><p>Elevator at floor 0. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a31f24aef3ddd32d2e6538ffff4055d37ae42db7623b9d5bd03eb182b0f642ae4f"></a>BETWEEN_0_AND_1&#160;</td><td class="fielddoc"><p>Elevator between floor 0 and floor 1. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a31f24aef3ddd32d2e6538ffff4055d37a545045ddd4e0e4e18ae6b1b7e4c5f825"></a>FLOOR_1&#160;</td><td class="fielddoc"><p>Elevator at floor 1. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a31f24aef3ddd32d2e6538ffff4055d37ac8953131d568e475dc00ffd7950ebe69"></a>BETWEEN_1_AND_2&#160;</td><td class="fielddoc"><p>Elevator between floor 1 and floor 2. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a31f24aef3ddd32d2e6538ffff4055d37aa1091247dd00a6c252b76abb82995b84"></a>FLOOR_2&#160;</td><td class="fielddoc"><p>Elevator at floor 2. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a31f24aef3ddd32d2e6538ffff4055d37a17c45fc5d4dddf28fdd454d5ccb67121"></a>BETWEEN_2_AND_3&#160;</td><td class="fielddoc"><p>Elevator between floor 2 and floor 3. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a31f24aef3ddd32d2e6538ffff4055d37a7511f408b1d4eff0cd7d404c259e6444"></a>FLOOR_3&#160;</td><td class="fielddoc"><p>Elevator at floor 3. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a31f24aef3ddd32d2e6538ffff4055d37a6ce26a62afab55d7606ad4e92428b30c"></a>UNKNOWN&#160;</td><td class="fielddoc"><p>Unknown position only during initialization. </p>
+</td></tr>
+</table>
 
-<p class="definition">Definition at line <a class="el" href="fsm_8h_source.html#l00017">17</a> of file <a class="el" href="fsm_8h_source.html">fsm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="fsm_8h_source.html#l00016">16</a> of file <a class="el" href="fsm_8h_source.html">fsm.h</a>.</p>
 
 </div>
 </div>
@@ -193,8 +216,20 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
       </table>
 </div><div class="memdoc">
 <p>State types for function <a class="el" href="fsm_8h.html#a270932dff1ab343bb350f7c6e02d7a43" title="The functions main responsibilites is managing the finite state machine. Before entering a switch tha...">fsm()</a>. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aa0aafed44fec19806d8f9ad834be1248a0cb1b2c6a7db1f1084886c98909a3f36"></a>INIT&#160;</td><td class="fielddoc"><p>Initialization state, only during start up. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa0aafed44fec19806d8f9ad834be1248afd6a0e4343048b10646dd2976cc5ad18"></a>IDLE&#160;</td><td class="fielddoc"><p>Idle state, where the elevator is not moving and checks for new orders. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa0aafed44fec19806d8f9ad834be1248a16ebdcb23eb5337fd5bc598fa8d6035d"></a>MOVING&#160;</td><td class="fielddoc"><p>Moving either up or down. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa0aafed44fec19806d8f9ad834be1248af079926e3e86ee2c17b3eedbdef15bcd"></a>OPEN_DOOR&#160;</td><td class="fielddoc"><p>Open door state where the elevator is not moving and opens the door. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa0aafed44fec19806d8f9ad834be1248a56a92b9980c854fa6e488ffeb6a2844b"></a>EMERGENCY_STOP&#160;</td><td class="fielddoc"><p>Emergency stop state, regardless of position. </p>
+</td></tr>
+</table>
 
-<p class="definition">Definition at line <a class="el" href="fsm_8h_source.html#l00043">43</a> of file <a class="el" href="fsm_8h_source.html">fsm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="fsm_8h_source.html#l00041">41</a> of file <a class="el" href="fsm_8h_source.html">fsm.h</a>.</p>
 
 </div>
 </div>
@@ -220,53 +255,19 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <li>floor sensors</li>
 <li>stop button</li>
 </ul>
-<p>The state machine consists of the following states:</p><ul>
-<li>INIT</li>
-<li>IDLE</li>
-<li>MOVING</li>
-<li>OPEN DOOR</li>
-<li>EMERGENCY STOP</li>
-</ul>
+<p>The state machine manages the states in the <a class="el" href="fsm_8h.html#aa0aafed44fec19806d8f9ad834be1248">state_t</a>. The behaviour between the states is described in the state diagram and the sequence diagram.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">fsm_position</td><td>Elevator position </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">fsm_last_position</td><td>Elevator position </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">fsm_floor</td><td>Elevator floor </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">fsm_timestamp</td><td>Timestamp </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">fsm_direction</td><td>Elevator direction of travel </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">fsm_direction</td><td>Elevator direction of travel. This will only ever by DIRN_UP or DIRN_DOWN of <a class="el" href="elevator__hardware_8h.html#ac873de158b370a210216e4b4c7fb218f">elev_motor_direction_t</a>. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">fsm_state</td><td>Elevator state </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="fsm_8c_source.html#l00031">31</a> of file <a class="el" href="fsm_8c_source.html">fsm.c</a>.</p>
-
-</div>
-</div>
-<a id="a8e3b86e5046ca615ae4759cec474ca17"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8e3b86e5046ca615ae4759cec474ca17">&#9670;&nbsp;</a></span>fsm_print_position()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char* fsm_print_position </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="fsm_8h.html#a31f24aef3ddd32d2e6538ffff4055d37">position_t</a>&#160;</td>
-          <td class="paramname"><em>position</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>This function matches the number of the elevator position_t enum to the corresponding string in the enum, allowing the string to be printed rather than the number. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">position</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="fsm_8c_source.html#l00225">225</a> of file <a class="el" href="fsm_8c_source.html">fsm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="fsm_8c_source.html#l00027">27</a> of file <a class="el" href="fsm_8c_source.html">fsm.c</a>.</p>
 
 </div>
 </div>

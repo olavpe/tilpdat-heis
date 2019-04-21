@@ -1,6 +1,5 @@
 #include <stdio.h>
 
-//#include "elev.h"
 #include "elevator_hardware.h"
 #include "fsm.h"
 

@@ -2,27 +2,31 @@
 \label{timer_8h}\index{source/timer.\+h@{source/timer.\+h}}
 
 
-...  
+A smaller module that manages the time dependent operations of the state machine.  
 
 
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
 {\ttfamily \#include $<$stdbool.\+h$>$}\newline
 {\ttfamily \#include $<$time.\+h$>$}\newline
-Include dependency graph for timer.\+h\+:
-% FIG 0
 This graph shows which files directly or indirectly include this file\+:
-% FIG 1
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=252pt]{timer_8h__dep__incl}
+\end{center}
+\end{figure}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 time\+\_\+t \hyperlink{timer_8h_a4f7af40cfc5b42ea4f3ecd8e733a5bbf}{timer\+\_\+start\+\_\+timer} ()
-\begin{DoxyCompactList}\small\item\em Starts the timer by setting a timestamp. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Starts a fictious timer by returning timestamp of the current time of the system. \end{DoxyCompactList}\item 
 bool \hyperlink{timer_8h_a01822a31178b24ba570dd599a4549432}{timer\+\_\+is\+\_\+timer\+\_\+expired} (time\+\_\+t start\+\_\+timestamp)
-\begin{DoxyCompactList}\small\item\em Check whether it has been 3 seconds since the timer started. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Check whether 3 seconds have passed since the timer started. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-... 
+A smaller module that manages the time dependent operations of the state machine. 
 
 
 
@@ -35,7 +39,7 @@ bool \hyperlink{timer_8h_a01822a31178b24ba570dd599a4549432}{timer\+\_\+is\+\_\+t
 
 
 
-Check whether it has been 3 seconds since the timer started. 
+Check whether 3 seconds have passed since the timer started. 
 
 
 \begin{DoxyParams}[1]{Parameters}
@@ -57,7 +61,7 @@ Definition at line 12 of file timer.\+c.
 
 
 
-Starts the timer by setting a timestamp. 
+Starts a fictious timer by returning timestamp of the current time of the system. 
 
 \begin{DoxyReturn}{Returns}
 the start time. 
