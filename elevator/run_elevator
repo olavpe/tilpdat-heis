@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+pkill ElevatorServer
+gnome-terminal -x ~/.cargo/bin/ElevatorServer
+make
+./heis
