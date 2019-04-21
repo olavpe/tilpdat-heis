@@ -72,21 +72,3 @@ typedef enum {
  * @param[out] fsm_state Elevator state
  */
 void fsm();
-
-///////////////////TO BE DELETED
- /**
-  * @brief This function matches the number of the elevator position_t
-  * enum to the corresponding string in the enum, allowing the string 
-  * to be printed rather than the number
-  * 
-  * @param[in] position 
- */
-const char* fsm_print_position(position_t position);
-
- /**
-  * @brief This function matches the number of the elevator position_t
-  * enum to the corresponding string in the enum, allowing the string 
-  * to be printed rather than the number
- */
-const char* fsm_print_direction(elev_motor_direction_t direction);
-///////////////////TO BE DELETED

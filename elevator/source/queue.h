@@ -14,7 +14,6 @@
 #include "fsm.h"
 
 
-int queue_array[N_BUTTONS][N_FLOORS];
 /**
  * @brief Deletes all orders in the queue by setting
  * all the order options to the initial value 0.

@@ -16,10 +16,6 @@ static floor_t fsm_floor = UNKNOWN;
 static time_t fsm_timestamp = 0;
 static elev_motor_direction_t fsm_direction = DIRN_UP;
 static state_t fsm_state = INIT;    
-//////////////// TO BE DELETED
-static position_t fsm_previous_position = UNKNOWN;
-static elev_motor_direction_t fsm_last_direction = DIRN_UP;
-//////////////// TO BE DELETED
 
 // Declaring static local functions
 static void m_register_order_press();
@@ -52,17 +48,6 @@ void fsm(){
             queue_reset_queue();
             m_reset_order_lights();
             if (fsm_position != UNKNOWN) {
-                //////////////////// TO BE DELETED
-                position_t position;
-                elev_button_type_t button;
-                for (position = 0; position < N_POSITIONS; position = (position + 2)){
-                    printf("floor %d : ", position);
-                    for (button = 0; button < N_BUTTONS; button++){
-                        printf("%d - ", queue_array[button][position]);
-                    }
-                    printf("\n");
-                }
-                //////////////////// TO BE DELETED
                 fsm_state = IDLE;
                 break;
             }
@@ -83,27 +68,11 @@ void fsm(){
                 break;
             }
             elev_set_motor_direction(order_direction);
-            //////////////// TO BE DELETED
-            fsm_previous_position = fsm_position;
-            fsm_last_direction = fsm_direction;
-            //////////////// TO BE DELETED ^^
             fsm_direction = order_direction;
             fsm_state = MOVING;
-            //////////////// TO BE DELETED
-            if (fsm_last_direction != fsm_direction) {
-                printf("direction change from %s", fsm_print_direction(fsm_last_direction));
-                printf("  to direction %s", fsm_print_direction(fsm_direction));
-                printf("\n");
-            }
-            //////////////// TO BE DELETED ^^
             break;
 
         case MOVING:
-            //////////////// TO BE DELETED
-            //if (fsm_previous_position == fsm_position) {
-            //    break;
-            //}
-            //////////////// TO BE DELETED ^^
             switch (fsm_position){
                 case FLOOR_0:
                 case FLOOR_1:
@@ -114,9 +83,6 @@ void fsm(){
                         fsm_timestamp = timer_start_timer();
                         fsm_state = OPEN_DOOR;
                     }
-                    //////////////// TO BE DELETED
-                    fsm_previous_position = fsm_position;
-                    //////////////// TO BE DELETED ^^
                     break;
 
                 default:
@@ -165,7 +131,6 @@ static void m_register_order_press(){
         for (floor_t floor = 0; floor < N_FLOORS; floor++) {
             elev_button_type_t button_signal = elev_get_button_signal(button, floor);
             if (button_signal == 1) {
-                printf("add_order called\n");
                 queue_set_order(button, floor);
                 elev_set_button_lamp(button, floor, 1);
             }
@@ -176,9 +141,6 @@ static void m_register_order_press(){
 static void m_update_position_and_floor() {
     floor_t floor_sensor = elev_get_floor_sensor_signal();    
     int position_incrementer = 0; //used to determine if elevator is going up or down
-    ///////////////////////// TO BE DELETED
-    position_t fsm_previous_position = fsm_position;
-    ///////////////////////// TO BE DELETED ^^
     //Sets the floor position directly if on floor
     if (floor_sensor != -1) {
         fsm_floor = floor_sensor;
@@ -205,13 +167,6 @@ static void m_update_position_and_floor() {
                 break;
         }
     } 
-    ///////////////////TO BE DELETED
-    if (fsm_previous_position != fsm_position) {
-        printf("state change from %s", fsm_print_position(fsm_previous_position));
-        printf("  to state %s", fsm_print_position(fsm_position));
-        printf("\n");
-    }
-    ///////////////////TO BE DELETED
 }
 
 static void m_reset_order_lights(){
@@ -220,34 +175,3 @@ static void m_reset_order_lights(){
             }
         }
     }
-
-///////////////////TO BE DELETED
-const char* fsm_print_position(position_t position){
-    switch (position) {
-        case FLOOR_0: return "FLOOR_0";
-        case FLOOR_1: return "FLOOR_1";
-        case FLOOR_2: return "FLOOR_2";
-        case FLOOR_3: return "FLOOR_3";
-        case BETWEEN_0_AND_1: return "BETWEEN_0_AND_1";
-        case BETWEEN_1_AND_2: return "BETWEEN_1_AND_2";
-        case BETWEEN_2_AND_3: return "BETWEEN_2_AND_3";
-        case UNKNOWN: return "UNKNOWN";
-    
-        default:
-            return 0;
-            break;
-    }
-}
-
-const char* fsm_print_direction(elev_motor_direction_t direction){
-    switch (direction) {
-        case DIRN_DOWN: return "DIRN_DOWN";
-        case DIRN_UP: return "DIRN_UP";
-        case DIRN_STOP: return "DIRN_STOP";
-    
-        default:
-            return 0;
-            break;
-    }
-}
-///////////////////TO BE DELETED
