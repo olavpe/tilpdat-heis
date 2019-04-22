@@ -47,11 +47,13 @@ void queue_set_order(elev_button_type_t button, floor_t floor);
 bool queue_is_queue_empty();
 
 /**
- * @brief Gets the next direction of the elevator based 
- * on the requested priorities.
+ * @brief Checks if the elevator has any orders above, below or at its current position.
+ * The function will choose the next direction of the elevator based on these values
+ * and will prioritize the orders that is in the direction of the elevator.
  * 
- * @param[in] current_position At a floor or between floors
- * @param[in] last_direction The last direction of the elevator
+ * 
+ * @param[in] current_position The current position of the elevator
+ * @param[in] last_direction The direction of travel of the elevator.
  * 
  * @return next direction of the elevator.
  */
