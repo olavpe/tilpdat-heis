@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Implementation of the functions in elevator_hardware.h
+ */ 
+
 #include <assert.h>
 #include <stdlib.h>
 #include <sys/socket.h>
