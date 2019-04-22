@@ -10,27 +10,27 @@
 #pragma once
 
 // Number of floors. Hardware-dependent, do not modify.
-#define N_FLOORS 4
+#define N_FLOORS 4  ///< Number of floors in ::floor_t without ORDER_FLOOR_UNKNOWN, also Hardware-dependent
 
 // Number of buttons (and corresponding lamps) on a per-floor basis
-#define N_BUTTONS 3
+#define N_BUTTONS 3 ///< Number of button types in ::elev_button_type_t
 
 /**
   Motor direction for function elev_set_motor_direction().
 */
 typedef enum { 
-    DIRN_DOWN = -1,
-    DIRN_STOP = 0,
-    DIRN_UP = 1
+    DIRN_DOWN = -1, ///< Elevator motor direction downwards
+    DIRN_STOP = 0, ///< Elevator motor stopped
+    DIRN_UP = 1 ///< Elevator motor direction upwards
 } elev_motor_direction_t;
 
 /**
   Button types for function elev_set_button_lamp() and elev_get_button().
 */
 typedef enum { 
-    BUTTON_CALL_UP = 0,
-    BUTTON_CALL_DOWN = 1,
-    BUTTON_COMMAND = 2
+    BUTTON_CALL_UP = 0, ///< Elevator hall order in upwards direction
+    BUTTON_CALL_DOWN = 1,  ///< Elevator hall order in downwards direction
+    BUTTON_COMMAND = 2  ///< Elevator cab order from within the elevator
 } elev_button_type_t;
 
 /**
@@ -41,42 +41,40 @@ void elev_init();
 
 /**
   Sets the motor direction of the elevator.
-  @param dirn New direction of the elevator.
+  @param[in] dirn New direction of the elevator.
 */
 void elev_set_motor_direction(elev_motor_direction_t dirn);
 
 /**
   Set a button lamp.
-  @param lamp Which type of lamp to set. Can be BUTTON_CALL_UP,
-    BUTTON_CALL_DOWN or BUTTON_COMMAND (button "inside" the elevator).
-  @param floor Floor of lamp to set. Must be 0-3
-  @param value Non-zero value turns lamp on, 0 turns lamp off.
+  @param[in] lamp Which type of lamp to set as defined in ::elev_button_type_t.
+  @param[in] floor Floor of lamp to set. Must be 0-3
+  @param[in] value Non-zero value turns lamp on, 0 turns lamp off.
 */
 void elev_set_button_lamp(elev_button_type_t button, int floor, int value);
 
 /**
   Set floor indicator lamp for a given floor.
-  @param floor Which floor lamp to turn on. Other floor lamps are turned off.
+  @param[in] floor Which floor lamp to turn on. Other floor lamps are turned off.
 */
 void elev_set_floor_indicator(int floor);
 
 /**
   Turn door-open lamp on or off.
-  @param value Non-zero value turns lamp on, 0 turns lamp off.
+  @param[in] value Non-zero value turns lamp on, 0 turns lamp off.
 */
 void elev_set_door_open_lamp(int value);
 
 /**
   Turn stop lamp on or off.
-  @param value Non-zero value turns lamp on, 0 turns lamp off.
+  @param[in] value Non-zero value turns lamp on, 0 turns lamp off.
 */
 void elev_set_stop_lamp(int value);
 
 /**
   Gets a button signal.
-  @param button Which button type to check. Can be BUTTON_CALL_UP,
-    BUTTON_CALL_DOWN or BUTTON_COMMAND (button "inside the elevator).
-  @param floor Which floor to check button. Must be 0-3.
+  @param[in] button Which button type to check as defined in ::elev_button_type_t. 
+  @param[in] floor Which floor to check button. Must be 0-3.
   @return 0 if button is not pushed. 1 if button is pushed.
 */
 int elev_get_button_signal(elev_button_type_t button, int floor);
@@ -99,6 +97,3 @@ int elev_get_stop_signal(void);
   @return 1 if obstruction is enabled. 0 if not.
 */
 int elev_get_obstruction_signal(void);
-
-
-
