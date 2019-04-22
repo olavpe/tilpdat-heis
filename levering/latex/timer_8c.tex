@@ -1,0 +1,72 @@
+\hypertarget{timer_8c}{}\section{source/timer.c File Reference}
+\label{timer_8c}\index{source/timer.\+c@{source/timer.\+c}}
+
+
+Implementation of the functions in \hyperlink{timer_8h}{timer.\+h}.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}timer.\+h\char`\"{}}\newline
+Include dependency graph for timer.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=264pt]{timer_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+time\+\_\+t \hyperlink{timer_8c_a4f7af40cfc5b42ea4f3ecd8e733a5bbf}{timer\+\_\+start\+\_\+timer} ()
+\begin{DoxyCompactList}\small\item\em Starts a fictious timer by returning timestamp of the current time of the system. \end{DoxyCompactList}\item 
+bool \hyperlink{timer_8c_a01822a31178b24ba570dd599a4549432}{timer\+\_\+is\+\_\+timer\+\_\+expired} (time\+\_\+t start\+\_\+timestamp)
+\begin{DoxyCompactList}\small\item\em Check whether 3 seconds have passed since the timer started. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Implementation of the functions in \hyperlink{timer_8h}{timer.\+h}. 
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{timer_8c_a01822a31178b24ba570dd599a4549432}\label{timer_8c_a01822a31178b24ba570dd599a4549432}} 
+\index{timer.\+c@{timer.\+c}!timer\+\_\+is\+\_\+timer\+\_\+expired@{timer\+\_\+is\+\_\+timer\+\_\+expired}}
+\index{timer\+\_\+is\+\_\+timer\+\_\+expired@{timer\+\_\+is\+\_\+timer\+\_\+expired}!timer.\+c@{timer.\+c}}
+\subsubsection{\texorpdfstring{timer\+\_\+is\+\_\+timer\+\_\+expired()}{timer\_is\_timer\_expired()}}
+{\footnotesize\ttfamily bool timer\+\_\+is\+\_\+timer\+\_\+expired (\begin{DoxyParamCaption}\item[{time\+\_\+t}]{start\+\_\+timestamp }\end{DoxyParamCaption})}
+
+
+
+Check whether 3 seconds have passed since the timer started. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em start\+\_\+time} & Start time of timer.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the timer is expired, 0 if not. 
+\end{DoxyReturn}
+
+
+Definition at line 17 of file timer.\+c.
+
+\mbox{\Hypertarget{timer_8c_a4f7af40cfc5b42ea4f3ecd8e733a5bbf}\label{timer_8c_a4f7af40cfc5b42ea4f3ecd8e733a5bbf}} 
+\index{timer.\+c@{timer.\+c}!timer\+\_\+start\+\_\+timer@{timer\+\_\+start\+\_\+timer}}
+\index{timer\+\_\+start\+\_\+timer@{timer\+\_\+start\+\_\+timer}!timer.\+c@{timer.\+c}}
+\subsubsection{\texorpdfstring{timer\+\_\+start\+\_\+timer()}{timer\_start\_timer()}}
+{\footnotesize\ttfamily time\+\_\+t timer\+\_\+start\+\_\+timer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Starts a fictious timer by returning timestamp of the current time of the system. 
+
+\begin{DoxyReturn}{Returns}
+the start time. 
+\end{DoxyReturn}
+
+
+Definition at line 12 of file timer.\+c.
+

@@ -1,0 +1,90 @@
+\hypertarget{fsm_8c}{}\section{source/fsm.c File Reference}
+\label{fsm_8c}\index{source/fsm.\+c@{source/fsm.\+c}}
+
+
+Implementation of the functions in \hyperlink{fsm_8h}{fsm.\+h}.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}elevator\+\_\+hardware.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}fsm.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}queue.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}timer.\+h\char`\"{}}\newline
+Include dependency graph for fsm.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fsm_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{fsm_8c_a270932dff1ab343bb350f7c6e02d7a43}{fsm} ()
+\begin{DoxyCompactList}\small\item\em The functions main responsibilites is managing the finite state machine. Before entering a switch that manages the state machine it polls\+: \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{fsm_8c_a740b52d852a7ed32ae50f2433e7fc8dd}\label{fsm_8c_a740b52d852a7ed32ae50f2433e7fc8dd}} 
+static \hyperlink{fsm_8h_a31f24aef3ddd32d2e6538ffff4055d37}{position\+\_\+t} \hyperlink{fsm_8c_a740b52d852a7ed32ae50f2433e7fc8dd}{fsm\+\_\+position} = \hyperlink{fsm_8h_a31f24aef3ddd32d2e6538ffff4055d37a6ce26a62afab55d7606ad4e92428b30c}{U\+N\+K\+N\+O\+WN}
+\begin{DoxyCompactList}\small\item\em Local fsm variable used to keep track of the elevators position. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{fsm_8c_ae58b9d6bb7b780f3c1e7fd26baeb5683}\label{fsm_8c_ae58b9d6bb7b780f3c1e7fd26baeb5683}} 
+static \hyperlink{fsm_8h_a5b3a976f46b9e6993f1692a09bf2fd60}{floor\+\_\+t} \hyperlink{fsm_8c_ae58b9d6bb7b780f3c1e7fd26baeb5683}{fsm\+\_\+floor} = \hyperlink{fsm_8h_a5b3a976f46b9e6993f1692a09bf2fd60af37d17a566c389570899450d2ccfcd66}{O\+R\+D\+E\+R\+\_\+\+F\+L\+O\+O\+R\+\_\+\+U\+N\+K\+N\+O\+WN}
+\begin{DoxyCompactList}\small\item\em Local fsm variable used to keep track of the elevators last or current floor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{fsm_8c_ae5c3d7b296386537f54acdc123104f68}\label{fsm_8c_ae5c3d7b296386537f54acdc123104f68}} 
+static time\+\_\+t \hyperlink{fsm_8c_ae5c3d7b296386537f54acdc123104f68}{fsm\+\_\+timestamp} = 0
+\begin{DoxyCompactList}\small\item\em Local fsm variable to keep track of timer responisble for opening the door. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{fsm_8c_a34c0ceaa7f628cf25af6d97bb6775eb4}\label{fsm_8c_a34c0ceaa7f628cf25af6d97bb6775eb4}} 
+static \hyperlink{elevator__hardware_8h_ac873de158b370a210216e4b4c7fb218f}{elev\+\_\+motor\+\_\+direction\+\_\+t} \hyperlink{fsm_8c_a34c0ceaa7f628cf25af6d97bb6775eb4}{fsm\+\_\+direction} = \hyperlink{elevator__hardware_8h_ac873de158b370a210216e4b4c7fb218fa92f9028d3af929e10b735b77e0c8de60}{D\+I\+R\+N\+\_\+\+UP}
+\begin{DoxyCompactList}\small\item\em Local fsm variable used to keep track of the elevators direction of travel. This can never be D\+I\+R\+N\+\_\+\+S\+T\+OP. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{fsm_8c_a8dedcbff98c01337063f3cc747a20b8d}\label{fsm_8c_a8dedcbff98c01337063f3cc747a20b8d}} 
+static \hyperlink{fsm_8h_aa0aafed44fec19806d8f9ad834be1248}{state\+\_\+t} \hyperlink{fsm_8c_a8dedcbff98c01337063f3cc747a20b8d}{fsm\+\_\+state} = \hyperlink{fsm_8h_aa0aafed44fec19806d8f9ad834be1248a0cb1b2c6a7db1f1084886c98909a3f36}{I\+N\+IT}
+\begin{DoxyCompactList}\small\item\em Local fsm variable used to keep track of the elevators state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Implementation of the functions in \hyperlink{fsm_8h}{fsm.\+h}. 
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{fsm_8c_a270932dff1ab343bb350f7c6e02d7a43}\label{fsm_8c_a270932dff1ab343bb350f7c6e02d7a43}} 
+\index{fsm.\+c@{fsm.\+c}!fsm@{fsm}}
+\index{fsm@{fsm}!fsm.\+c@{fsm.\+c}}
+\subsubsection{\texorpdfstring{fsm()}{fsm()}}
+{\footnotesize\ttfamily void fsm (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The functions main responsibilites is managing the finite state machine. Before entering a switch that manages the state machine it polls\+: 
+
+
+\begin{DoxyItemize}
+\item The order buttons
+\item floor sensors
+\item stop button
+\end{DoxyItemize}
+
+The state machine manages the states in the \hyperlink{fsm_8h_aa0aafed44fec19806d8f9ad834be1248}{state\+\_\+t}. The behaviour between the states is described in the state diagram and the sequence diagram.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em fsm\+\_\+position} & Elevator position \\
+\hline
+\mbox{\tt out}  & {\em fsm\+\_\+floor} & Elevator floor \\
+\hline
+\mbox{\tt out}  & {\em fsm\+\_\+timestamp} & Timestamp \\
+\hline
+\mbox{\tt out}  & {\em fsm\+\_\+direction} & Elevator direction of travel. This will only ever by D\+I\+R\+N\+\_\+\+UP or D\+I\+R\+N\+\_\+\+D\+O\+WN of \hyperlink{elevator__hardware_8h_ac873de158b370a210216e4b4c7fb218f}{elev\+\_\+motor\+\_\+direction\+\_\+t}. \\
+\hline
+\mbox{\tt out}  & {\em fsm\+\_\+state} & Elevator state \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 37 of file fsm.\+c.
+

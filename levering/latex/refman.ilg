@@ -1,0 +1,107 @@
+This is makeindex, version 2.15 [TeX Live 2017] (kpathsea + Thai support).
+Scanning input file refman.idx....
+!! Input index error (file = refman.idx, line = 26):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 27):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 28):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 29):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 30):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 31):
+   -- First argument too long (max 1024).
+
+!! Input index error (file = refman.idx, line = 34):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 35):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 36):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 37):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 38):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 39):
+   -- First argument too long (max 1024).
+
+!! Input index error (file = refman.idx, line = 66):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 67):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 68):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 69):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 70):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 71):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 72):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 73):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 74):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 75):
+   -- First argument too long (max 1024).
+
+!! Input index error (file = refman.idx, line = 78):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 79):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 80):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 81):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 82):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 83):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 84):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 85):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 86):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 87):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 88):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 89):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 90):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 91):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 92):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 93):
+   -- First argument too long (max 1024).
+
+!! Input index error (file = refman.idx, line = 96):
+   -- Extra `@' at position 146 of first argument.
+!! Input index error (file = refman.idx, line = 97):
+   -- Extra `@' at position 119 of first argument.
+!! Input index error (file = refman.idx, line = 98):
+   -- Extra `@' at position 146 of first argument.
+!! Input index error (file = refman.idx, line = 99):
+   -- Extra `@' at position 119 of first argument.
+!! Input index error (file = refman.idx, line = 100):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 101):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 102):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 103):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 104):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 105):
+   -- First argument too long (max 1024).
+done (96 entries accepted, 48 rejected).
+Sorting entries....done (646 comparisons).
+Generating output file refman.ind....done (153 lines written, 0 warnings).
+Output written in refman.ind.
+Transcript written in refman.ilg.

@@ -1,0 +1,18 @@
+<map id="fsm" name="fsm">
+<area shape="rect" id="node2" href="$elevator__hardware_8h.html#ab702d0ff2d7d03172b7ae3829ba13028" title="elev_get_stop_signal" alt="" coords="112,5,256,32"/>
+<area shape="rect" id="node3" href="$queue_8h.html#a600fb7cf1ff3b028fcb97aa1af196065" title="Deletes all orders in the queue by setting all the order options to the initial value 0..." alt="" coords="117,107,251,133"/>
+<area shape="rect" id="node4" href="$elevator__hardware_8h.html#a9e81321c63d80ddf1699bc91593cd9d4" title="elev_set_button_lamp" alt="" coords="329,107,479,133"/>
+<area shape="rect" id="node5" href="$elevator__hardware_8h.html#ac7dccb879f6e812e9d245174a0214536" title="elev_set_motor_direction" alt="" coords="101,157,267,184"/>
+<area shape="rect" id="node6" href="$queue_8h.html#a5f1a2d18955993f8c78589a8ce56dae9" title="Checks whether the queue has any orders. " alt="" coords="105,208,263,235"/>
+<area shape="rect" id="node7" href="$queue_8h.html#af2c4aec8d254eec04f73df6b5bba25d4" title="Gets the next direction of the elevator based on the requested priorities. " alt="" coords="319,436,489,463"/>
+<area shape="rect" id="node8" href="$timer_8h.html#a4f7af40cfc5b42ea4f3ecd8e733a5bbf" title="Starts a fictious timer by returning timestamp of the current time of the system. ..." alt="" coords="124,309,244,336"/>
+<area shape="rect" id="node9" href="$queue_8h.html#a83fd2eb719d7deb1b38cbe8e00603eea" title="Checks if the elevator should stop when arriving at a floor, based on orders in the queue array..." alt="" coords="117,360,251,387"/>
+<area shape="rect" id="node10" href="$elevator__hardware_8h.html#a6ce9a34b8677b483b0d8f9dc47b42c40" title="elev_set_door_open_lamp" alt="" coords="97,411,271,437"/>
+<area shape="rect" id="node11" href="$timer_8h.html#a01822a31178b24ba570dd599a4549432" title="Check whether 3 seconds have passed since the timer started. " alt="" coords="107,461,261,488"/>
+<area shape="rect" id="node12" href="$queue_8h.html#a6b21f1da6ba83e1ee8ac5a64854415b7" title="Deletes an order in the queue. " alt="" coords="117,56,251,83"/>
+<area shape="rect" id="node13" href="$elevator__hardware_8h.html#a85de2a6536b4dd0c83bac19923500740" title="elev_set_stop_lamp" alt="" coords="115,563,253,589"/>
+<area shape="rect" id="node14" href="$elevator__hardware_8h.html#a97d30b7e2538acf5647515638070fdc5" title="elev_get_floor_sensor\l_signal" alt="" coords="109,614,259,655"/>
+<area shape="rect" id="node15" href="$elevator__hardware_8h.html#a2350a1635233760719700552a6cb0763" title="elev_get_button_signal" alt="" coords="107,680,261,707"/>
+<area shape="rect" id="node16" href="$queue_8h.html#ad9bbc447a9b368307ff0ea803d6c0fe1" title="Sets an order in the queue. " alt="" coords="125,731,243,757"/>
+<area shape="rect" id="node17" href="$elevator__hardware_8h.html#a6af53dd3ebae3a5791ba345eac84d4be" title="elev_set_floor_indicator" alt="" coords="105,781,263,808"/>
+</map>

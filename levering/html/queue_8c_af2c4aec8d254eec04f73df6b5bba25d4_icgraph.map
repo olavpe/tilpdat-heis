@@ -1,0 +1,3 @@
+<map id="queue_get_next_direction" name="queue_get_next_direction">
+<area shape="rect" id="node2" href="$queue_8h.html#a83fd2eb719d7deb1b38cbe8e00603eea" title="Checks if the elevator should stop when arriving at a floor, based on orders in the queue array..." alt="" coords="224,5,359,32"/>
+</map>

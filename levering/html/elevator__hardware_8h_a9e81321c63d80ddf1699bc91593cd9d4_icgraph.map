@@ -1,0 +1,4 @@
+<map id="elev_set_button_lamp" name="elev_set_button_lamp">
+<area shape="rect" id="node2" href="$queue_8h.html#a600fb7cf1ff3b028fcb97aa1af196065" title="Deletes all orders in the queue by setting all the order options to the initial value 0..." alt="" coords="203,5,337,32"/>
+<area shape="rect" id="node3" href="$queue_8h.html#a6b21f1da6ba83e1ee8ac5a64854415b7" title="Deletes an order in the queue. " alt="" coords="203,56,337,83"/>
+</map>

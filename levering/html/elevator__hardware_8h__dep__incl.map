@@ -1,0 +1,7 @@
+<map id="source/elevator_hardware.h" name="source/elevator_hardware.h">
+<area shape="rect" id="node2" href="$elevator__hardware_8c.html" title="Implementation of the functions in elevator_hardware.h. " alt="" coords="5,80,188,107"/>
+<area shape="rect" id="node3" href="$fsm_8c.html" title="Implementation of the functions in fsm.h. " alt="" coords="205,155,303,181"/>
+<area shape="rect" id="node4" href="$queue_8h.html" title="A queue system that helps the finite state machine (fsm) to carry out the orders received from the el..." alt="" coords="264,80,375,107"/>
+<area shape="rect" id="node5" href="$queue_8c.html" title="Implementation of the functions in queue.h. " alt="" coords="343,155,453,181"/>
+<area shape="rect" id="node6" href="$main_8c.html" title="The main file of the application. " alt="" coords="450,80,554,107"/>
+</map>

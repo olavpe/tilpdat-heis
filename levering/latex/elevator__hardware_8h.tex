@@ -1,0 +1,276 @@
+\hypertarget{elevator__hardware_8h}{}\section{source/elevator\+\_\+hardware.h File Reference}
+\label{elevator__hardware_8h}\index{source/elevator\+\_\+hardware.\+h@{source/elevator\+\_\+hardware.\+h}}
+
+
+The driver that communicates with the elevator hardware. This is done through a server that is set up on a port on the machine and communicates with the elevator hardware. The function interactions are identical to the driver provided by the lab instructor in the Embedded Systems course.  
+
+
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{elevator__hardware_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{elevator__hardware_8h_ae0592e3739e5e1e76234bb1caf9d1305}\label{elevator__hardware_8h_ae0592e3739e5e1e76234bb1caf9d1305}} 
+\#define \hyperlink{elevator__hardware_8h_ae0592e3739e5e1e76234bb1caf9d1305}{N\+\_\+\+F\+L\+O\+O\+RS}~4
+\begin{DoxyCompactList}\small\item\em Number of floors in \hyperlink{fsm_8h_a5b3a976f46b9e6993f1692a09bf2fd60}{floor\+\_\+t} without O\+R\+D\+E\+R\+\_\+\+F\+L\+O\+O\+R\+\_\+\+U\+N\+K\+N\+O\+WN, also Hardware-\/dependent. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{elevator__hardware_8h_a271dda243b0f5bd7d2053d258eb71962}\label{elevator__hardware_8h_a271dda243b0f5bd7d2053d258eb71962}} 
+\#define \hyperlink{elevator__hardware_8h_a271dda243b0f5bd7d2053d258eb71962}{N\+\_\+\+B\+U\+T\+T\+O\+NS}~3
+\begin{DoxyCompactList}\small\item\em Number of button types in \hyperlink{elevator__hardware_8h_a5457414cc26332731098d18c37a46e6c}{elev\+\_\+button\+\_\+type\+\_\+t}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{elevator__hardware_8h_ac873de158b370a210216e4b4c7fb218f}{elev\+\_\+motor\+\_\+direction\+\_\+t} \{ \hyperlink{elevator__hardware_8h_ac873de158b370a210216e4b4c7fb218fa3164bca805ecbf4446a19625a7b55411}{D\+I\+R\+N\+\_\+\+D\+O\+WN} = -\/1, 
+\hyperlink{elevator__hardware_8h_ac873de158b370a210216e4b4c7fb218fa72dbefe6c155fb5ea5c8d242a8079646}{D\+I\+R\+N\+\_\+\+S\+T\+OP} = 0, 
+\hyperlink{elevator__hardware_8h_ac873de158b370a210216e4b4c7fb218fa92f9028d3af929e10b735b77e0c8de60}{D\+I\+R\+N\+\_\+\+UP} = 1
+ \}
+\item 
+enum \hyperlink{elevator__hardware_8h_a5457414cc26332731098d18c37a46e6c}{elev\+\_\+button\+\_\+type\+\_\+t} \{ \hyperlink{elevator__hardware_8h_a5457414cc26332731098d18c37a46e6ca3e1ab9a7c324a535e118f45c1eec8067}{B\+U\+T\+T\+O\+N\+\_\+\+C\+A\+L\+L\+\_\+\+UP} = 0, 
+\hyperlink{elevator__hardware_8h_a5457414cc26332731098d18c37a46e6ca740c1be4edf3a5b2849e06704ad8e12f}{B\+U\+T\+T\+O\+N\+\_\+\+C\+A\+L\+L\+\_\+\+D\+O\+WN} = 1, 
+\hyperlink{elevator__hardware_8h_a5457414cc26332731098d18c37a46e6cad20de8df1af7d13ad4e904f918dc09d1}{B\+U\+T\+T\+O\+N\+\_\+\+C\+O\+M\+M\+A\+ND} = 2
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{elevator__hardware_8h_a9947d40b2dd08b246692ce64ef60b8c9}{elev\+\_\+init} ()
+\item 
+void \hyperlink{elevator__hardware_8h_ac7dccb879f6e812e9d245174a0214536}{elev\+\_\+set\+\_\+motor\+\_\+direction} (\hyperlink{elevator__hardware_8h_ac873de158b370a210216e4b4c7fb218f}{elev\+\_\+motor\+\_\+direction\+\_\+t} dirn)
+\item 
+void \hyperlink{elevator__hardware_8h_a9e81321c63d80ddf1699bc91593cd9d4}{elev\+\_\+set\+\_\+button\+\_\+lamp} (\hyperlink{elevator__hardware_8h_a5457414cc26332731098d18c37a46e6c}{elev\+\_\+button\+\_\+type\+\_\+t} button, int floor, int value)
+\item 
+void \hyperlink{elevator__hardware_8h_a6af53dd3ebae3a5791ba345eac84d4be}{elev\+\_\+set\+\_\+floor\+\_\+indicator} (int floor)
+\item 
+void \hyperlink{elevator__hardware_8h_a6ce9a34b8677b483b0d8f9dc47b42c40}{elev\+\_\+set\+\_\+door\+\_\+open\+\_\+lamp} (int value)
+\item 
+void \hyperlink{elevator__hardware_8h_a85de2a6536b4dd0c83bac19923500740}{elev\+\_\+set\+\_\+stop\+\_\+lamp} (int value)
+\item 
+int \hyperlink{elevator__hardware_8h_a2350a1635233760719700552a6cb0763}{elev\+\_\+get\+\_\+button\+\_\+signal} (\hyperlink{elevator__hardware_8h_a5457414cc26332731098d18c37a46e6c}{elev\+\_\+button\+\_\+type\+\_\+t} button, int floor)
+\item 
+int \hyperlink{elevator__hardware_8h_a97d30b7e2538acf5647515638070fdc5}{elev\+\_\+get\+\_\+floor\+\_\+sensor\+\_\+signal} (void)
+\item 
+int \hyperlink{elevator__hardware_8h_ab702d0ff2d7d03172b7ae3829ba13028}{elev\+\_\+get\+\_\+stop\+\_\+signal} (void)
+\item 
+int \hyperlink{elevator__hardware_8h_acd97a0fbc9013dc954923e25e90be9df}{elev\+\_\+get\+\_\+obstruction\+\_\+signal} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The driver that communicates with the elevator hardware. This is done through a server that is set up on a port on the machine and communicates with the elevator hardware. The function interactions are identical to the driver provided by the lab instructor in the Embedded Systems course. 
+
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{elevator__hardware_8h_a5457414cc26332731098d18c37a46e6c}\label{elevator__hardware_8h_a5457414cc26332731098d18c37a46e6c}} 
+\index{elevator\+\_\+hardware.\+h@{elevator\+\_\+hardware.\+h}!elev\+\_\+button\+\_\+type\+\_\+t@{elev\+\_\+button\+\_\+type\+\_\+t}}
+\index{elev\+\_\+button\+\_\+type\+\_\+t@{elev\+\_\+button\+\_\+type\+\_\+t}!elevator\+\_\+hardware.\+h@{elevator\+\_\+hardware.\+h}}
+\subsubsection{\texorpdfstring{elev\+\_\+button\+\_\+type\+\_\+t}{elev\_button\_type\_t}}
+{\footnotesize\ttfamily enum \hyperlink{elevator__hardware_8h_a5457414cc26332731098d18c37a46e6c}{elev\+\_\+button\+\_\+type\+\_\+t}}
+
+Button types for function \hyperlink{elevator__hardware_8h_a9e81321c63d80ddf1699bc91593cd9d4}{elev\+\_\+set\+\_\+button\+\_\+lamp()} and elev\+\_\+get\+\_\+button(). \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{B\+U\+T\+T\+O\+N\+\_\+\+C\+A\+L\+L\+\_\+\+UP@{B\+U\+T\+T\+O\+N\+\_\+\+C\+A\+L\+L\+\_\+\+UP}!elevator\+\_\+hardware.\+h@{elevator\+\_\+hardware.\+h}}\index{elevator\+\_\+hardware.\+h@{elevator\+\_\+hardware.\+h}!B\+U\+T\+T\+O\+N\+\_\+\+C\+A\+L\+L\+\_\+\+UP@{B\+U\+T\+T\+O\+N\+\_\+\+C\+A\+L\+L\+\_\+\+UP}}}\mbox{\Hypertarget{elevator__hardware_8h_a5457414cc26332731098d18c37a46e6ca3e1ab9a7c324a535e118f45c1eec8067}\label{elevator__hardware_8h_a5457414cc26332731098d18c37a46e6ca3e1ab9a7c324a535e118f45c1eec8067}} 
+B\+U\+T\+T\+O\+N\+\_\+\+C\+A\+L\+L\+\_\+\+UP&Elevator hall order in upwards direction. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{B\+U\+T\+T\+O\+N\+\_\+\+C\+A\+L\+L\+\_\+\+D\+O\+WN@{B\+U\+T\+T\+O\+N\+\_\+\+C\+A\+L\+L\+\_\+\+D\+O\+WN}!elevator\+\_\+hardware.\+h@{elevator\+\_\+hardware.\+h}}\index{elevator\+\_\+hardware.\+h@{elevator\+\_\+hardware.\+h}!B\+U\+T\+T\+O\+N\+\_\+\+C\+A\+L\+L\+\_\+\+D\+O\+WN@{B\+U\+T\+T\+O\+N\+\_\+\+C\+A\+L\+L\+\_\+\+D\+O\+WN}}}\mbox{\Hypertarget{elevator__hardware_8h_a5457414cc26332731098d18c37a46e6ca740c1be4edf3a5b2849e06704ad8e12f}\label{elevator__hardware_8h_a5457414cc26332731098d18c37a46e6ca740c1be4edf3a5b2849e06704ad8e12f}} 
+B\+U\+T\+T\+O\+N\+\_\+\+C\+A\+L\+L\+\_\+\+D\+O\+WN&Elevator hall order in downwards direction. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{B\+U\+T\+T\+O\+N\+\_\+\+C\+O\+M\+M\+A\+ND@{B\+U\+T\+T\+O\+N\+\_\+\+C\+O\+M\+M\+A\+ND}!elevator\+\_\+hardware.\+h@{elevator\+\_\+hardware.\+h}}\index{elevator\+\_\+hardware.\+h@{elevator\+\_\+hardware.\+h}!B\+U\+T\+T\+O\+N\+\_\+\+C\+O\+M\+M\+A\+ND@{B\+U\+T\+T\+O\+N\+\_\+\+C\+O\+M\+M\+A\+ND}}}\mbox{\Hypertarget{elevator__hardware_8h_a5457414cc26332731098d18c37a46e6cad20de8df1af7d13ad4e904f918dc09d1}\label{elevator__hardware_8h_a5457414cc26332731098d18c37a46e6cad20de8df1af7d13ad4e904f918dc09d1}} 
+B\+U\+T\+T\+O\+N\+\_\+\+C\+O\+M\+M\+A\+ND&Elevator cab order from within the elevator. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 30 of file elevator\+\_\+hardware.\+h.
+
+\mbox{\Hypertarget{elevator__hardware_8h_ac873de158b370a210216e4b4c7fb218f}\label{elevator__hardware_8h_ac873de158b370a210216e4b4c7fb218f}} 
+\index{elevator\+\_\+hardware.\+h@{elevator\+\_\+hardware.\+h}!elev\+\_\+motor\+\_\+direction\+\_\+t@{elev\+\_\+motor\+\_\+direction\+\_\+t}}
+\index{elev\+\_\+motor\+\_\+direction\+\_\+t@{elev\+\_\+motor\+\_\+direction\+\_\+t}!elevator\+\_\+hardware.\+h@{elevator\+\_\+hardware.\+h}}
+\subsubsection{\texorpdfstring{elev\+\_\+motor\+\_\+direction\+\_\+t}{elev\_motor\_direction\_t}}
+{\footnotesize\ttfamily enum \hyperlink{elevator__hardware_8h_ac873de158b370a210216e4b4c7fb218f}{elev\+\_\+motor\+\_\+direction\+\_\+t}}
+
+Motor direction for function \hyperlink{elevator__hardware_8h_ac7dccb879f6e812e9d245174a0214536}{elev\+\_\+set\+\_\+motor\+\_\+direction()}. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{D\+I\+R\+N\+\_\+\+D\+O\+WN@{D\+I\+R\+N\+\_\+\+D\+O\+WN}!elevator\+\_\+hardware.\+h@{elevator\+\_\+hardware.\+h}}\index{elevator\+\_\+hardware.\+h@{elevator\+\_\+hardware.\+h}!D\+I\+R\+N\+\_\+\+D\+O\+WN@{D\+I\+R\+N\+\_\+\+D\+O\+WN}}}\mbox{\Hypertarget{elevator__hardware_8h_ac873de158b370a210216e4b4c7fb218fa3164bca805ecbf4446a19625a7b55411}\label{elevator__hardware_8h_ac873de158b370a210216e4b4c7fb218fa3164bca805ecbf4446a19625a7b55411}} 
+D\+I\+R\+N\+\_\+\+D\+O\+WN&Elevator motor direction downwards. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{D\+I\+R\+N\+\_\+\+S\+T\+OP@{D\+I\+R\+N\+\_\+\+S\+T\+OP}!elevator\+\_\+hardware.\+h@{elevator\+\_\+hardware.\+h}}\index{elevator\+\_\+hardware.\+h@{elevator\+\_\+hardware.\+h}!D\+I\+R\+N\+\_\+\+S\+T\+OP@{D\+I\+R\+N\+\_\+\+S\+T\+OP}}}\mbox{\Hypertarget{elevator__hardware_8h_ac873de158b370a210216e4b4c7fb218fa72dbefe6c155fb5ea5c8d242a8079646}\label{elevator__hardware_8h_ac873de158b370a210216e4b4c7fb218fa72dbefe6c155fb5ea5c8d242a8079646}} 
+D\+I\+R\+N\+\_\+\+S\+T\+OP&Elevator motor stopped. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{D\+I\+R\+N\+\_\+\+UP@{D\+I\+R\+N\+\_\+\+UP}!elevator\+\_\+hardware.\+h@{elevator\+\_\+hardware.\+h}}\index{elevator\+\_\+hardware.\+h@{elevator\+\_\+hardware.\+h}!D\+I\+R\+N\+\_\+\+UP@{D\+I\+R\+N\+\_\+\+UP}}}\mbox{\Hypertarget{elevator__hardware_8h_ac873de158b370a210216e4b4c7fb218fa92f9028d3af929e10b735b77e0c8de60}\label{elevator__hardware_8h_ac873de158b370a210216e4b4c7fb218fa92f9028d3af929e10b735b77e0c8de60}} 
+D\+I\+R\+N\+\_\+\+UP&Elevator motor direction upwards. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 21 of file elevator\+\_\+hardware.\+h.
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{elevator__hardware_8h_a2350a1635233760719700552a6cb0763}\label{elevator__hardware_8h_a2350a1635233760719700552a6cb0763}} 
+\index{elevator\+\_\+hardware.\+h@{elevator\+\_\+hardware.\+h}!elev\+\_\+get\+\_\+button\+\_\+signal@{elev\+\_\+get\+\_\+button\+\_\+signal}}
+\index{elev\+\_\+get\+\_\+button\+\_\+signal@{elev\+\_\+get\+\_\+button\+\_\+signal}!elevator\+\_\+hardware.\+h@{elevator\+\_\+hardware.\+h}}
+\subsubsection{\texorpdfstring{elev\+\_\+get\+\_\+button\+\_\+signal()}{elev\_get\_button\_signal()}}
+{\footnotesize\ttfamily int elev\+\_\+get\+\_\+button\+\_\+signal (\begin{DoxyParamCaption}\item[{\hyperlink{elevator__hardware_8h_a5457414cc26332731098d18c37a46e6c}{elev\+\_\+button\+\_\+type\+\_\+t}}]{button,  }\item[{int}]{floor }\end{DoxyParamCaption})}
+
+Gets a button signal. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em button} & Which button type to check as defined in \hyperlink{elevator__hardware_8h_a5457414cc26332731098d18c37a46e6c}{elev\+\_\+button\+\_\+type\+\_\+t}. \\
+\hline
+\mbox{\tt in}  & {\em floor} & Which floor to check button. Must be 0-\/3. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if button is not pushed. 1 if button is pushed. 
+\end{DoxyReturn}
+
+
+Definition at line 96 of file elevator\+\_\+hardware.\+c.
+
+\mbox{\Hypertarget{elevator__hardware_8h_a97d30b7e2538acf5647515638070fdc5}\label{elevator__hardware_8h_a97d30b7e2538acf5647515638070fdc5}} 
+\index{elevator\+\_\+hardware.\+h@{elevator\+\_\+hardware.\+h}!elev\+\_\+get\+\_\+floor\+\_\+sensor\+\_\+signal@{elev\+\_\+get\+\_\+floor\+\_\+sensor\+\_\+signal}}
+\index{elev\+\_\+get\+\_\+floor\+\_\+sensor\+\_\+signal@{elev\+\_\+get\+\_\+floor\+\_\+sensor\+\_\+signal}!elevator\+\_\+hardware.\+h@{elevator\+\_\+hardware.\+h}}
+\subsubsection{\texorpdfstring{elev\+\_\+get\+\_\+floor\+\_\+sensor\+\_\+signal()}{elev\_get\_floor\_sensor\_signal()}}
+{\footnotesize\ttfamily int elev\+\_\+get\+\_\+floor\+\_\+sensor\+\_\+signal (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get floor sensor signal. \begin{DoxyReturn}{Returns}
+-\/1 if elevator is not on a floor. 0-\/3 if elevator is on floor. 0 is ground floor, 3 is top floor. 
+\end{DoxyReturn}
+
+
+Definition at line 106 of file elevator\+\_\+hardware.\+c.
+
+\mbox{\Hypertarget{elevator__hardware_8h_acd97a0fbc9013dc954923e25e90be9df}\label{elevator__hardware_8h_acd97a0fbc9013dc954923e25e90be9df}} 
+\index{elevator\+\_\+hardware.\+h@{elevator\+\_\+hardware.\+h}!elev\+\_\+get\+\_\+obstruction\+\_\+signal@{elev\+\_\+get\+\_\+obstruction\+\_\+signal}}
+\index{elev\+\_\+get\+\_\+obstruction\+\_\+signal@{elev\+\_\+get\+\_\+obstruction\+\_\+signal}!elevator\+\_\+hardware.\+h@{elevator\+\_\+hardware.\+h}}
+\subsubsection{\texorpdfstring{elev\+\_\+get\+\_\+obstruction\+\_\+signal()}{elev\_get\_obstruction\_signal()}}
+{\footnotesize\ttfamily int elev\+\_\+get\+\_\+obstruction\+\_\+signal (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get signal from obstruction switch. \begin{DoxyReturn}{Returns}
+1 if obstruction is enabled. 0 if not. 
+\end{DoxyReturn}
+
+
+Definition at line 126 of file elevator\+\_\+hardware.\+c.
+
+\mbox{\Hypertarget{elevator__hardware_8h_ab702d0ff2d7d03172b7ae3829ba13028}\label{elevator__hardware_8h_ab702d0ff2d7d03172b7ae3829ba13028}} 
+\index{elevator\+\_\+hardware.\+h@{elevator\+\_\+hardware.\+h}!elev\+\_\+get\+\_\+stop\+\_\+signal@{elev\+\_\+get\+\_\+stop\+\_\+signal}}
+\index{elev\+\_\+get\+\_\+stop\+\_\+signal@{elev\+\_\+get\+\_\+stop\+\_\+signal}!elevator\+\_\+hardware.\+h@{elevator\+\_\+hardware.\+h}}
+\subsubsection{\texorpdfstring{elev\+\_\+get\+\_\+stop\+\_\+signal()}{elev\_get\_stop\_signal()}}
+{\footnotesize\ttfamily int elev\+\_\+get\+\_\+stop\+\_\+signal (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get signal from stop button. \begin{DoxyReturn}{Returns}
+1 if stop button is pushed, 0 if not. 
+\end{DoxyReturn}
+
+
+Definition at line 116 of file elevator\+\_\+hardware.\+c.
+
+\mbox{\Hypertarget{elevator__hardware_8h_a9947d40b2dd08b246692ce64ef60b8c9}\label{elevator__hardware_8h_a9947d40b2dd08b246692ce64ef60b8c9}} 
+\index{elevator\+\_\+hardware.\+h@{elevator\+\_\+hardware.\+h}!elev\+\_\+init@{elev\+\_\+init}}
+\index{elev\+\_\+init@{elev\+\_\+init}!elevator\+\_\+hardware.\+h@{elevator\+\_\+hardware.\+h}}
+\subsubsection{\texorpdfstring{elev\+\_\+init()}{elev\_init()}}
+{\footnotesize\ttfamily void elev\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Initialize elevator. \begin{DoxyReturn}{Returns}
+Non-\/zero on success, 0 on failure. 
+\end{DoxyReturn}
+
+
+Definition at line 19 of file elevator\+\_\+hardware.\+c.
+
+\mbox{\Hypertarget{elevator__hardware_8h_a9e81321c63d80ddf1699bc91593cd9d4}\label{elevator__hardware_8h_a9e81321c63d80ddf1699bc91593cd9d4}} 
+\index{elevator\+\_\+hardware.\+h@{elevator\+\_\+hardware.\+h}!elev\+\_\+set\+\_\+button\+\_\+lamp@{elev\+\_\+set\+\_\+button\+\_\+lamp}}
+\index{elev\+\_\+set\+\_\+button\+\_\+lamp@{elev\+\_\+set\+\_\+button\+\_\+lamp}!elevator\+\_\+hardware.\+h@{elevator\+\_\+hardware.\+h}}
+\subsubsection{\texorpdfstring{elev\+\_\+set\+\_\+button\+\_\+lamp()}{elev\_set\_button\_lamp()}}
+{\footnotesize\ttfamily void elev\+\_\+set\+\_\+button\+\_\+lamp (\begin{DoxyParamCaption}\item[{\hyperlink{elevator__hardware_8h_a5457414cc26332731098d18c37a46e6c}{elev\+\_\+button\+\_\+type\+\_\+t}}]{button,  }\item[{int}]{floor,  }\item[{int}]{value }\end{DoxyParamCaption})}
+
+Set a button lamp. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em lamp} & Which type of lamp to set as defined in \hyperlink{elevator__hardware_8h_a5457414cc26332731098d18c37a46e6c}{elev\+\_\+button\+\_\+type\+\_\+t}. \\
+\hline
+\mbox{\tt in}  & {\em floor} & Floor of lamp to set. Must be 0-\/3 \\
+\hline
+\mbox{\tt in}  & {\em value} & Non-\/zero value turns lamp on, 0 turns lamp off. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 58 of file elevator\+\_\+hardware.\+c.
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=329pt]{elevator__hardware_8h_a9e81321c63d80ddf1699bc91593cd9d4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{elevator__hardware_8h_a6ce9a34b8677b483b0d8f9dc47b42c40}\label{elevator__hardware_8h_a6ce9a34b8677b483b0d8f9dc47b42c40}} 
+\index{elevator\+\_\+hardware.\+h@{elevator\+\_\+hardware.\+h}!elev\+\_\+set\+\_\+door\+\_\+open\+\_\+lamp@{elev\+\_\+set\+\_\+door\+\_\+open\+\_\+lamp}}
+\index{elev\+\_\+set\+\_\+door\+\_\+open\+\_\+lamp@{elev\+\_\+set\+\_\+door\+\_\+open\+\_\+lamp}!elevator\+\_\+hardware.\+h@{elevator\+\_\+hardware.\+h}}
+\subsubsection{\texorpdfstring{elev\+\_\+set\+\_\+door\+\_\+open\+\_\+lamp()}{elev\_set\_door\_open\_lamp()}}
+{\footnotesize\ttfamily void elev\+\_\+set\+\_\+door\+\_\+open\+\_\+lamp (\begin{DoxyParamCaption}\item[{int}]{value }\end{DoxyParamCaption})}
+
+Turn door-\/open lamp on or off. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em value} & Non-\/zero value turns lamp on, 0 turns lamp off. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 80 of file elevator\+\_\+hardware.\+c.
+
+\mbox{\Hypertarget{elevator__hardware_8h_a6af53dd3ebae3a5791ba345eac84d4be}\label{elevator__hardware_8h_a6af53dd3ebae3a5791ba345eac84d4be}} 
+\index{elevator\+\_\+hardware.\+h@{elevator\+\_\+hardware.\+h}!elev\+\_\+set\+\_\+floor\+\_\+indicator@{elev\+\_\+set\+\_\+floor\+\_\+indicator}}
+\index{elev\+\_\+set\+\_\+floor\+\_\+indicator@{elev\+\_\+set\+\_\+floor\+\_\+indicator}!elevator\+\_\+hardware.\+h@{elevator\+\_\+hardware.\+h}}
+\subsubsection{\texorpdfstring{elev\+\_\+set\+\_\+floor\+\_\+indicator()}{elev\_set\_floor\_indicator()}}
+{\footnotesize\ttfamily void elev\+\_\+set\+\_\+floor\+\_\+indicator (\begin{DoxyParamCaption}\item[{int}]{floor }\end{DoxyParamCaption})}
+
+Set floor indicator lamp for a given floor. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em floor} & Which floor lamp to turn on. Other floor lamps are turned off. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 70 of file elevator\+\_\+hardware.\+c.
+
+\mbox{\Hypertarget{elevator__hardware_8h_ac7dccb879f6e812e9d245174a0214536}\label{elevator__hardware_8h_ac7dccb879f6e812e9d245174a0214536}} 
+\index{elevator\+\_\+hardware.\+h@{elevator\+\_\+hardware.\+h}!elev\+\_\+set\+\_\+motor\+\_\+direction@{elev\+\_\+set\+\_\+motor\+\_\+direction}}
+\index{elev\+\_\+set\+\_\+motor\+\_\+direction@{elev\+\_\+set\+\_\+motor\+\_\+direction}!elevator\+\_\+hardware.\+h@{elevator\+\_\+hardware.\+h}}
+\subsubsection{\texorpdfstring{elev\+\_\+set\+\_\+motor\+\_\+direction()}{elev\_set\_motor\_direction()}}
+{\footnotesize\ttfamily void elev\+\_\+set\+\_\+motor\+\_\+direction (\begin{DoxyParamCaption}\item[{\hyperlink{elevator__hardware_8h_ac873de158b370a210216e4b4c7fb218f}{elev\+\_\+motor\+\_\+direction\+\_\+t}}]{dirn }\end{DoxyParamCaption})}
+
+Sets the motor direction of the elevator. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em dirn} & New direction of the elevator. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 51 of file elevator\+\_\+hardware.\+c.
+
+\mbox{\Hypertarget{elevator__hardware_8h_a85de2a6536b4dd0c83bac19923500740}\label{elevator__hardware_8h_a85de2a6536b4dd0c83bac19923500740}} 
+\index{elevator\+\_\+hardware.\+h@{elevator\+\_\+hardware.\+h}!elev\+\_\+set\+\_\+stop\+\_\+lamp@{elev\+\_\+set\+\_\+stop\+\_\+lamp}}
+\index{elev\+\_\+set\+\_\+stop\+\_\+lamp@{elev\+\_\+set\+\_\+stop\+\_\+lamp}!elevator\+\_\+hardware.\+h@{elevator\+\_\+hardware.\+h}}
+\subsubsection{\texorpdfstring{elev\+\_\+set\+\_\+stop\+\_\+lamp()}{elev\_set\_stop\_lamp()}}
+{\footnotesize\ttfamily void elev\+\_\+set\+\_\+stop\+\_\+lamp (\begin{DoxyParamCaption}\item[{int}]{value }\end{DoxyParamCaption})}
+
+Turn stop lamp on or off. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em value} & Non-\/zero value turns lamp on, 0 turns lamp off. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 87 of file elevator\+\_\+hardware.\+c.
+

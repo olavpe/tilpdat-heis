@@ -1,0 +1,6 @@
+<map id="source/fsm.c" name="source/fsm.c">
+<area shape="rect" id="node7" href="$elevator__hardware_8h.html" title="The driver that communicates with the elevator hardware. This is done through a server that is set up..." alt="" coords="404,155,542,181"/>
+<area shape="rect" id="node8" href="$fsm_8h.html" title="This class that controls the main functions of the elevator. It is responsible for checking input sig..." alt="" coords="567,155,622,181"/>
+<area shape="rect" id="node9" href="$queue_8h.html" title="A queue system that helps the finite state machine (fsm) to carry out the orders received from the el..." alt="" coords="438,80,506,107"/>
+<area shape="rect" id="node11" href="$timer_8h.html" title="A smaller module that manages the time dependent operations of the state machine. ..." alt="" coords="206,80,268,107"/>
+</map>

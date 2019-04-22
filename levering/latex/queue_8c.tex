@@ -1,0 +1,214 @@
+\hypertarget{queue_8c}{}\section{source/queue.c File Reference}
+\label{queue_8c}\index{source/queue.\+c@{source/queue.\+c}}
+
+
+Implementation of the functions in \hyperlink{queue_8h}{queue.\+h}.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}queue.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}elevator\+\_\+hardware.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}fsm.\+h\char`\"{}}\newline
+Include dependency graph for queue.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{queue_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{queue_8c_a600fb7cf1ff3b028fcb97aa1af196065}{queue\+\_\+reset\+\_\+queue} ()
+\begin{DoxyCompactList}\small\item\em Deletes all orders in the queue by setting all the order options to the initial value 0. \end{DoxyCompactList}\item 
+void \hyperlink{queue_8c_a6b21f1da6ba83e1ee8ac5a64854415b7}{queue\+\_\+delete\+\_\+order} (\hyperlink{fsm_8h_a5b3a976f46b9e6993f1692a09bf2fd60}{floor\+\_\+t} floor)
+\begin{DoxyCompactList}\small\item\em Deletes an order in the queue. \end{DoxyCompactList}\item 
+void \hyperlink{queue_8c_ad9bbc447a9b368307ff0ea803d6c0fe1}{queue\+\_\+set\+\_\+order} (\hyperlink{elevator__hardware_8h_a5457414cc26332731098d18c37a46e6c}{elev\+\_\+button\+\_\+type\+\_\+t} button, \hyperlink{fsm_8h_a5b3a976f46b9e6993f1692a09bf2fd60}{floor\+\_\+t} floor)
+\begin{DoxyCompactList}\small\item\em Sets an order in the queue. \end{DoxyCompactList}\item 
+bool \hyperlink{queue_8c_a5f1a2d18955993f8c78589a8ce56dae9}{queue\+\_\+is\+\_\+queue\+\_\+empty} ()
+\begin{DoxyCompactList}\small\item\em Checks whether the queue has any orders. \end{DoxyCompactList}\item 
+\hyperlink{elevator__hardware_8h_ac873de158b370a210216e4b4c7fb218f}{elev\+\_\+motor\+\_\+direction\+\_\+t} \hyperlink{queue_8c_af2c4aec8d254eec04f73df6b5bba25d4}{queue\+\_\+get\+\_\+next\+\_\+direction} (\hyperlink{fsm_8h_a31f24aef3ddd32d2e6538ffff4055d37}{position\+\_\+t} current\+\_\+position, \hyperlink{elevator__hardware_8h_ac873de158b370a210216e4b4c7fb218f}{elev\+\_\+motor\+\_\+direction\+\_\+t} last\+\_\+direction)
+\begin{DoxyCompactList}\small\item\em Checks if the elevator has any orders above, below or at its current position. The function will choose the next direction of the elevator based on these values and will prioritize the orders that is in the direction of the elevator. \end{DoxyCompactList}\item 
+bool \hyperlink{queue_8c_a83fd2eb719d7deb1b38cbe8e00603eea}{queue\+\_\+should\+\_\+stop} (\hyperlink{fsm_8h_a31f24aef3ddd32d2e6538ffff4055d37}{position\+\_\+t} \hyperlink{fsm_8c_a740b52d852a7ed32ae50f2433e7fc8dd}{fsm\+\_\+position}, \hyperlink{fsm_8h_a5b3a976f46b9e6993f1692a09bf2fd60}{floor\+\_\+t} \hyperlink{fsm_8c_ae58b9d6bb7b780f3c1e7fd26baeb5683}{fsm\+\_\+floor}, \hyperlink{elevator__hardware_8h_ac873de158b370a210216e4b4c7fb218f}{elev\+\_\+motor\+\_\+direction\+\_\+t} \hyperlink{fsm_8c_a34c0ceaa7f628cf25af6d97bb6775eb4}{fsm\+\_\+direction})
+\begin{DoxyCompactList}\small\item\em Checks if the elevator should stop when arriving at a floor, based on orders in the queue array. This function will inform the elevator that it should stop if\+: \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{queue_8c_a97dcb6f4deeeacf4e099dd437327b9e7}\label{queue_8c_a97dcb6f4deeeacf4e099dd437327b9e7}} 
+static int \hyperlink{queue_8c_a97dcb6f4deeeacf4e099dd437327b9e7}{queue\+\_\+array} \mbox{[}\hyperlink{elevator__hardware_8h_a271dda243b0f5bd7d2053d258eb71962}{N\+\_\+\+B\+U\+T\+T\+O\+NS}\mbox{]}\mbox{[}\hyperlink{elevator__hardware_8h_ae0592e3739e5e1e76234bb1caf9d1305}{N\+\_\+\+F\+L\+O\+O\+RS}\mbox{]}
+\begin{DoxyCompactList}\small\item\em A two dimensional array to keep track of the elevators orders. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Implementation of the functions in \hyperlink{queue_8h}{queue.\+h}. 
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{queue_8c_a6b21f1da6ba83e1ee8ac5a64854415b7}\label{queue_8c_a6b21f1da6ba83e1ee8ac5a64854415b7}} 
+\index{queue.\+c@{queue.\+c}!queue\+\_\+delete\+\_\+order@{queue\+\_\+delete\+\_\+order}}
+\index{queue\+\_\+delete\+\_\+order@{queue\+\_\+delete\+\_\+order}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{queue\+\_\+delete\+\_\+order()}{queue\_delete\_order()}}
+{\footnotesize\ttfamily void queue\+\_\+delete\+\_\+order (\begin{DoxyParamCaption}\item[{\hyperlink{fsm_8h_a5b3a976f46b9e6993f1692a09bf2fd60}{floor\+\_\+t}}]{floor }\end{DoxyParamCaption})}
+
+
+
+Deletes an order in the queue. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em floor} & Floor the elevator is at \\
+\hline
+\mbox{\tt out}  & {\em queue\+\_\+array} & Queue table \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 35 of file queue.\+c.
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=329pt]{queue_8c_a6b21f1da6ba83e1ee8ac5a64854415b7_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{queue_8c_af2c4aec8d254eec04f73df6b5bba25d4}\label{queue_8c_af2c4aec8d254eec04f73df6b5bba25d4}} 
+\index{queue.\+c@{queue.\+c}!queue\+\_\+get\+\_\+next\+\_\+direction@{queue\+\_\+get\+\_\+next\+\_\+direction}}
+\index{queue\+\_\+get\+\_\+next\+\_\+direction@{queue\+\_\+get\+\_\+next\+\_\+direction}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{queue\+\_\+get\+\_\+next\+\_\+direction()}{queue\_get\_next\_direction()}}
+{\footnotesize\ttfamily \hyperlink{elevator__hardware_8h_ac873de158b370a210216e4b4c7fb218f}{elev\+\_\+motor\+\_\+direction\+\_\+t} queue\+\_\+get\+\_\+next\+\_\+direction (\begin{DoxyParamCaption}\item[{\hyperlink{fsm_8h_a31f24aef3ddd32d2e6538ffff4055d37}{position\+\_\+t}}]{current\+\_\+position,  }\item[{\hyperlink{elevator__hardware_8h_ac873de158b370a210216e4b4c7fb218f}{elev\+\_\+motor\+\_\+direction\+\_\+t}}]{last\+\_\+direction }\end{DoxyParamCaption})}
+
+
+
+Checks if the elevator has any orders above, below or at its current position. The function will choose the next direction of the elevator based on these values and will prioritize the orders that is in the direction of the elevator. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em current\+\_\+position} & The current position of the elevator \\
+\hline
+\mbox{\tt in}  & {\em last\+\_\+direction} & The direction of travel of the elevator.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+next direction of the elevator. 
+\end{DoxyReturn}
+
+
+Definition at line 64 of file queue.\+c.
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{queue_8c_af2c4aec8d254eec04f73df6b5bba25d4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{queue_8c_a5f1a2d18955993f8c78589a8ce56dae9}\label{queue_8c_a5f1a2d18955993f8c78589a8ce56dae9}} 
+\index{queue.\+c@{queue.\+c}!queue\+\_\+is\+\_\+queue\+\_\+empty@{queue\+\_\+is\+\_\+queue\+\_\+empty}}
+\index{queue\+\_\+is\+\_\+queue\+\_\+empty@{queue\+\_\+is\+\_\+queue\+\_\+empty}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{queue\+\_\+is\+\_\+queue\+\_\+empty()}{queue\_is\_queue\_empty()}}
+{\footnotesize\ttfamily bool queue\+\_\+is\+\_\+queue\+\_\+empty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks whether the queue has any orders. 
+
+\begin{DoxyReturn}{Returns}
+1 if the queue is empty, 0 if not. 
+\end{DoxyReturn}
+
+
+Definition at line 48 of file queue.\+c.
+
+\mbox{\Hypertarget{queue_8c_a600fb7cf1ff3b028fcb97aa1af196065}\label{queue_8c_a600fb7cf1ff3b028fcb97aa1af196065}} 
+\index{queue.\+c@{queue.\+c}!queue\+\_\+reset\+\_\+queue@{queue\+\_\+reset\+\_\+queue}}
+\index{queue\+\_\+reset\+\_\+queue@{queue\+\_\+reset\+\_\+queue}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{queue\+\_\+reset\+\_\+queue()}{queue\_reset\_queue()}}
+{\footnotesize\ttfamily void queue\+\_\+reset\+\_\+queue (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Deletes all orders in the queue by setting all the order options to the initial value 0. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em queue\+\_\+array} & Queue table \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 24 of file queue.\+c.
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=329pt]{queue_8c_a600fb7cf1ff3b028fcb97aa1af196065_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{queue_8c_ad9bbc447a9b368307ff0ea803d6c0fe1}\label{queue_8c_ad9bbc447a9b368307ff0ea803d6c0fe1}} 
+\index{queue.\+c@{queue.\+c}!queue\+\_\+set\+\_\+order@{queue\+\_\+set\+\_\+order}}
+\index{queue\+\_\+set\+\_\+order@{queue\+\_\+set\+\_\+order}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{queue\+\_\+set\+\_\+order()}{queue\_set\_order()}}
+{\footnotesize\ttfamily void queue\+\_\+set\+\_\+order (\begin{DoxyParamCaption}\item[{\hyperlink{elevator__hardware_8h_a5457414cc26332731098d18c37a46e6c}{elev\+\_\+button\+\_\+type\+\_\+t}}]{button,  }\item[{\hyperlink{fsm_8h_a5b3a976f46b9e6993f1692a09bf2fd60}{floor\+\_\+t}}]{floor }\end{DoxyParamCaption})}
+
+
+
+Sets an order in the queue. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em button} & Hardware buttons \\
+\hline
+\mbox{\tt in}  & {\em floor} & At a floor \\
+\hline
+\mbox{\tt out}  & {\em queue\+\_\+array} & Queue table \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 43 of file queue.\+c.
+
+\mbox{\Hypertarget{queue_8c_a83fd2eb719d7deb1b38cbe8e00603eea}\label{queue_8c_a83fd2eb719d7deb1b38cbe8e00603eea}} 
+\index{queue.\+c@{queue.\+c}!queue\+\_\+should\+\_\+stop@{queue\+\_\+should\+\_\+stop}}
+\index{queue\+\_\+should\+\_\+stop@{queue\+\_\+should\+\_\+stop}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{queue\+\_\+should\+\_\+stop()}{queue\_should\_stop()}}
+{\footnotesize\ttfamily bool queue\+\_\+should\+\_\+stop (\begin{DoxyParamCaption}\item[{\hyperlink{fsm_8h_a31f24aef3ddd32d2e6538ffff4055d37}{position\+\_\+t}}]{fsm\+\_\+position,  }\item[{\hyperlink{fsm_8h_a5b3a976f46b9e6993f1692a09bf2fd60}{floor\+\_\+t}}]{fsm\+\_\+floor,  }\item[{\hyperlink{elevator__hardware_8h_ac873de158b370a210216e4b4c7fb218f}{elev\+\_\+motor\+\_\+direction\+\_\+t}}]{fsm\+\_\+direction }\end{DoxyParamCaption})}
+
+
+
+Checks if the elevator should stop when arriving at a floor, based on orders in the queue array. This function will inform the elevator that it should stop if\+: 
+
+
+\begin{DoxyItemize}
+\item There are no further orders in the direction.
+\item There are cab or hall calls in the direction of travel.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em fsm\+\_\+position} & The current position of the elevator. \\
+\hline
+\mbox{\tt in}  & {\em fsm\+\_\+floor} & The current floor of the elevator. \\
+\hline
+\mbox{\tt in}  & {\em fsm\+\_\+direction} & The direction of travel the elevator.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 of the elevator should stop, 0 if not. 
+\end{DoxyReturn}
+
+
+Definition at line 88 of file queue.\+c.
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{queue_8c_a83fd2eb719d7deb1b38cbe8e00603eea_cgraph}
+\end{center}
+\end{figure}

@@ -1,0 +1,68 @@
+The main goal of this project was to design and program a functional elevator that can receive hall orders up, hall orders down, and cab call from within the elevator. The project was programmed in C utilizing the elevator hardware found in the Real time programming laboratory. The project can also be run on the \href{https://github.com/TTK4145/Simulator-v2}{\tt {\ttfamily Sim\+Elevator\+Server}} program to test the program.
+
+With permission from the Lab Instructor Kolbjørn Austreng, we were permitted to communicate with the elevator hardware via the a server used in the course T\+T\+K4145 Real-\/time Programming, \href{https://github.com/TTK4145/elevator-server}{\tt {\ttfamily Elevator\+Server}}. This means {\ttfamily \hyperlink{elevator__hardware_8c}{elevator\+\_\+hardware.\+c}} and {\ttfamily \hyperlink{elevator__hardware_8h}{elevator\+\_\+hardware.\+h}} were used to communicate with the elevator instead of\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily elev.\+c}
+\item {\ttfamily elev.\+h}
+\item {\ttfamily io.\+c}
+\item {\ttfamily io.\+h}
+\end{DoxyItemize}
+
+The functions names in {\ttfamily \hyperlink{elevator__hardware_8c}{elevator\+\_\+hardware.\+c}} are the same and behave in the same manner as the files listed above. 
+
+
+
+\subsubsection*{Documentation}
+
+Documentation for this project can be found as html version to be opened in an internet browser or via the pdf document. The html documentation can be found by opening {\ttfamily html/index.\+html} (or by clicking \href{html/index.html}{\tt here}) and the {\ttfamily pdf} version can be found by opening {\ttfamily latex/refman.\+pdf}(or by clicking \href{latex/refman.pdf}{\tt here}). The various diagrams for the project can be found in the {\ttfamily docs/} folder and can also be seen below. It is {\bfseries H\+I\+G\+H\+LY R\+E\+C\+O\+M\+M\+E\+N\+D\+ED} to view the {\ttfamily html} documentation instead of the {\ttfamily pdf} version as the formatting makes it easier to read. 
+
+
+
+\subsubsection*{Running the program}
+
+The program can be run in the lab by starting up a terminal by typing in the command\+:
+
+
+\begin{DoxyCode}
+ElevatorServer
+\end{DoxyCode}
+
+
+In another terminal instance the following can be written to compile and run the elevator\+:
+
+
+\begin{DoxyCode}
+make
+./heis
+\end{DoxyCode}
+
+
+Alternatively, the following command can be run once to grant permission to a bash script\+:
+
+
+\begin{DoxyCode}
+chmod +x run\_elevator
+\end{DoxyCode}
+
+
+Followed by the following command every time the program is to be compiled and run\+:
+
+
+\begin{DoxyCode}
+./run\_elevator
+\end{DoxyCode}
+ 
+
+
+
+\subsubsection*{Diagrams}
+
+The following diagrams were created to more easily design and understand the system. These can also be found as {\ttfamily .pdf} versions in the {\ttfamily docs/} folder
+
+
+
+
+
+ 

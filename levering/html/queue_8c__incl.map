@@ -1,0 +1,5 @@
+<map id="source/queue.c" name="source/queue.c">
+<area shape="rect" id="node6" href="$queue_8h.html" title="A queue system that helps the finite state machine (fsm) to carry out the orders received from the el..." alt="" coords="159,80,227,107"/>
+<area shape="rect" id="node7" href="$elevator__hardware_8h.html" title="The driver that communicates with the elevator hardware. This is done through a server that is set up..." alt="" coords="189,155,328,181"/>
+<area shape="rect" id="node8" href="$fsm_8h.html" title="This class that controls the main functions of the elevator. It is responsible for checking input sig..." alt="" coords="353,155,407,181"/>
+</map>

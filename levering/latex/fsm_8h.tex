@@ -1,0 +1,213 @@
+\hypertarget{fsm_8h}{}\section{source/fsm.h File Reference}
+\label{fsm_8h}\index{source/fsm.\+h@{source/fsm.\+h}}
+
+
+This class that controls the main functions of the elevator. It is responsible for checking input signals in addtion to managing the state of the elevator.  
+
+
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{fsm_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{fsm_8h_af4fe70813ab0d1707845d398679e5b6c}\label{fsm_8h_af4fe70813ab0d1707845d398679e5b6c}} 
+\#define \hyperlink{fsm_8h_af4fe70813ab0d1707845d398679e5b6c}{N\+\_\+\+P\+O\+S\+I\+T\+I\+O\+NS}~7
+\begin{DoxyCompactList}\small\item\em Number of positions in \hyperlink{fsm_8h_a31f24aef3ddd32d2e6538ffff4055d37}{position\+\_\+t} without U\+N\+K\+N\+O\+WN. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{fsm_8h_a31f24aef3ddd32d2e6538ffff4055d37}{position\+\_\+t} \{ \newline
+\hyperlink{fsm_8h_a31f24aef3ddd32d2e6538ffff4055d37a41c260e6185ffde5e92e0b0aeef6168e}{F\+L\+O\+O\+R\+\_\+0}, 
+\hyperlink{fsm_8h_a31f24aef3ddd32d2e6538ffff4055d37ae42db7623b9d5bd03eb182b0f642ae4f}{B\+E\+T\+W\+E\+E\+N\+\_\+0\+\_\+\+A\+N\+D\+\_\+1}, 
+\hyperlink{fsm_8h_a31f24aef3ddd32d2e6538ffff4055d37a545045ddd4e0e4e18ae6b1b7e4c5f825}{F\+L\+O\+O\+R\+\_\+1}, 
+\hyperlink{fsm_8h_a31f24aef3ddd32d2e6538ffff4055d37ac8953131d568e475dc00ffd7950ebe69}{B\+E\+T\+W\+E\+E\+N\+\_\+1\+\_\+\+A\+N\+D\+\_\+2}, 
+\newline
+\hyperlink{fsm_8h_a31f24aef3ddd32d2e6538ffff4055d37aa1091247dd00a6c252b76abb82995b84}{F\+L\+O\+O\+R\+\_\+2}, 
+\hyperlink{fsm_8h_a31f24aef3ddd32d2e6538ffff4055d37a17c45fc5d4dddf28fdd454d5ccb67121}{B\+E\+T\+W\+E\+E\+N\+\_\+2\+\_\+\+A\+N\+D\+\_\+3}, 
+\hyperlink{fsm_8h_a31f24aef3ddd32d2e6538ffff4055d37a7511f408b1d4eff0cd7d404c259e6444}{F\+L\+O\+O\+R\+\_\+3}, 
+\hyperlink{fsm_8h_a31f24aef3ddd32d2e6538ffff4055d37a6ce26a62afab55d7606ad4e92428b30c}{U\+N\+K\+N\+O\+WN}
+ \}
+\item 
+enum \hyperlink{fsm_8h_a5b3a976f46b9e6993f1692a09bf2fd60}{floor\+\_\+t} \{ \newline
+\hyperlink{fsm_8h_a5b3a976f46b9e6993f1692a09bf2fd60a5787f0901495747fb4e2af00a9dee3e5}{O\+R\+D\+E\+R\+\_\+\+F\+L\+O\+O\+R\+\_\+0}, 
+\hyperlink{fsm_8h_a5b3a976f46b9e6993f1692a09bf2fd60a02cccb1c061435f60bdf841d1d61aed6}{O\+R\+D\+E\+R\+\_\+\+F\+L\+O\+O\+R\+\_\+1}, 
+\hyperlink{fsm_8h_a5b3a976f46b9e6993f1692a09bf2fd60a276aebedcca412e8f7804f8b9fb0b68b}{O\+R\+D\+E\+R\+\_\+\+F\+L\+O\+O\+R\+\_\+2}, 
+\hyperlink{fsm_8h_a5b3a976f46b9e6993f1692a09bf2fd60a3ccf110169f2cd64bd7bbd8bb0a27d6e}{O\+R\+D\+E\+R\+\_\+\+F\+L\+O\+O\+R\+\_\+3}, 
+\newline
+\hyperlink{fsm_8h_a5b3a976f46b9e6993f1692a09bf2fd60af37d17a566c389570899450d2ccfcd66}{O\+R\+D\+E\+R\+\_\+\+F\+L\+O\+O\+R\+\_\+\+U\+N\+K\+N\+O\+WN}
+ \}
+\item 
+enum \hyperlink{fsm_8h_aa0aafed44fec19806d8f9ad834be1248}{state\+\_\+t} \{ \newline
+\hyperlink{fsm_8h_aa0aafed44fec19806d8f9ad834be1248a0cb1b2c6a7db1f1084886c98909a3f36}{I\+N\+IT}, 
+\hyperlink{fsm_8h_aa0aafed44fec19806d8f9ad834be1248afd6a0e4343048b10646dd2976cc5ad18}{I\+D\+LE}, 
+\hyperlink{fsm_8h_aa0aafed44fec19806d8f9ad834be1248a16ebdcb23eb5337fd5bc598fa8d6035d}{M\+O\+V\+I\+NG}, 
+\hyperlink{fsm_8h_aa0aafed44fec19806d8f9ad834be1248af079926e3e86ee2c17b3eedbdef15bcd}{O\+P\+E\+N\+\_\+\+D\+O\+OR}, 
+\newline
+\hyperlink{fsm_8h_aa0aafed44fec19806d8f9ad834be1248a56a92b9980c854fa6e488ffeb6a2844b}{E\+M\+E\+R\+G\+E\+N\+C\+Y\+\_\+\+S\+T\+OP}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{fsm_8h_a270932dff1ab343bb350f7c6e02d7a43}{fsm} ()
+\begin{DoxyCompactList}\small\item\em The functions main responsibilites is managing the finite state machine. Before entering a switch that manages the state machine it polls\+: \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class that controls the main functions of the elevator. It is responsible for checking input signals in addtion to managing the state of the elevator. 
+
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{fsm_8h_a5b3a976f46b9e6993f1692a09bf2fd60}\label{fsm_8h_a5b3a976f46b9e6993f1692a09bf2fd60}} 
+\index{fsm.\+h@{fsm.\+h}!floor\+\_\+t@{floor\+\_\+t}}
+\index{floor\+\_\+t@{floor\+\_\+t}!fsm.\+h@{fsm.\+h}}
+\subsubsection{\texorpdfstring{floor\+\_\+t}{floor\_t}}
+{\footnotesize\ttfamily enum \hyperlink{fsm_8h_a5b3a976f46b9e6993f1692a09bf2fd60}{floor\+\_\+t}}
+
+Floor type to dissern the different floors of the elevator. Mainly used when refering queue\+\_\+array in \hyperlink{queue_8h}{queue.\+h} \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{O\+R\+D\+E\+R\+\_\+\+F\+L\+O\+O\+R\+\_\+0@{O\+R\+D\+E\+R\+\_\+\+F\+L\+O\+O\+R\+\_\+0}!fsm.\+h@{fsm.\+h}}\index{fsm.\+h@{fsm.\+h}!O\+R\+D\+E\+R\+\_\+\+F\+L\+O\+O\+R\+\_\+0@{O\+R\+D\+E\+R\+\_\+\+F\+L\+O\+O\+R\+\_\+0}}}\mbox{\Hypertarget{fsm_8h_a5b3a976f46b9e6993f1692a09bf2fd60a5787f0901495747fb4e2af00a9dee3e5}\label{fsm_8h_a5b3a976f46b9e6993f1692a09bf2fd60a5787f0901495747fb4e2af00a9dee3e5}} 
+O\+R\+D\+E\+R\+\_\+\+F\+L\+O\+O\+R\+\_\+0&Floor 0. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{O\+R\+D\+E\+R\+\_\+\+F\+L\+O\+O\+R\+\_\+1@{O\+R\+D\+E\+R\+\_\+\+F\+L\+O\+O\+R\+\_\+1}!fsm.\+h@{fsm.\+h}}\index{fsm.\+h@{fsm.\+h}!O\+R\+D\+E\+R\+\_\+\+F\+L\+O\+O\+R\+\_\+1@{O\+R\+D\+E\+R\+\_\+\+F\+L\+O\+O\+R\+\_\+1}}}\mbox{\Hypertarget{fsm_8h_a5b3a976f46b9e6993f1692a09bf2fd60a02cccb1c061435f60bdf841d1d61aed6}\label{fsm_8h_a5b3a976f46b9e6993f1692a09bf2fd60a02cccb1c061435f60bdf841d1d61aed6}} 
+O\+R\+D\+E\+R\+\_\+\+F\+L\+O\+O\+R\+\_\+1&Floor 1. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{O\+R\+D\+E\+R\+\_\+\+F\+L\+O\+O\+R\+\_\+2@{O\+R\+D\+E\+R\+\_\+\+F\+L\+O\+O\+R\+\_\+2}!fsm.\+h@{fsm.\+h}}\index{fsm.\+h@{fsm.\+h}!O\+R\+D\+E\+R\+\_\+\+F\+L\+O\+O\+R\+\_\+2@{O\+R\+D\+E\+R\+\_\+\+F\+L\+O\+O\+R\+\_\+2}}}\mbox{\Hypertarget{fsm_8h_a5b3a976f46b9e6993f1692a09bf2fd60a276aebedcca412e8f7804f8b9fb0b68b}\label{fsm_8h_a5b3a976f46b9e6993f1692a09bf2fd60a276aebedcca412e8f7804f8b9fb0b68b}} 
+O\+R\+D\+E\+R\+\_\+\+F\+L\+O\+O\+R\+\_\+2&Floor 2. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{O\+R\+D\+E\+R\+\_\+\+F\+L\+O\+O\+R\+\_\+3@{O\+R\+D\+E\+R\+\_\+\+F\+L\+O\+O\+R\+\_\+3}!fsm.\+h@{fsm.\+h}}\index{fsm.\+h@{fsm.\+h}!O\+R\+D\+E\+R\+\_\+\+F\+L\+O\+O\+R\+\_\+3@{O\+R\+D\+E\+R\+\_\+\+F\+L\+O\+O\+R\+\_\+3}}}\mbox{\Hypertarget{fsm_8h_a5b3a976f46b9e6993f1692a09bf2fd60a3ccf110169f2cd64bd7bbd8bb0a27d6e}\label{fsm_8h_a5b3a976f46b9e6993f1692a09bf2fd60a3ccf110169f2cd64bd7bbd8bb0a27d6e}} 
+O\+R\+D\+E\+R\+\_\+\+F\+L\+O\+O\+R\+\_\+3&Floor 3. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{O\+R\+D\+E\+R\+\_\+\+F\+L\+O\+O\+R\+\_\+\+U\+N\+K\+N\+O\+WN@{O\+R\+D\+E\+R\+\_\+\+F\+L\+O\+O\+R\+\_\+\+U\+N\+K\+N\+O\+WN}!fsm.\+h@{fsm.\+h}}\index{fsm.\+h@{fsm.\+h}!O\+R\+D\+E\+R\+\_\+\+F\+L\+O\+O\+R\+\_\+\+U\+N\+K\+N\+O\+WN@{O\+R\+D\+E\+R\+\_\+\+F\+L\+O\+O\+R\+\_\+\+U\+N\+K\+N\+O\+WN}}}\mbox{\Hypertarget{fsm_8h_a5b3a976f46b9e6993f1692a09bf2fd60af37d17a566c389570899450d2ccfcd66}\label{fsm_8h_a5b3a976f46b9e6993f1692a09bf2fd60af37d17a566c389570899450d2ccfcd66}} 
+O\+R\+D\+E\+R\+\_\+\+F\+L\+O\+O\+R\+\_\+\+U\+N\+K\+N\+O\+WN&Unknown floor only during initialization. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 30 of file fsm.\+h.
+
+\mbox{\Hypertarget{fsm_8h_a31f24aef3ddd32d2e6538ffff4055d37}\label{fsm_8h_a31f24aef3ddd32d2e6538ffff4055d37}} 
+\index{fsm.\+h@{fsm.\+h}!position\+\_\+t@{position\+\_\+t}}
+\index{position\+\_\+t@{position\+\_\+t}!fsm.\+h@{fsm.\+h}}
+\subsubsection{\texorpdfstring{position\+\_\+t}{position\_t}}
+{\footnotesize\ttfamily enum \hyperlink{fsm_8h_a31f24aef3ddd32d2e6538ffff4055d37}{position\+\_\+t}}
+
+Position type to keep track of the position of the elevator. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{F\+L\+O\+O\+R\+\_\+0@{F\+L\+O\+O\+R\+\_\+0}!fsm.\+h@{fsm.\+h}}\index{fsm.\+h@{fsm.\+h}!F\+L\+O\+O\+R\+\_\+0@{F\+L\+O\+O\+R\+\_\+0}}}\mbox{\Hypertarget{fsm_8h_a31f24aef3ddd32d2e6538ffff4055d37a41c260e6185ffde5e92e0b0aeef6168e}\label{fsm_8h_a31f24aef3ddd32d2e6538ffff4055d37a41c260e6185ffde5e92e0b0aeef6168e}} 
+F\+L\+O\+O\+R\+\_\+0&Elevator at floor 0. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{B\+E\+T\+W\+E\+E\+N\+\_\+0\+\_\+\+A\+N\+D\+\_\+1@{B\+E\+T\+W\+E\+E\+N\+\_\+0\+\_\+\+A\+N\+D\+\_\+1}!fsm.\+h@{fsm.\+h}}\index{fsm.\+h@{fsm.\+h}!B\+E\+T\+W\+E\+E\+N\+\_\+0\+\_\+\+A\+N\+D\+\_\+1@{B\+E\+T\+W\+E\+E\+N\+\_\+0\+\_\+\+A\+N\+D\+\_\+1}}}\mbox{\Hypertarget{fsm_8h_a31f24aef3ddd32d2e6538ffff4055d37ae42db7623b9d5bd03eb182b0f642ae4f}\label{fsm_8h_a31f24aef3ddd32d2e6538ffff4055d37ae42db7623b9d5bd03eb182b0f642ae4f}} 
+B\+E\+T\+W\+E\+E\+N\+\_\+0\+\_\+\+A\+N\+D\+\_\+1&Elevator between floor 0 and floor 1. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{F\+L\+O\+O\+R\+\_\+1@{F\+L\+O\+O\+R\+\_\+1}!fsm.\+h@{fsm.\+h}}\index{fsm.\+h@{fsm.\+h}!F\+L\+O\+O\+R\+\_\+1@{F\+L\+O\+O\+R\+\_\+1}}}\mbox{\Hypertarget{fsm_8h_a31f24aef3ddd32d2e6538ffff4055d37a545045ddd4e0e4e18ae6b1b7e4c5f825}\label{fsm_8h_a31f24aef3ddd32d2e6538ffff4055d37a545045ddd4e0e4e18ae6b1b7e4c5f825}} 
+F\+L\+O\+O\+R\+\_\+1&Elevator at floor 1. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{B\+E\+T\+W\+E\+E\+N\+\_\+1\+\_\+\+A\+N\+D\+\_\+2@{B\+E\+T\+W\+E\+E\+N\+\_\+1\+\_\+\+A\+N\+D\+\_\+2}!fsm.\+h@{fsm.\+h}}\index{fsm.\+h@{fsm.\+h}!B\+E\+T\+W\+E\+E\+N\+\_\+1\+\_\+\+A\+N\+D\+\_\+2@{B\+E\+T\+W\+E\+E\+N\+\_\+1\+\_\+\+A\+N\+D\+\_\+2}}}\mbox{\Hypertarget{fsm_8h_a31f24aef3ddd32d2e6538ffff4055d37ac8953131d568e475dc00ffd7950ebe69}\label{fsm_8h_a31f24aef3ddd32d2e6538ffff4055d37ac8953131d568e475dc00ffd7950ebe69}} 
+B\+E\+T\+W\+E\+E\+N\+\_\+1\+\_\+\+A\+N\+D\+\_\+2&Elevator between floor 1 and floor 2. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{F\+L\+O\+O\+R\+\_\+2@{F\+L\+O\+O\+R\+\_\+2}!fsm.\+h@{fsm.\+h}}\index{fsm.\+h@{fsm.\+h}!F\+L\+O\+O\+R\+\_\+2@{F\+L\+O\+O\+R\+\_\+2}}}\mbox{\Hypertarget{fsm_8h_a31f24aef3ddd32d2e6538ffff4055d37aa1091247dd00a6c252b76abb82995b84}\label{fsm_8h_a31f24aef3ddd32d2e6538ffff4055d37aa1091247dd00a6c252b76abb82995b84}} 
+F\+L\+O\+O\+R\+\_\+2&Elevator at floor 2. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{B\+E\+T\+W\+E\+E\+N\+\_\+2\+\_\+\+A\+N\+D\+\_\+3@{B\+E\+T\+W\+E\+E\+N\+\_\+2\+\_\+\+A\+N\+D\+\_\+3}!fsm.\+h@{fsm.\+h}}\index{fsm.\+h@{fsm.\+h}!B\+E\+T\+W\+E\+E\+N\+\_\+2\+\_\+\+A\+N\+D\+\_\+3@{B\+E\+T\+W\+E\+E\+N\+\_\+2\+\_\+\+A\+N\+D\+\_\+3}}}\mbox{\Hypertarget{fsm_8h_a31f24aef3ddd32d2e6538ffff4055d37a17c45fc5d4dddf28fdd454d5ccb67121}\label{fsm_8h_a31f24aef3ddd32d2e6538ffff4055d37a17c45fc5d4dddf28fdd454d5ccb67121}} 
+B\+E\+T\+W\+E\+E\+N\+\_\+2\+\_\+\+A\+N\+D\+\_\+3&Elevator between floor 2 and floor 3. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{F\+L\+O\+O\+R\+\_\+3@{F\+L\+O\+O\+R\+\_\+3}!fsm.\+h@{fsm.\+h}}\index{fsm.\+h@{fsm.\+h}!F\+L\+O\+O\+R\+\_\+3@{F\+L\+O\+O\+R\+\_\+3}}}\mbox{\Hypertarget{fsm_8h_a31f24aef3ddd32d2e6538ffff4055d37a7511f408b1d4eff0cd7d404c259e6444}\label{fsm_8h_a31f24aef3ddd32d2e6538ffff4055d37a7511f408b1d4eff0cd7d404c259e6444}} 
+F\+L\+O\+O\+R\+\_\+3&Elevator at floor 3. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{U\+N\+K\+N\+O\+WN@{U\+N\+K\+N\+O\+WN}!fsm.\+h@{fsm.\+h}}\index{fsm.\+h@{fsm.\+h}!U\+N\+K\+N\+O\+WN@{U\+N\+K\+N\+O\+WN}}}\mbox{\Hypertarget{fsm_8h_a31f24aef3ddd32d2e6538ffff4055d37a6ce26a62afab55d7606ad4e92428b30c}\label{fsm_8h_a31f24aef3ddd32d2e6538ffff4055d37a6ce26a62afab55d7606ad4e92428b30c}} 
+U\+N\+K\+N\+O\+WN&Unknown position only during initialization. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 16 of file fsm.\+h.
+
+\mbox{\Hypertarget{fsm_8h_aa0aafed44fec19806d8f9ad834be1248}\label{fsm_8h_aa0aafed44fec19806d8f9ad834be1248}} 
+\index{fsm.\+h@{fsm.\+h}!state\+\_\+t@{state\+\_\+t}}
+\index{state\+\_\+t@{state\+\_\+t}!fsm.\+h@{fsm.\+h}}
+\subsubsection{\texorpdfstring{state\+\_\+t}{state\_t}}
+{\footnotesize\ttfamily enum \hyperlink{fsm_8h_aa0aafed44fec19806d8f9ad834be1248}{state\+\_\+t}}
+
+State types for function \hyperlink{fsm_8h_a270932dff1ab343bb350f7c6e02d7a43}{fsm()}. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{I\+N\+IT@{I\+N\+IT}!fsm.\+h@{fsm.\+h}}\index{fsm.\+h@{fsm.\+h}!I\+N\+IT@{I\+N\+IT}}}\mbox{\Hypertarget{fsm_8h_aa0aafed44fec19806d8f9ad834be1248a0cb1b2c6a7db1f1084886c98909a3f36}\label{fsm_8h_aa0aafed44fec19806d8f9ad834be1248a0cb1b2c6a7db1f1084886c98909a3f36}} 
+I\+N\+IT&Initialization state, only during start up. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{I\+D\+LE@{I\+D\+LE}!fsm.\+h@{fsm.\+h}}\index{fsm.\+h@{fsm.\+h}!I\+D\+LE@{I\+D\+LE}}}\mbox{\Hypertarget{fsm_8h_aa0aafed44fec19806d8f9ad834be1248afd6a0e4343048b10646dd2976cc5ad18}\label{fsm_8h_aa0aafed44fec19806d8f9ad834be1248afd6a0e4343048b10646dd2976cc5ad18}} 
+I\+D\+LE&Idle state, where the elevator is not moving and checks for new orders. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{M\+O\+V\+I\+NG@{M\+O\+V\+I\+NG}!fsm.\+h@{fsm.\+h}}\index{fsm.\+h@{fsm.\+h}!M\+O\+V\+I\+NG@{M\+O\+V\+I\+NG}}}\mbox{\Hypertarget{fsm_8h_aa0aafed44fec19806d8f9ad834be1248a16ebdcb23eb5337fd5bc598fa8d6035d}\label{fsm_8h_aa0aafed44fec19806d8f9ad834be1248a16ebdcb23eb5337fd5bc598fa8d6035d}} 
+M\+O\+V\+I\+NG&Moving either up or down. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{O\+P\+E\+N\+\_\+\+D\+O\+OR@{O\+P\+E\+N\+\_\+\+D\+O\+OR}!fsm.\+h@{fsm.\+h}}\index{fsm.\+h@{fsm.\+h}!O\+P\+E\+N\+\_\+\+D\+O\+OR@{O\+P\+E\+N\+\_\+\+D\+O\+OR}}}\mbox{\Hypertarget{fsm_8h_aa0aafed44fec19806d8f9ad834be1248af079926e3e86ee2c17b3eedbdef15bcd}\label{fsm_8h_aa0aafed44fec19806d8f9ad834be1248af079926e3e86ee2c17b3eedbdef15bcd}} 
+O\+P\+E\+N\+\_\+\+D\+O\+OR&Open door state where the elevator is not moving and opens the door. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\+M\+E\+R\+G\+E\+N\+C\+Y\+\_\+\+S\+T\+OP@{E\+M\+E\+R\+G\+E\+N\+C\+Y\+\_\+\+S\+T\+OP}!fsm.\+h@{fsm.\+h}}\index{fsm.\+h@{fsm.\+h}!E\+M\+E\+R\+G\+E\+N\+C\+Y\+\_\+\+S\+T\+OP@{E\+M\+E\+R\+G\+E\+N\+C\+Y\+\_\+\+S\+T\+OP}}}\mbox{\Hypertarget{fsm_8h_aa0aafed44fec19806d8f9ad834be1248a56a92b9980c854fa6e488ffeb6a2844b}\label{fsm_8h_aa0aafed44fec19806d8f9ad834be1248a56a92b9980c854fa6e488ffeb6a2844b}} 
+E\+M\+E\+R\+G\+E\+N\+C\+Y\+\_\+\+S\+T\+OP&Emergency stop state, regardless of position. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 41 of file fsm.\+h.
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{fsm_8h_a270932dff1ab343bb350f7c6e02d7a43}\label{fsm_8h_a270932dff1ab343bb350f7c6e02d7a43}} 
+\index{fsm.\+h@{fsm.\+h}!fsm@{fsm}}
+\index{fsm@{fsm}!fsm.\+h@{fsm.\+h}}
+\subsubsection{\texorpdfstring{fsm()}{fsm()}}
+{\footnotesize\ttfamily void fsm (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The functions main responsibilites is managing the finite state machine. Before entering a switch that manages the state machine it polls\+: 
+
+
+\begin{DoxyItemize}
+\item The order buttons
+\item floor sensors
+\item stop button
+\end{DoxyItemize}
+
+The state machine manages the states in the \hyperlink{fsm_8h_aa0aafed44fec19806d8f9ad834be1248}{state\+\_\+t}. The behaviour between the states is described in the state diagram and the sequence diagram.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em fsm\+\_\+position} & Elevator position \\
+\hline
+\mbox{\tt out}  & {\em fsm\+\_\+floor} & Elevator floor \\
+\hline
+\mbox{\tt out}  & {\em fsm\+\_\+timestamp} & Timestamp \\
+\hline
+\mbox{\tt out}  & {\em fsm\+\_\+direction} & Elevator direction of travel. This will only ever by D\+I\+R\+N\+\_\+\+UP or D\+I\+R\+N\+\_\+\+D\+O\+WN of \hyperlink{elevator__hardware_8h_ac873de158b370a210216e4b4c7fb218f}{elev\+\_\+motor\+\_\+direction\+\_\+t}. \\
+\hline
+\mbox{\tt out}  & {\em fsm\+\_\+state} & Elevator state \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 37 of file fsm.\+c.
+
