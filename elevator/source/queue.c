@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Implementation of the functions in queue.h
+ */ 
+
 #include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>
@@ -8,7 +13,7 @@
 #include "fsm.h"
 
 // Initializing variables
-static int queue_array[N_BUTTONS][N_FLOORS];
+static int queue_array[N_BUTTONS][N_FLOORS]; ///< A two dimensional array to keep track of the elevators orders.
 
 //Declaring static local functions
 static void m_assert_buttons();
