@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief The main file of the application
+ */ 
+
 #include <stdio.h>
 
 #include "elevator_hardware.h"
