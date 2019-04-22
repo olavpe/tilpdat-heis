@@ -25,7 +25,7 @@ void queue_reset_queue();
 /**
  * @brief Deletes an order in the queue.
  * 
- * @param[in] current_position Position of the elevator
+ * @param[in] floor Floor the elevator is at
  * @param[out] queue_array Queue table
  */
 void queue_delete_order(floor_t floor);
