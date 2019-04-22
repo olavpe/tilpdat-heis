@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Implementation of the functions in timer.h
+ */ 
+
 #include <stdio.h>
 #include <stdbool.h>
 #include <time.h>
