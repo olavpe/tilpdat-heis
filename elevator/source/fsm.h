@@ -7,7 +7,7 @@
 
 #pragma once
 
-#define N_POSITIONS 7
+#define N_POSITIONS 7 ///< Number of positions in ::position_t without UNKNOWN
 
 
 /**
@@ -32,7 +32,7 @@ typedef enum {
     ORDER_FLOOR_1, ///< Floor 1
     ORDER_FLOOR_2, ///< Floor 2
     ORDER_FLOOR_3, ///< Floor 3
-    ORDER_UNKNOWN ///< Unknown floor only during initialization
+    ORDER_FLOOR_UNKNOWN ///< Unknown floor only during initialization
 } floor_t;
 
 /**
