@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Implementation of the functions in fsm.h
+ */ 
+
 #include <stdio.h>
 #include <stdint.h>
 #include <unistd.h>
@@ -11,11 +16,16 @@
 
 
 // Initializing variables
+/** @brief Local fsm variable used to keep track of the elevators position. */
 static position_t fsm_position = UNKNOWN;
-static floor_t fsm_floor = ORDER_UNKNOWN;
+/** @brief Local fsm variable used to keep track of the elevators last or current floor. */
+static floor_t fsm_floor = ORDER_FLOOR_UNKNOWN;
+/** @brief Local fsm variable to keep track of timer responisble for opening the door. */
 static time_t fsm_timestamp = 0;
-static elev_motor_direction_t fsm_direction = DIRN_UP;
-static state_t fsm_state = INIT;    
+/** @brief Local fsm variable used to keep track of the elevators direction of travel. This can never be DIRN_STOP */
+static elev_motor_direction_t fsm_direction = DIRN_UP; 
+/** @brief Local fsm variable used to keep track of the elevators state. */
+static state_t fsm_state = INIT;
 
 // Declaring static local functions
 static void m_register_order_press();
