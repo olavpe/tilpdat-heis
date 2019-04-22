@@ -51,7 +51,6 @@ bool queue_is_queue_empty();
  * The function will choose the next direction of the elevator based on these values
  * and will prioritize the orders that is in the direction of the elevator.
  * 
- * 
  * @param[in] current_position The current position of the elevator
  * @param[in] last_direction The direction of travel of the elevator.
  * 
