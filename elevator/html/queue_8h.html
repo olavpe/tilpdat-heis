@@ -76,12 +76,21 @@ $(function() {
 <code>#include &quot;<a class="el" href="elevator__hardware_8h_source.html">elevator_hardware.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="fsm_8h_source.html">fsm.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
+Include dependency graph for queue.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="queue_8h__incl.png" border="0" usemap="#source_2queue_8h" alt=""/></div>
+<map name="source_2queue_8h" id="source_2queue_8h">
+<area shape="rect" id="node4" href="elevator__hardware_8h.html" title="The driver that communicates with the elevator hardware. This is done through a server that is set up..." alt="" coords="189,80,328,107"/>
+<area shape="rect" id="node5" href="fsm_8h.html" title="This class that controls the main functions of the elevator. It is responsible for checking input sig..." alt="" coords="353,80,407,107"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="queue_8h__dep__incl.png" border="0" usemap="#source_2queue_8hdep" alt=""/></div>
 <map name="source_2queue_8hdep" id="source_2queue_8hdep">
-<area shape="rect" id="node2" href="fsm_8c_source.html" title="source/fsm.c" alt="" coords="5,80,104,107"/>
-<area shape="rect" id="node3" href="queue_8c_source.html" title="source/queue.c" alt="" coords="129,80,239,107"/>
+<area shape="rect" id="node2" href="fsm_8c.html" title="Implementation of the functions in fsm.h. " alt="" coords="5,80,104,107"/>
+<area shape="rect" id="node3" href="queue_8c.html" title="Implementation of the functions in queue.h. " alt="" coords="129,80,239,107"/>
 </map>
 </div>
 </div>
@@ -104,7 +113,7 @@ Functions</h2></td></tr>
 <tr class="memitem:af2c4aec8d254eec04f73df6b5bba25d4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="elevator__hardware_8h.html#ac873de158b370a210216e4b4c7fb218f">elev_motor_direction_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="queue_8h.html#af2c4aec8d254eec04f73df6b5bba25d4">queue_get_next_direction</a> (<a class="el" href="fsm_8h.html#a31f24aef3ddd32d2e6538ffff4055d37">position_t</a> current_position, <a class="el" href="elevator__hardware_8h.html#ac873de158b370a210216e4b4c7fb218f">elev_motor_direction_t</a> last_direction)</td></tr>
 <tr class="memdesc:af2c4aec8d254eec04f73df6b5bba25d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the next direction of the elevator based on the requested priorities.  <a href="#af2c4aec8d254eec04f73df6b5bba25d4">More...</a><br /></td></tr>
 <tr class="separator:af2c4aec8d254eec04f73df6b5bba25d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a83fd2eb719d7deb1b38cbe8e00603eea"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="queue_8h.html#a83fd2eb719d7deb1b38cbe8e00603eea">queue_should_stop</a> (<a class="el" href="fsm_8h.html#a31f24aef3ddd32d2e6538ffff4055d37">position_t</a> fsm_position, <a class="el" href="fsm_8h.html#a5b3a976f46b9e6993f1692a09bf2fd60">floor_t</a> fsm_floor, <a class="el" href="elevator__hardware_8h.html#ac873de158b370a210216e4b4c7fb218f">elev_motor_direction_t</a> fsm_direction)</td></tr>
+<tr class="memitem:a83fd2eb719d7deb1b38cbe8e00603eea"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="queue_8h.html#a83fd2eb719d7deb1b38cbe8e00603eea">queue_should_stop</a> (<a class="el" href="fsm_8h.html#a31f24aef3ddd32d2e6538ffff4055d37">position_t</a> <a class="el" href="fsm_8c.html#a740b52d852a7ed32ae50f2433e7fc8dd">fsm_position</a>, <a class="el" href="fsm_8h.html#a5b3a976f46b9e6993f1692a09bf2fd60">floor_t</a> <a class="el" href="fsm_8c.html#ae58b9d6bb7b780f3c1e7fd26baeb5683">fsm_floor</a>, <a class="el" href="elevator__hardware_8h.html#ac873de158b370a210216e4b4c7fb218f">elev_motor_direction_t</a> <a class="el" href="fsm_8c.html#a34c0ceaa7f628cf25af6d97bb6775eb4">fsm_direction</a>)</td></tr>
 <tr class="memdesc:a83fd2eb719d7deb1b38cbe8e00603eea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the elevator should stop when arriving at a floor, based on orders in the queue array. This function will inform the elevator that it should stop if:  <a href="#a83fd2eb719d7deb1b38cbe8e00603eea">More...</a><br /></td></tr>
 <tr class="separator:a83fd2eb719d7deb1b38cbe8e00603eea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -132,13 +141,21 @@ Functions</h2></td></tr>
 <p>Deletes an order in the queue. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">current_position</td><td>Position of the elevator </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">floor</td><td>Floor the elevator is at </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">queue_array</td><td>Queue table </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="queue_8c_source.html#l00030">30</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="queue_8c_source.html#l00035">35</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="queue_8h_a6b21f1da6ba83e1ee8ac5a64854415b7_cgraph.png" border="0" usemap="#queue_8h_a6b21f1da6ba83e1ee8ac5a64854415b7_cgraph" alt=""/></div>
+<map name="queue_8h_a6b21f1da6ba83e1ee8ac5a64854415b7_cgraph" id="queue_8h_a6b21f1da6ba83e1ee8ac5a64854415b7_cgraph">
+<area shape="rect" id="node2" href="elevator__hardware_8c.html#a9e81321c63d80ddf1699bc91593cd9d4" title="elev_set_button_lamp" alt="" coords="188,5,337,32"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -178,7 +195,15 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>next direction of the elevator. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="queue_8c_source.html#l00059">59</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="queue_8c_source.html#l00064">64</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="queue_8h_af2c4aec8d254eec04f73df6b5bba25d4_icgraph.png" border="0" usemap="#queue_8h_af2c4aec8d254eec04f73df6b5bba25d4_icgraph" alt=""/></div>
+<map name="queue_8h_af2c4aec8d254eec04f73df6b5bba25d4_icgraph" id="queue_8h_af2c4aec8d254eec04f73df6b5bba25d4_icgraph">
+<area shape="rect" id="node2" href="queue_8h.html#a83fd2eb719d7deb1b38cbe8e00603eea" title="Checks if the elevator should stop when arriving at a floor, based on orders in the queue array..." alt="" coords="224,5,359,32"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -200,7 +225,7 @@ Functions</h2></td></tr>
 <p>Checks whether the queue has any orders. </p>
 <dl class="section return"><dt>Returns</dt><dd>1 if the queue is empty, 0 if not. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="queue_8c_source.html#l00043">43</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="queue_8c_source.html#l00048">48</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
 
 </div>
 </div>
@@ -227,7 +252,15 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="queue_8c_source.html#l00019">19</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="queue_8c_source.html#l00024">24</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="queue_8h_a600fb7cf1ff3b028fcb97aa1af196065_cgraph.png" border="0" usemap="#queue_8h_a600fb7cf1ff3b028fcb97aa1af196065_cgraph" alt=""/></div>
+<map name="queue_8h_a600fb7cf1ff3b028fcb97aa1af196065_cgraph" id="queue_8h_a600fb7cf1ff3b028fcb97aa1af196065_cgraph">
+<area shape="rect" id="node2" href="elevator__hardware_8c.html#a9e81321c63d80ddf1699bc91593cd9d4" title="elev_set_button_lamp" alt="" coords="188,5,337,32"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -267,7 +300,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="queue_8c_source.html#l00038">38</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="queue_8c_source.html#l00043">43</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
 
 </div>
 </div>
@@ -318,7 +351,15 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>1 of the elevator should stop, 0 if not. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="queue_8c_source.html#l00083">83</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="queue_8c_source.html#l00088">88</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="queue_8h_a83fd2eb719d7deb1b38cbe8e00603eea_cgraph.png" border="0" usemap="#queue_8h_a83fd2eb719d7deb1b38cbe8e00603eea_cgraph" alt=""/></div>
+<map name="queue_8h_a83fd2eb719d7deb1b38cbe8e00603eea_cgraph" id="queue_8h_a83fd2eb719d7deb1b38cbe8e00603eea_cgraph">
+<area shape="rect" id="node2" href="queue_8c.html#af2c4aec8d254eec04f73df6b5bba25d4" title="Gets the next direction of the elevator based on the requested priorities. " alt="" coords="188,5,359,32"/>
+</map>
+</div>
 
 </div>
 </div>
