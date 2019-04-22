@@ -1,3 +1,7 @@
+/**
+ * @file
+ * @brief Background file used by elevator_hardware.h to communicate with the elevator.
+ */ 
 
 #include <stdio.h>
 #include <string.h>
